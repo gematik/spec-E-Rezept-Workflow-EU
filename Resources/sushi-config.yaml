@@ -1,15 +1,12 @@
-canonical:  https://gematik.de/fhir/isik/v2/Basismodul
+canonical:  https://gematik.de/fhir/erp-eu/
 fhirVersion: 4.0.1
 FSHOnly: true
 applyExtensionMetadataToRoot: false
-id: Implementierungsleitfaden gematik-Basismodul Stufe 1 1.0.0
-name: Implementierungsleitfaden gematik-Basismodul Stufe 1 1.0.0
-status: active
-version: # "1.0.0"
-publisher:
-  name: Gematik GmbH
-  url: https://www.gematik.de/
-  email: info@gematik.de
+status: draft
+version: "1.0.0-beta"
 dependencies:
-  de.basisprofil.r4: 1.4.0
   hl7.fhir.r4.core: 4.0.1
+  de.basisprofil.r4: 1.5.0
+  de.gematik.terminology: 1.0.1 
+  de.gematik.epa.medication: 1.1.1
+  de.gematik.erezept-workflow.r4: 1.5.0-beta

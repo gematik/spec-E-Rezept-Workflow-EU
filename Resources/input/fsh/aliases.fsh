@@ -1,4 +1,19 @@
-Alias: $v2-0203 = http://terminology.hl7.org/CodeSystem/v2-0203
-Alias: $identifier-type-de-basis = http://fhir.de/CodeSystem/identifier-type-de-basis
-Alias: $data-absent-reason = http://hl7.org/fhir/StructureDefinition/data-absent-reason
-Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
+Alias: $cs-iso-3166 = urn:iso:std:iso:3166
+Alias: $cs-consent-scope = http://terminology.hl7.org/CodeSystem/consentscope
+
+//VZD
+Alias: $cs-organization-profession-oid = https://gematik.de/fhir/directory/CodeSystem/OrganizationProfessionOID
+
+// DE-Basisprofile
+Alias: $identifier-kvid-10 = http://fhir.de/sid/gkv/kvid-10
+Alias: $identifier-telematik-id = https://gematik.de/fhir/sid/telematik-id
+Alias: $identifier-iknr = http://fhir.de/StructureDefinition/identifier-iknr
+
+// Workflow
+Alias: $prescription-id-ns = https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_PrescriptionId
+Alias: $eu-access-code-ns = https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_EU_AccessCode
+
+// EPA
+Alias: $sid-identifier-rx-originator-process = https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier
+Alias: $sid-identifier-dispensation = https://gematik.de/fhir/epa-medication/sid/dispensation-identifier
+Alias: $cs-drug-category = https://gematik.de/fhir/epa-medication/CodeSystem/epa-drug-category-cs
