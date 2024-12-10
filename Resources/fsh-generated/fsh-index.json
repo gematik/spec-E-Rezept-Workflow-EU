@@ -85,7 +85,7 @@
     "fshType": "Instance",
     "fshFile": "operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh",
     "startLine": 1,
-    "endLine": 77
+    "endLine": 74
   },
   {
     "outputFile": "OperationDefinition-Grant-EU-Access-Permission.json",
