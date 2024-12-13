@@ -35,6 +35,6 @@ StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json                  GEM_ERPE
 StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 159
 ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json                           GEM_ERPEU_VS_Consent_PolicyRule                    ValueSet    valuesets/GEM_ERPEU_VS_Consent_PolicyRule.fsh                   1 - 6
 ValueSet-GEM-ERPEU-VS-ConsentType.json                                  GEM_ERPEU_VS_ConsentType                           ValueSet    valuesets/GEM_ERPEU_VS_ConsentType.fsh                          1 - 6
-ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json                       GEM_ERPEU_VS_HealthCareFacilityType                ValueSet    valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh               1 - 9
+ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json                       GEM_ERPEU_VS_HealthCareFacilityType                ValueSet    valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh               1 - 6
 ValueSet-GEM-ERPEU-VS-PractitionerRole.json                             GEM_ERPEU_VS_PractitionerRole                      ValueSet    valuesets/GEM_ERPEU_VS_PractitionerRole.fsh                     2 - 7
 ValueSet-GEM-ERPEU-VS-RequestType.json                                  GEM_ERPEU_VS_RequestType                           ValueSet    valuesets/GEM_ERPEU_VS_RequestType.fsh                          1 - 6

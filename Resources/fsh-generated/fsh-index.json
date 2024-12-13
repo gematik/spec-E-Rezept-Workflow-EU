@@ -293,7 +293,7 @@
     "fshType": "ValueSet",
     "fshFile": "valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh",
     "startLine": 1,
-    "endLine": 9
+    "endLine": 6
   },
   {
     "outputFile": "ValueSet-GEM-ERPEU-VS-PractitionerRole.json",
