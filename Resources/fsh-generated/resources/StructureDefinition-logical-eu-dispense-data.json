@@ -402,7 +402,7 @@
         "mapping": [
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-MedicationDispense",
-            "map": "MedicationDispense.id"
+            "map": "MedicationDispense.identifier"
           }
         ]
       },

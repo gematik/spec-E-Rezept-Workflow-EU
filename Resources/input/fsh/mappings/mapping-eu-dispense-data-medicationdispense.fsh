@@ -8,7 +8,7 @@ Description: "This mapping maps the logical information of the EU DispenseData t
   * RegionalNationalHealthIdentifier -> "MedicationDispense.subject.identifier"
 * DispenseData -> "GEM_ERPEU_PR_MedicationDispense"
   * AdministrativeInformation -> "GEM_ERPEU_PR_MedicationDispense"
-    * DispensationIdentifier -> "MedicationDispense.id"
+    * DispensationIdentifier -> "MedicationDispense.identifier"
     * PrescriptionIdentifier -> "MedicationDispense.identifier[prescriptionID]"
     * PrescriptionItemIdentifier -> "n/a"
     * DateOfIssueOfDispensation -> "MedicationDispense.whenHandedOver"
