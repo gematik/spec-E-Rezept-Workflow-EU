@@ -163,10 +163,6 @@
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-Practitioner",
             "map": "Practitioner.family"
-          },
-          {
-            "identity": "GEM-ERPEU-MAP-EU-Data-Practitioner",
-            "map": "Practitioner.family.extension[nachname]"
           }
         ]
       },
@@ -645,7 +641,11 @@
         "mapping": [
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-Medication",
-            "map": "Medication.form.text, Medication.form.coding:kbvDarreichungsform"
+            "map": "Medication.form.text"
+          },
+          {
+            "identity": "GEM-ERPEU-MAP-EU-Data-Medication",
+            "map": "Medication.form.coding:kbvDarreichungsform"
           }
         ]
       },
@@ -665,7 +665,7 @@
         "mapping": [
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-Medication",
-            "map": "Medication.extension:packaging"
+            "map": "Medication.extension:packageDescription"
           }
         ]
       },
@@ -705,7 +705,7 @@
         "mapping": [
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-Medication",
-            "map": "Medication.extension:packaging.value[x]:valueString"
+            "map": "Medication.extension:packaging"
           }
         ]
       },

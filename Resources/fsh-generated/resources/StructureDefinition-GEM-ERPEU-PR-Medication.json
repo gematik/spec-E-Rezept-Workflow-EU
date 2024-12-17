@@ -42,6 +42,21 @@
             ]
           }
         ]
+      },
+      {
+        "id": "Medication.extension:packageDescription",
+        "path": "Medication.extension",
+        "sliceName": "packageDescription",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_EX_MedicinalPackageDescription"
+            ]
+          }
+        ]
       }
     ]
   }
