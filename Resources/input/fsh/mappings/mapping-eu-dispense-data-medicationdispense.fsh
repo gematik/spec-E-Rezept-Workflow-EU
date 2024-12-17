@@ -23,7 +23,7 @@ Title: "Mapping for EU MedicationData to GEM_ERPEU_PR_Medication"
 Description: "This mapping maps the logical information of the EU MedicationData to GEM_ERPEU_PR_Medication"
 * DispenseData -> "GEM_ERPEU_PR_MedicationDispense"
   * MedicinalInformation -> "GEM_ERPEU_PR_MedicationDispense.medicationReference"
-    * MedicinalProductIdentifier -> "Medication.code.[eu-??]" //TODO: BfArM erfragt system
+    * MedicinalProductIdentifier -> "Medication.code.coding"
     * MedicinalProductBrandName -> "Medication.code.text"
 
     * ActiveIngredients -> "Medication.ingredient.item[x]:itemCodeableConcept"
@@ -31,7 +31,7 @@ Description: "This mapping maps the logical information of the EU MedicationData
     * ActiveIngredientStrengths -> "Medication.ingredient.strength"
     * PharmaceuticalDoseForm -> "Medication.form.text, Medication.form.coding:kbvDarreichungsform"
     * MedicinalProductPackageDescription -> "Medication.extension:packaging"
-    * MedicinalProductPackageIdentifier -> "Medication.extension:packageIdentifier" //TODO: BfArM erfragt system für Identifier
+    * MedicinalProductPackageIdentifier -> "Medication.extension:packageIdentifier"
     * PackageType -> "Medication.extension:packaging.value[x]:valueString"
     * PackageSize -> "Medication.amount.numerator.extension:packagingSize"
     * MarketingAuthorizationHolder -> "Medication.manufacturer.display"

@@ -22,9 +22,10 @@ Parameters-ExampleEUGETPrescriptionE-PRESCRIPTIONS-LIST.json            ExampleE
 Parameters-ExampleEUGETPrescriptionE-PRESCRIPTIONS-RETRIEVAL.json       ExampleEUGETPrescriptionE-PRESCRIPTIONS-RETRIEVAL  Instance    examples/Example_EU_Parameters_GET_Prescription.fsh             67 - 108
 Practitioner-Example-EU-Practitioner.json                               Example-EU-Practitioner                            Instance    examples/Example-EU-Entities.fsh                                1 - 8
 PractitionerRole-Example-EU-PractitionerRole.json                       Example-EU-PractitionerRole                        Instance    examples/Example-EU-Entities.fsh                                26 - 32
+StructureDefinition-GEM-ERPEU-EX-MedicinalPackageIdentifier.json        GEM_ERPEU_EX_MedicinalPackageIdentifier            Extension   extensions/GEM_ERPEU_EX_PackageIdentifier.fsh                   1 - 9
 StructureDefinition-GEM-ERPEU-PR-AccessCode.json                        GEM_ERPEU_PR_Access_Code                           Profile     profiles/GEM_ERPEU_PR_Access_Code.fsh                           1 - 15
 StructureDefinition-GEM-ERPEU-PR-Consent.json                           GEM_ERPEU_PR_Consent                               Profile     profiles/GEM_ERPEU_PR_Consent.fsh                               1 - 25
-StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 80
+StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 82
 StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 38
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json   GEM_ERPEU_PR_PAR_Access_Authorization_Request      Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Request.fsh    1 - 30
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Response.json  GEM_ERPEU_PR_PAR_Access_Authorization_Response     Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Response.fsh   1 - 48

@@ -545,7 +545,7 @@
         "mapping": [
           {
             "identity": "GEM-ERPEU-MAP-EU-Data-Medication",
-            "map": "Medication.code.[eu-??]"
+            "map": "Medication.code.coding"
           }
         ]
       },

@@ -184,6 +184,14 @@
     "endLine": 32
   },
   {
+    "outputFile": "StructureDefinition-GEM-ERPEU-EX-MedicinalPackageIdentifier.json",
+    "fshName": "GEM_ERPEU_EX_MedicinalPackageIdentifier",
+    "fshType": "Extension",
+    "fshFile": "extensions/GEM_ERPEU_EX_PackageIdentifier.fsh",
+    "startLine": 1,
+    "endLine": 9
+  },
+  {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-AccessCode.json",
     "fshName": "GEM_ERPEU_PR_Access_Code",
     "fshType": "Profile",
@@ -205,7 +213,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_MedicationDispense.fsh",
     "startLine": 1,
-    "endLine": 80
+    "endLine": 82
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Organization.json",
