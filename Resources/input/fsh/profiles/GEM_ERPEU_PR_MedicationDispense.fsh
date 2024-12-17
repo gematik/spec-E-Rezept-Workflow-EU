@@ -48,8 +48,6 @@ Description: "Handles information about the redeem of the prescription and the s
 
 // Copy from EPA End ---
 
-* extension contains GEM_ERPEU_EX_MedicinalPackageIdentifier named packageIdentifier 0..1
-
 * identifier contains prescriptionID 1..1
 * identifier[prescriptionID] only GEM_ERP_PR_PrescriptionId
 * identifier[prescriptionID] ^patternIdentifier.system = $prescription-id-ns
@@ -58,7 +56,7 @@ Description: "Handles information about the redeem of the prescription and the s
 * status = #completed (exactly)
 * status ^short = "completed"
 
-* medication[x] only Reference(GEM_ERP_PR_Medication)
+* medication[x] only Reference(GEM_ERPEU_PR_Medication)
 * medication[x] MS
   * ^definition = "The MedicationDispense references a medication which was dispensed"
 

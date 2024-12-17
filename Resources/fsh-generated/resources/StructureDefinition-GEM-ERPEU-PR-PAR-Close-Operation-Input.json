@@ -162,7 +162,7 @@
           {
             "code": "Medication",
             "profile": [
-              "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Medication"
+              "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
             ]
           }
         ]

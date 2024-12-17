@@ -53,7 +53,7 @@
             "id": "SumatripanMedication",
             "meta": {
               "profile": [
-                "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Medication|1.5"
+                "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication|1.5"
               ]
             },
             "extension": [

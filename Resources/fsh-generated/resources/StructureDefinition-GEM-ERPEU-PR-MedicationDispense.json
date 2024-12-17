@@ -44,21 +44,6 @@
         ]
       },
       {
-        "id": "MedicationDispense.extension:packageIdentifier",
-        "path": "MedicationDispense.extension",
-        "sliceName": "packageIdentifier",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Extension",
-            "profile": [
-              "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_EX_MedicinalPackageIdentifier"
-            ]
-          }
-        ]
-      },
-      {
         "id": "MedicationDispense.identifier",
         "path": "MedicationDispense.identifier",
         "slicing": {
@@ -157,7 +142,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_Medication"
+              "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
             ]
           }
         ],

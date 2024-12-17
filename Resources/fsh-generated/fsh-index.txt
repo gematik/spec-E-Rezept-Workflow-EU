@@ -25,7 +25,8 @@ PractitionerRole-Example-EU-PractitionerRole.json                       Example-
 StructureDefinition-GEM-ERPEU-EX-MedicinalPackageIdentifier.json        GEM_ERPEU_EX_MedicinalPackageIdentifier            Extension   extensions/GEM_ERPEU_EX_PackageIdentifier.fsh                   1 - 9
 StructureDefinition-GEM-ERPEU-PR-AccessCode.json                        GEM_ERPEU_PR_Access_Code                           Profile     profiles/GEM_ERPEU_PR_Access_Code.fsh                           1 - 15
 StructureDefinition-GEM-ERPEU-PR-Consent.json                           GEM_ERPEU_PR_Consent                               Profile     profiles/GEM_ERPEU_PR_Consent.fsh                               1 - 25
-StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 82
+StructureDefinition-GEM-ERPEU-PR-Medication.json                        GEM_ERPEU_PR_Medication                            Profile     profiles/GEM_ERPEU_PR_Medication.fsh                            1 - 8
+StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 80
 StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 38
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json   GEM_ERPEU_PR_PAR_Access_Authorization_Request      Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Request.fsh    1 - 30
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Response.json  GEM_ERPEU_PR_PAR_Access_Authorization_Response     Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Response.fsh   1 - 48
@@ -33,7 +34,7 @@ StructureDefinition-GEM-ERPEU-PR-PAR-Close-Operation-Input.json         GEM_ERPE
 StructureDefinition-GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input.json     GEM_ERPEU_PR_PAR_GET_Prescription_Input            Profile     parameters/GEM_ERPEU_PR_PAR_GET_Prescription_Input.fsh          1 - 111
 StructureDefinition-GEM-ERPEU-PR-Practitioner.json                      GEM_ERPEU_PR_Practitioner                          Profile     profiles/GEM_ERPEU_PR_Practitioner.fsh                          1 - 17
 StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json                  GEM_ERPEU_PR_PractitionerRole                      Profile     profiles/GEM_ERPEU_PR_PractitionerRole.fsh                      1 - 12
-StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 159
+StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 142
 ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json                           GEM_ERPEU_VS_Consent_PolicyRule                    ValueSet    valuesets/GEM_ERPEU_VS_Consent_PolicyRule.fsh                   1 - 6
 ValueSet-GEM-ERPEU-VS-ConsentType.json                                  GEM_ERPEU_VS_ConsentType                           ValueSet    valuesets/GEM_ERPEU_VS_ConsentType.fsh                          1 - 6
 ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json                       GEM_ERPEU_VS_HealthCareFacilityType                ValueSet    valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh               1 - 9

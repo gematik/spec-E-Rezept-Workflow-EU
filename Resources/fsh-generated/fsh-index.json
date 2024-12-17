@@ -208,12 +208,20 @@
     "endLine": 25
   },
   {
+    "outputFile": "StructureDefinition-GEM-ERPEU-PR-Medication.json",
+    "fshName": "GEM_ERPEU_PR_Medication",
+    "fshType": "Profile",
+    "fshFile": "profiles/GEM_ERPEU_PR_Medication.fsh",
+    "startLine": 1,
+    "endLine": 8
+  },
+  {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json",
     "fshName": "GEM_ERPEU_PR_MedicationDispense",
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_MedicationDispense.fsh",
     "startLine": 1,
-    "endLine": 82
+    "endLine": 80
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Organization.json",
@@ -277,7 +285,7 @@
     "fshType": "Logical",
     "fshFile": "logicalmodels/logical-eu-dispense-data.fsh",
     "startLine": 1,
-    "endLine": 159
+    "endLine": 142
   },
   {
     "outputFile": "ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json",

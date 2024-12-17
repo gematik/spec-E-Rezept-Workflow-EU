@@ -1,6 +1,6 @@
 // Single Medication
 Instance: SumatripanMedication
-InstanceOf: GEM_ERP_PR_Medication
+InstanceOf: GEM_ERPEU_PR_Medication
 Title:   "Sample Medication Sumatripan"
 Usage: #example
 // Arzneimittelkategorie
@@ -27,7 +27,7 @@ Usage: #example
 
 // Single Medication
 Instance: SumatripanMedicationWithID
-InstanceOf: GEM_ERP_PR_Medication
+InstanceOf: GEM_ERPEU_PR_Medication
 Title:   "Sample Medication Sumatripan"
 Usage: #inline
 * id = "30e0e53f-275c-46f5-9e59-04d55735dabb"
@@ -54,7 +54,7 @@ Usage: #inline
 * amount.denominator.value = 1
 
 Instance: SimpleMedication
-InstanceOf: GEM_ERP_PR_Medication
+InstanceOf: GEM_ERPEU_PR_Medication
 Title:   "Sample Simple Medication"
 Usage: #example
 
@@ -66,7 +66,7 @@ Usage: #example
 
 // Medication without system and code for ingredient.strengh.numerator/denominator
 Instance: Medication-Without-Strength-Code
-InstanceOf: GEM_ERP_PR_Medication
+InstanceOf: GEM_ERPEU_PR_Medication
 Title:   "Medication Without code or system for Strength"
 Usage: #example
 * code.text = "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
@@ -85,7 +85,7 @@ Usage: #example
   * strength.denominator.code.extension[dataAbsentReason].valueCode = #unknown
 
 Instance: Medication-Without-Strength-Numerator
-InstanceOf: GEM_ERP_PR_Medication
+InstanceOf: GEM_ERPEU_PR_Medication
 Title:   "Medication Without code or system for Strength"
 Usage: #example
 * code.text = "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"

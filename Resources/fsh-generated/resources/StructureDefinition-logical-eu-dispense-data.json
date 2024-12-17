@@ -72,7 +72,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.PatientData.RegionalNationalHealthIdentifier",
         "short": "Regional/National Health Identifier (KVNR)",
         "definition": "Angabe aus einem der dargestellten CDA Felder wird unter der angegebenen Element ID des FHIR Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen. Als einziges Merkmal zu den PatientInnen soll die KVID eingetragen werden, da hierüber jede gesetzlich versicherte Person eindeutig identifizierbar ist.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.subject.identifier",
         "min": 1,
         "max": "1",
         "type": [
@@ -91,8 +90,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData",
         "path": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData",
         "short": "HealthCareProfessional Data",
-        "definition": "Der Nachname der die Medikation abgebenden Person wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils NEUES PROFIL - NAME ANPASSEN eingetragen. (Achtung: Da aus der EU nur ein Datenfeld kommt, entfallen Sonderfelder für Präfixe und Suffixe)",
-        "comment": "ehdsi-dataelement-299 Family Name/Surname\nPractitioner.name.family",
+        "definition": "Der Nachname der die Medikation abgebenden Person wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils GEM_ERPEU_PR_Practitioner eingetragen. (Achtung: Da aus der EU nur ein Datenfeld kommt, entfallen Sonderfelder für Präfixe und Suffixe)",
+        "comment": "ehdsi-dataelement-299 Family Name/Surname",
         "min": 1,
         "max": "1",
         "type": [
@@ -111,8 +110,7 @@
         "id": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData.HPIdentifier",
         "path": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData.HPIdentifier",
         "short": "HP Identifier",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "Entsprechendes FHIR-Profil für Informationen zu HCP aus Country B (Dispenser) wird erstellt. Stark angelehnt an die Strukturen des Profils 'Practitioner in gematik Directory' --> im neu erstellten FHIR Profil Practitioner Coutry B noch die Properties und Eigenschaften gegenchecken!\nPractitioner.identifier:TelematikID,\nPractitioner.identifier:LANR,\nPractitioner.identifier:ZANR",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Practitioner eingetragen.",
         "min": 1,
         "max": "1",
         "type": [
@@ -131,8 +129,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData.GivenName",
         "path": "GEM_ERPEU_LOG_DispenseData.HealthCareProfessionalData.GivenName",
         "short": "Given Name",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-300 Given Name\nPractitioner.name.given",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Practitioner eingetragen.",
+        "comment": "ehdsi-dataelement-300 Given Name",
         "min": 1,
         "max": "*",
         "type": [
@@ -193,8 +191,7 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.FacilityIdentifier",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.FacilityIdentifier",
         "short": "Facility (Pharmacy) Identifier",
-        "definition": "Der Identifier des abgebenden Unternehmens wird aus dem angegebenen CDA Feld in die angegebenen Element Id des Profils NEUES PROFIL - NAME ANPASSEN übermittelt. (Achtung wir werden vermutlich im neu erstellten EU Profil sowohl die Möglichkeit einen Facility als auch einen Organisation Identifier abzubilden - FHIR Grundprofil lässt dies zu - Kardinalität Identifier 0..*)",
-        "comment": "Entsprechendes FHIR-Profil für Informationen zu Organisation aus Country B (Dispensing Organisation) wird erstellt. Stark angelehnt an die Strukturen des Profils Organization in gematik Directory\nMedicationDispense.performer.actor.identifier,\nOrganization.identifier:TelematikID,\nOrganization.identifier:BSNR,\nOrganization.identifier:KZVA,\nOrganization.identifier:IKNR",
+        "definition": "Der Identifier des abgebenden Unternehmens wird aus dem angegebenen CDA Feld in die angegebenen Element Id des Profils GEM_ERPEU_PR_Organization übermittelt. Angaben mehrerer Identifier ist möglich.",
         "min": 1,
         "max": "1",
         "type": [
@@ -214,7 +211,7 @@
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.OrganizationIdentifier",
         "short": "Organization Identifier",
         "definition": "(Achtung wir werden vermutlich im neu erstellten EU Profil sowohl die Möglichkeit einen Facility als auch einen Organisation Identifier abzubilden - FHIR Grundprofil lässt dies zu)",
-        "comment": "ehdsi-dataelement-285 Organization Identifier\nMedicationDispense.performer.actor.identifier,\nOrganization.identifier:TelematikID,\nOrganization.identifier:BSNR,\nOrganization.identifier:KZVA,\nOrganization.identifier:IKNR",
+        "comment": "ehdsi-dataelement-285 Organization Identifier",
         "min": 1,
         "max": "1",
         "type": [
@@ -233,8 +230,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.OrganizationName",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.OrganizationName",
         "short": "Organization Name",
-        "definition": "Der Name der Organisation, die die Medikation abgibt wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils NEUES PROFIL - NAME ANPASSEN eingetragen. (Achtung: HL7 Grundprofil lässt nur einen Organisationsnamen zu deshalb diesen und nicht Facility name gewählt)",
-        "comment": "ehdsi-dataelement-286 Organization Name\nOrganization.name",
+        "definition": "Der Name der Organisation, die die Medikation abgibt wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils GEM_ERPEU_PR_Organization eingetragen. (Achtung: HL7 Grundprofil lässt nur einen Organisationsnamen zu deshalb diesen und nicht Facility name gewählt)",
+        "comment": "ehdsi-dataelement-286 Organization Name",
         "min": 1,
         "max": "1",
         "type": [
@@ -253,8 +250,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.StreetAddress",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.StreetAddress",
         "short": "Street address",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-293 Street address\nOrganization.address.line",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Organization eingetragen.",
+        "comment": "ehdsi-dataelement-293 Street address",
         "min": 1,
         "max": "1",
         "type": [
@@ -273,8 +270,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.City",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.City",
         "short": "City",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-292 City\nOrganization.address.city",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Organization eingetragen.",
+        "comment": "ehdsi-dataelement-292 City",
         "min": 1,
         "max": "1",
         "type": [
@@ -293,8 +290,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.ZipOrPostalCode",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.ZipOrPostalCode",
         "short": "Zip or Postal Code",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-291 Zip or Postal Code\nOrganization.address.postalCode",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Organization eingetragen.",
+        "comment": "ehdsi-dataelement-291 Zip or Postal Code",
         "min": 1,
         "max": "1",
         "type": [
@@ -313,8 +310,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.StateOrProvince",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.StateOrProvince",
         "short": "State or Province",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-290 State or Province\nOrganization.address.state",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Organization eingetragen.",
+        "comment": "ehdsi-dataelement-290 State or Province",
         "min": 1,
         "max": "1",
         "type": [
@@ -333,8 +330,8 @@
         "id": "GEM_ERPEU_LOG_DispenseData.OrganizationData.Country",
         "path": "GEM_ERPEU_LOG_DispenseData.OrganizationData.Country",
         "short": "Country",
-        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils NEUES PROFIL - NAME ANPASSEN eingetragen.",
-        "comment": "ehdsi-dataelement-289 Country\nOrganization.address.country",
+        "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils GEM_ERPEU_PR_Organization eingetragen.",
+        "comment": "ehdsi-dataelement-289 Country",
         "min": 1,
         "max": "1",
         "type": [
@@ -396,7 +393,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.AdministrativeInformation.DispensationIdentifier",
         "short": "Dispensation Identifier",
         "definition": "Der Dispensation Identifier wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.extension:rxPrescriptionProcessIdentifier",
         "min": 1,
         "max": "1",
         "type": [
@@ -416,7 +412,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.AdministrativeInformation.PrescriptionIdentifier",
         "short": "Prescription Identifier",
         "definition": "Der Prescription Identifier wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen. Die im CDA Feld gelieferte Information entspricht dem ursprünglich in Deutschland erstelltem Wert, weshalb sie ohne Probleme konform mit der Formatvorgabe dieses Feldes ist.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.identifier:prescriptionID",
         "min": 1,
         "max": "1",
         "type": [
@@ -455,7 +450,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.AdministrativeInformation.DateOfIssueOfDispensation",
         "short": "Date of issue of the dispensation",
         "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.whenHandedOver",
         "min": 1,
         "max": "1",
         "type": [
@@ -475,7 +469,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.AdministrativeInformation.Substitution",
         "short": "Substitution",
         "definition": "Wenn im dargestellten CDA Feld übermittelt wird, dass eine Substitution erfolgte, kann diese Information unter der angegebenen Element ID des FHIR Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.substitution.wasSubstituted",
         "min": 0,
         "max": "1",
         "type": [
@@ -495,7 +488,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.AdministrativeInformation.NumberOfPackages",
         "short": "Number of packages",
         "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medicationdispense\nMedicationDispense.quantity",
         "min": 1,
         "max": "1",
         "type": [
@@ -534,7 +526,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.MedicinalProductIdentifier",
         "short": "Medicinal Product Identifier",
         "definition": "Der Medicinal Product Identifier wird aus dem dargestellten CDA Feld unter der angegebenen Element Ids des Profils Dispensation of the Prescription (GEM_ERPEU_PR_MedicationDispense) eingetragen. Da im FHIR Profil ein Data-String eingetragen werden darf, kann die übermittelte ISO-IDMP Nummer hier ohne Probleme eingetragen werden. Es ist angestrebt zusätzlich eine textuale Beschreibung abzubilden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.code.text\nHier undbedingt nochmal BfArM interne Rücksprache notwendig! Stichwort Medicinal Product Identifier/Brand Name/ Classification --> ersteres und letzteeres Optional, mittleres Mandatory --> alle drei könnten/sollten in gleiche Element ID in FHIR --> unbedingt wichtig den Brand Name einzufüllen, da diese FHIR Id immer verwendet wird zur Anzeige der Medikation --> eventuell die beiden anderen in String ergänzen falls vorhanden?",
         "min": 0,
         "max": "1",
         "type": [
@@ -554,7 +545,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.MedicinalProductBrandName",
         "short": "Medicinal Product Brand Name",
         "definition": "Angabe aus dem dargestellten CDA Feld wird unter der angegebenen Element ID des FHIR Profils Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) eingetragen. Die Abbildung dieser Information an dieser Stelle ist immens wichtig, da sie zur Medikationsbeschreibung verwendet werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.code.text\nHier undbedingt nochmal BfArM interne Rücksprache notwendig! Stichwort Medicinal Product Identifier/Brand Name/ Classification --> ersteres und letzteeres Optional, mittleres Mandatory --> alle drei könnten/sollten in gleiche Element ID in FHIR --> unbedingt wichtig den Brand Name einzufüllen, da diese FHIR Id immer verwendet wird zur Anzeige der Medikation --> eventuell die beiden anderen in String ergänzen falls vorhanden?",
         "min": 1,
         "max": "1",
         "type": [
@@ -574,7 +564,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.ActiveIngredients",
         "short": "Active Ingredient(s)",
         "definition": "In jedem Fall wird die Angabe aus dem dargestellten CDA Feld unter der angegebenen Element ID 'Medication.ingredient.item[x]:itemCodeableConcept.text' des FHIR Profils Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) als Freitext eingetragen. Handelt es sich um einen WHO-ATC Code kann dieser in Medication.ingredient.item[x]:itemCodeableConcept.coding:atc-de eingetragen werden. Handelt es sich um eine Euro-SRS Nummer, so kann diese über das oben im Zusammenhang der Prescription bereits beschriebene Mapping in eine ASK-Nummer übersetzt werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.ingredient.item[x]:itemCodeableConcept.text,\nMedication.ingredient.item[x]:itemCodeableConcept.coding:ask,\nMedication.ingredient.item[x]:itemCodeableConcept.coding:atc-de",
         "min": 1,
         "max": "1",
         "type": [
@@ -594,7 +583,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.ActiveIngredientRoles",
         "short": "Active Ingredient Role(s)",
         "definition": "In Deutschland werden grundsätzlich nur solche Inhaltsstoffe in den FHIR Profilen angegeben, die einem Wirkstoff entsprechen.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.ingredient.isActive",
         "min": 1,
         "max": "1",
         "type": [
@@ -614,7 +602,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.ActiveIngredientStrengths",
         "short": "Active Ingredient Strength(s)",
         "definition": "Angabe aus dem dargestellten CDA Feld kann einerseits unter der angegebenen Element ID des FHIR Profils Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) eingetragen. Alternativ könnten die Element IDs Medication.ingredient.strength.numerator.code.value und Medication.ingredient.strength.denominator.code.value. in Kombination genutzt werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.ingredient.strength.extension:amountText.value[x]:valueString,\nMedication.ingredient.strength.numerator.code.value,\nMedication.ingredient.strength.denominator.code.value",
         "min": 1,
         "max": "1",
         "type": [
@@ -634,7 +621,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.PharmaceuticalDoseForm",
         "short": "Pharmaceutical Dose Form",
         "definition": "Angabe aus dem dargestellten CDA Feld wird auf jeden Fall als Valuestring und somit in Textform unter der angegebenen Element ID Medication.form.text des FHIR Profils Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) eingetragen. Zusätzlich sollen aus dem CDA Feld erhaltene Informationen über ein EDQM - KBV Darreichungsform Mapping in Medication.form.coding:kbvDarreichungsform eingetragen werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.form.text,\nMedication.form.coding:kbvDarreichungsform",
         "min": 1,
         "max": "1",
         "type": [
@@ -654,7 +640,6 @@
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.MedicinalProductPackageDescription",
         "short": "Medicinal Product Package description",
         "definition": "Angabe aus dem dargestellten CDA Feld kann unter der angegebenen Element ID des FHIR Profils Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) eingetragen werden. Bei Kombipackungen kann über eine Extension im FHIR Profil Medication for the Dispensation of the Prescription (GEM_ERPEU_PR_Medication) auf das FHIR Profil EPA Pharmaceutical Product Medication und somit verschiedene Anganben im Element ID Medication.extension:packaging abgelegt werden.",
-        "comment": "https://simplifier.net/erezept-workflow/GEM_ERPEU_pr_medication\nMedication.extension:packaging,\nhttps://simplifier.net/packages/de.gematik.epa.medication/1.0.3/files/2539781\nFeld nach Beispiel in https://simplifier.net/erezept-workflow/medication-kombipackung erschlossen. Bitte noch einmal gegenprüfen, ob verständlich bzw. beabsichtigte Intention des Feldes erfüllt",
         "min": 0,
         "max": "1",
         "type": [
@@ -673,8 +658,7 @@
         "id": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.MedicinalProductPackageIdentifier",
         "path": "GEM_ERPEU_LOG_DispenseData.DispenseData.MedicinalInformation.MedicinalProductPackageIdentifier",
         "short": "Medicinal Product Package identifier",
-        "definition": "Angabe aus dem dargestellten CDA Feld kann unter der angegebenen Element ID des FHIR Profils EPA Pharmaceutical Product Medication eingetragen werden.",
-        "comment": "https://simplifier.net/packages/de.gematik.epa.medication/1.0.3/files/2539781\nMedication.code.coding:product-key\nFeld nach Beispiel in https://simplifier.net/erezept-workflow/medication-kombipackung erschlossen. Bitte noch einmal gegenprüfen, ob verständlich bzw. beabsichtigte Intention des Feldes erfüllt",
+        "definition": "Angabe aus dem dargestellten CDA Feld kann unter GEM_ERP.",
         "min": 0,
         "max": "1",
         "type": [

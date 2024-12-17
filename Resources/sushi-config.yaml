@@ -9,4 +9,4 @@ dependencies:
   de.basisprofil.r4: 1.5.0
   de.gematik.terminology: 1.0.1 
   de.gematik.epa.medication: 1.1.1
-  de.gematik.erezept-workflow.r4: 1.5.0-beta #MedicationDispense Reference to ERP-Medication
+  de.gematik.erezept-workflow.r4: 1.5.0-beta #Prescription Identifier in Parameters
