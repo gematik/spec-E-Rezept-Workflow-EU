@@ -285,7 +285,7 @@
     "fshType": "Logical",
     "fshFile": "logicalmodels/logical-eu-dispense-data.fsh",
     "startLine": 1,
-    "endLine": 142
+    "endLine": 128
   },
   {
     "outputFile": "ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json",
