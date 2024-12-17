@@ -56,7 +56,7 @@ Description: "Handles information about the redeem of the prescription and the s
 * status = #completed (exactly)
 * status ^short = "completed"
 
-* medication[x] only Reference(GEM_ERP_PR_Medication)
+* medication[x] only Reference(GEM_ERPEU_PR_Medication)
 * medication[x] MS
   * ^definition = "The MedicationDispense references a medication which was dispensed"
 

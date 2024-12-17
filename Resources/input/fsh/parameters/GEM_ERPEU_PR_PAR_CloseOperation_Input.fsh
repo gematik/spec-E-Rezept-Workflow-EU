@@ -137,7 +137,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "medication"
     * value[x] 0..0
     * resource 1..1
-    * resource only GEM_ERP_PR_Medication
+    * resource only GEM_ERPEU_PR_Medication
     * part 0..0
 
 Invariant: erp-eu-parameters-close-dispense-medication-references
