@@ -23,7 +23,7 @@ Title: "Mapping for EU MedicationData to GEM_ERPEU_PR_Medication"
 Description: "This mapping maps the logical information of the EU MedicationData to GEM_ERPEU_PR_Medication"
 * DispenseData -> "GEM_ERPEU_PR_MedicationDispense"
   * MedicinalInformation -> "GEM_ERPEU_PR_MedicationDispense.medicationReference"
-    * MedicinalProductIdentifier -> "Medication.code.coding"
+    * MedicinalProductIdentifier -> "Medication.identifier"
     * MedicinalProductBrandName -> "Medication.code.text"
 
     * ActiveIngredients -> "Medication.ingredient.item[x]:itemCodeableConcept"
