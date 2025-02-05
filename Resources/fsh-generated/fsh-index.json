@@ -4,8 +4,8 @@
     "fshName": "ExampleGetConsent",
     "fshType": "Instance",
     "fshFile": "examples/Example_Consent.fsh",
-    "startLine": 16,
-    "endLine": 24
+    "startLine": 13,
+    "endLine": 21
   },
   {
     "outputFile": "CodeSystem-GEM-ERPEU-CS-ConsentType.json",
@@ -28,8 +28,8 @@
     "fshName": "ExampleEUConsent",
     "fshType": "Instance",
     "fshFile": "examples/Example_Consent.fsh",
-    "startLine": 2,
-    "endLine": 14
+    "startLine": 1,
+    "endLine": 11
   },
   {
     "outputFile": "Medication-Medication-Without-Strength-Code.json",

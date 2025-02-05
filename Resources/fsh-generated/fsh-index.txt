@@ -1,8 +1,8 @@
 Output File                                                             Name                                               Type        FSH File                                                        Lines
-Bundle-ExampleGetConsent.json                                           ExampleGetConsent                                  Instance    examples/Example_Consent.fsh                                    16 - 24
+Bundle-ExampleGetConsent.json                                           ExampleGetConsent                                  Instance    examples/Example_Consent.fsh                                    13 - 21
 CodeSystem-GEM-ERPEU-CS-ConsentType.json                                GEM_ERPEU_CS_ConsentType                           CodeSystem  codesystems/GEM_ERPEU_CS_ConsentType.fsh                        1 - 7
 CodeSystem-GEM-ERPEU-CS-RequestType.json                                GEM_ERPEU_CS_RequestType                           CodeSystem  codesystems/GEM_ERPEU_CS_RequestType.fsh                        1 - 9
-Consent-f97a0772-c99f-4159-90c6-2a41c7d96779.json                       ExampleEUConsent                                   Instance    examples/Example_Consent.fsh                                    2 - 14
+Consent-f97a0772-c99f-4159-90c6-2a41c7d96779.json                       ExampleEUConsent                                   Instance    examples/Example_Consent.fsh                                    1 - 11
 Medication-Medication-Without-Strength-Code.json                        Medication-Without-Strength-Code                   Instance    examples/Example_Medication.fsh                                 68 - 85
 Medication-Medication-Without-Strength-Numerator.json                   Medication-Without-Strength-Numerator              Instance    examples/Example_Medication.fsh                                 87 - 105
 Medication-SimpleMedication.json                                        SimpleMedication                                   Instance    examples/Example_Medication.fsh                                 56 - 65
