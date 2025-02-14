@@ -32,7 +32,7 @@
               "path": "$this"
             }
           ],
-          "rules": "open",
+          "rules": "closed",
           "description": "Slicing for meta profile",
           "ordered": false
         },
