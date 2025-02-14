@@ -1,11 +1,8 @@
-
 Instance: ExampleEUConsent
 InstanceOf: GEM_ERPEU_PR_Consent
 Title: "Example for a Consent to redeem EU Prescritptions"
 Usage: #example
 * id = "f97a0772-c99f-4159-90c6-2a41c7d96779"
-* insert PackageMetaProfile(StructureDefinition/GEM_ERPEU_PR_Consent)
-
 * scope = $cs-consent-scope#patient-privacy "Privacy Consent"
 * category = GEM_ERPEU_CS_ConsentType#EUDISPCONS "Consent for redeeming e-prescriptions in EU countries"
 * patient.identifier.value = "X123456789"

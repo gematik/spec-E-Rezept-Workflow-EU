@@ -6,7 +6,7 @@
   "id": "GEM-ERPEU-CS-RequestType",
   "title": "CodeSystem of NCPeH Request Types",
   "description": "Type of Request from NCPeH",
-  "version": "1.0",
+  "version": "1.0.0",
   "url": "https://gematik.de/fhir/erp-eu/CodeSystem/GEM_ERPEU_CS_RequestType",
   "concept": [
     {
@@ -22,7 +22,7 @@
       "display": "Abruf eines E-Rezeptes"
     }
   ],
-  "date": "2025-01-01",
+  "date": "2025-02-28",
   "publisher": "gematik GmbH",
   "contact": [
     {

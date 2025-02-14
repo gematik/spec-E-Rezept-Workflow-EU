@@ -6,7 +6,7 @@
   "id": "GEM-ERPEU-CS-ConsentType",
   "title": "CodeSystem of types for a consent",
   "description": "Type of patient consent.",
-  "version": "1.0",
+  "version": "1.0.0",
   "url": "https://gematik.de/fhir/erp-eu/CodeSystem/GEM_ERPEU_CS_ConsentType",
   "concept": [
     {
@@ -14,7 +14,7 @@
       "display": "Consent for redeeming e-prescriptions in EU countries"
     }
   ],
-  "date": "2025-01-01",
+  "date": "2025-02-28",
   "publisher": "gematik GmbH",
   "contact": [
     {

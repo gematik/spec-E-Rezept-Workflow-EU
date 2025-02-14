@@ -5,9 +5,9 @@
   "id": "GEM-ERPEU-VS-RequestType",
   "title": "ValueSet of NCPeH Request Types",
   "description": "Type of Request from NCPeH",
-  "version": "1.0",
+  "version": "1.0.0",
   "url": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_RequestType",
-  "date": "2025-01-01",
+  "date": "2025-02-28",
   "publisher": "gematik GmbH",
   "contact": [
     {

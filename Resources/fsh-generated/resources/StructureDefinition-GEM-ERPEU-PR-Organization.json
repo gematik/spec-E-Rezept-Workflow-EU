@@ -2,11 +2,11 @@
   "resourceType": "StructureDefinition",
   "id": "GEM-ERPEU-PR-Organization",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization",
-  "version": "1.0",
+  "version": "1.0.0",
   "name": "GEM_ERPEU_PR_Organization",
   "title": "Organization Information Received from the EU",
   "status": "draft",
-  "date": "2025-01-01",
+  "date": "2025-02-28",
   "description": "This Organization Profile is sent by the NCPeH when redeeming a Prescription in the EU",
   "fhirVersion": "4.0.1",
   "kind": "resource",
@@ -19,14 +19,35 @@
       {
         "id": "Organization.meta",
         "path": "Organization.meta",
-        "min": 1
+        "min": 1,
+        "mustSupport": true
       },
       {
         "id": "Organization.meta.profile",
         "path": "Organization.meta.profile",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed",
+          "description": "Slicing for meta profile",
+          "ordered": false
+        },
         "min": 1,
         "max": "1",
-        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization|1.5"
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.meta.profile:workflowEUProfile",
+        "path": "Organization.meta.profile",
+        "sliceName": "workflowEUProfile",
+        "min": 1,
+        "max": "1",
+        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization|1.5",
+        "mustSupport": true
       },
       {
         "id": "Organization.identifier",

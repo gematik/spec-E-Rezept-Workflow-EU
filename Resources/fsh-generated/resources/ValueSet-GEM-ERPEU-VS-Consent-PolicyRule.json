@@ -5,9 +5,9 @@
   "id": "GEM-ERPEU-VS-Consent-PolicyRule",
   "title": "ValueSet of Consent PolyRule Codes",
   "description": "Type of Policy Rules for Consents of the ePrescription.",
-  "version": "1.0",
+  "version": "1.0.0",
   "url": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_Consent_PolicyRule",
-  "date": "2025-01-01",
+  "date": "2025-02-28",
   "publisher": "gematik GmbH",
   "contact": [
     {
