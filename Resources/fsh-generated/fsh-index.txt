@@ -16,6 +16,7 @@ OperationDefinition-Revoke-EU-Access-Permission.json                    Revoke-E
 Organization-Example-EU-Organization.json                               Example-EU-Organization                            Instance    examples/Example-EU-Entities.fsh                                10 - 24
 Parameters-Example-EU-PermissionRequest.json                            Example-EU-PermissionRequest                       Instance    examples/Example-EU-AccessCode.fsh                              1 - 6
 Parameters-Example-EU-PermissionResponse.json                           Example-EU-PermissionResponse                      Instance    examples/Example-EU-AccessCode.fsh                              9 - 16
+Parameters-Example-PATCH-Task-Batch-Input.json                          Example-PATCH-Task-Batch-Input                     Instance    parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input.fsh          46 - 73
 Parameters-ExampleEUCloseInputParameters.json                           ExampleEUCloseInputParameters                      Instance    examples/Example_Parameters_Close_EU.fsh                        1 - 47
 Parameters-ExampleEUGETPrescriptionDEMOGRAPHICS.json                    ExampleEUGETPrescriptionDEMOGRAPHICS               Instance    examples/Example_EU_Parameters_GET_Prescription.fsh             1 - 31
 Parameters-ExampleEUGETPrescriptionE-PRESCRIPTIONS-LIST.json            ExampleEUGETPrescriptionE-PRESCRIPTIONS-LIST       Instance    examples/Example_EU_Parameters_GET_Prescription.fsh             35 - 65
@@ -33,7 +34,7 @@ StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json   GEM_ERPE
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Response.json  GEM_ERPEU_PR_PAR_Access_Authorization_Response     Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Response.fsh   1 - 48
 StructureDefinition-GEM-ERPEU-PR-PAR-Close-Operation-Input.json         GEM_ERPEU_PR_PAR_CloseOperation_Input              Profile     parameters/GEM_ERPEU_PR_PAR_CloseOperation_Input.fsh            1 - 141
 StructureDefinition-GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input.json     GEM_ERPEU_PR_PAR_GET_Prescription_Input            Profile     parameters/GEM_ERPEU_PR_PAR_GET_Prescription_Input.fsh          1 - 111
-StructureDefinition-GEM-ERPEU-PR-PAR-EU-PATCH-Task-Batch-Input.json     GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input            Profile     parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Input.fsh                1 - 43
+StructureDefinition-GEM-ERPEU-PR-PAR-EU-PATCH-Task-Batch-Input.json     GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input            Profile     parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input.fsh          1 - 43
 StructureDefinition-GEM-ERPEU-PR-Practitioner.json                      GEM_ERPEU_PR_Practitioner                          Profile     profiles/GEM_ERPEU_PR_Practitioner.fsh                          1 - 17
 StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json                  GEM_ERPEU_PR_PractitionerRole                      Profile     profiles/GEM_ERPEU_PR_PractitionerRole.fsh                      1 - 12
 StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 128

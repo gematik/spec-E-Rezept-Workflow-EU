@@ -1,0 +1,59 @@
+{
+  "resourceType": "Parameters",
+  "id": "Example-PATCH-Task-Batch-Input",
+  "meta": {
+    "profile": [
+      "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input|1.5"
+    ]
+  },
+  "parameter": [
+    {
+      "name": "taskInfo",
+      "part": [
+        {
+          "name": "prescription-id",
+          "valueIdentifier": {
+            "system": "https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_PrescriptionId",
+            "value": "160.000.000.000.000.01"
+          }
+        },
+        {
+          "name": "eu-isRedeemableByPatientAuthorization",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "name": "taskInfo",
+      "part": [
+        {
+          "name": "prescription-id",
+          "valueIdentifier": {
+            "system": "https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_PrescriptionId",
+            "value": "160.000.000.000.000.02"
+          }
+        },
+        {
+          "name": "eu-isRedeemableByPatientAuthorization",
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "name": "taskInfo",
+      "part": [
+        {
+          "name": "prescription-id",
+          "valueIdentifier": {
+            "system": "https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_PrescriptionId",
+            "value": "160.000.000.000.000.03"
+          }
+        },
+        {
+          "name": "eu-isRedeemableByPatientAuthorization",
+          "valueBoolean": false
+        }
+      ]
+    }
+  ]
+}

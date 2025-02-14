@@ -43,3 +43,31 @@ Description: "This profile defines the parameters for patching the Task to mark 
     * part 0..0
   
 
+Instance: Example-PATCH-Task-Batch-Input
+InstanceOf: GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input
+Usage: #example
+Title: "Example_PATCH_Task_Batch_Input"
+* parameter[taskInfo][+]
+  * name = "taskInfo"
+  * part[eu-isRedeemableByPatientAuthorization]
+    * name = "eu-isRedeemableByPatientAuthorization"
+    * valueBoolean = true
+  * part[prescription-id][+]
+    * name = "prescription-id"
+    * valueIdentifier.value = "160.000.000.000.000.01"
+* parameter[taskInfo][+]
+  * name = "taskInfo"
+  * part[eu-isRedeemableByPatientAuthorization]
+    * name = "eu-isRedeemableByPatientAuthorization"
+    * valueBoolean = true
+  * part[prescription-id][+]
+    * name = "prescription-id"
+    * valueIdentifier.value = "160.000.000.000.000.02"
+* parameter[taskInfo][+]
+  * name = "taskInfo"
+  * part[eu-isRedeemableByPatientAuthorization]
+    * name = "eu-isRedeemableByPatientAuthorization"
+    * valueBoolean = false
+  * part[prescription-id][+]
+    * name = "prescription-id"
+    * valueIdentifier.value = "160.000.000.000.000.03"
