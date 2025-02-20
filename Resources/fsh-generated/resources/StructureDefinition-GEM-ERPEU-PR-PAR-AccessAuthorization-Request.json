@@ -4,7 +4,7 @@
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_Access_Authorization_Request",
   "version": "1.0.0",
   "name": "GEM_ERPEU_PR_PAR_Access_Authorization_Request",
-  "title": "Access Authorization for EU ePrescriptions",
+  "title": "GEM ERPEU PR PAR Access Authorization Request",
   "status": "draft",
   "date": "2025-02-28",
   "description": "Displays Parameters for EU Access Authorization",

@@ -4,7 +4,7 @@
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input",
   "version": "1.0.0",
   "name": "GEM_ERPEU_PR_PAR_GET_Prescription_Input",
-  "title": "GEM_ERPEU_PR_PAR_GET_Prescription_Input",
+  "title": "GEM ERPEU PR PAR GET Prescription Input",
   "status": "draft",
   "date": "2025-02-28",
   "description": "This profile defines the parameters for receiving dispense information for a prescription that was redeemed in the EU",
