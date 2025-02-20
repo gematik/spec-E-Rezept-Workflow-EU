@@ -37,15 +37,15 @@
     "fshType": "Instance",
     "fshFile": "examples/Example_Medication.fsh",
     "startLine": 68,
-    "endLine": 85
+    "endLine": 81
   },
   {
     "outputFile": "Medication-Medication-Without-Strength-Numerator.json",
     "fshName": "Medication-Without-Strength-Numerator",
     "fshType": "Instance",
     "fshFile": "examples/Example_Medication.fsh",
-    "startLine": 87,
-    "endLine": 105
+    "startLine": 83,
+    "endLine": 99
   },
   {
     "outputFile": "Medication-SimpleMedication.json",
@@ -136,12 +136,20 @@
     "endLine": 16
   },
   {
-    "outputFile": "Parameters-Example-PATCH-Task-Batch-Input.json",
-    "fshName": "Example-PATCH-Task-Batch-Input",
+    "outputFile": "Parameters-Example-PATCH-Task-Single-Input-Request-False.json",
+    "fshName": "Example-PATCH-Task-Single-Input-Request-False",
     "fshType": "Instance",
-    "fshFile": "parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input.fsh",
-    "startLine": 46,
-    "endLine": 73
+    "fshFile": "examples/Example_GEM_ERPEU_PR_PAR_PATCH_Task_Input.fsh",
+    "startLine": 8,
+    "endLine": 13
+  },
+  {
+    "outputFile": "Parameters-Example-PATCH-Task-Single-Input-Request-True.json",
+    "fshName": "Example-PATCH-Task-Single-Input-Request-True",
+    "fshType": "Instance",
+    "fshFile": "examples/Example_GEM_ERPEU_PR_PAR_PATCH_Task_Input.fsh",
+    "startLine": 1,
+    "endLine": 6
   },
   {
     "outputFile": "Parameters-ExampleEUCloseInputParameters.json",
@@ -237,7 +245,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_MedicationDispense.fsh",
     "startLine": 1,
-    "endLine": 80
+    "endLine": 37
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Organization.json",
@@ -280,12 +288,12 @@
     "endLine": 111
   },
   {
-    "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-EU-PATCH-Task-Batch-Input.json",
-    "fshName": "GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input",
+    "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-PATCH-Task-Input.json",
+    "fshName": "GEM_ERPEU_PR_PAR_PATCH_Task_Input",
     "fshType": "Profile",
-    "fshFile": "parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Batch_Input.fsh",
+    "fshFile": "parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Single_Input.fsh",
     "startLine": 1,
-    "endLine": 43
+    "endLine": 23
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Practitioner.json",
