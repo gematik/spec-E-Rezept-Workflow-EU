@@ -3,7 +3,7 @@
   "id": "Example-MedicationDispense-EU",
   "meta": {
     "profile": [
-      "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_MedicationDispense|1.5"
+      "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_MedicationDispense|1.0"
     ]
   },
   "identifier": [
