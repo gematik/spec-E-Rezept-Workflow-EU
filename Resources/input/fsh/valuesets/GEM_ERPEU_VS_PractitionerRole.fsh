@@ -4,4 +4,4 @@ Id: GEM-ERPEU-VS-PractitionerRole
 Title: "ValueSet of NCPeH PractitionerRoles"
 Description: "Type of PractitionerRole from NCPeH"
 * insert ValueSet(GEM_ERPEU_VS_PractitionerRole)
-* include codes from valueset epa-structural-role-of-healthcare-professional-vs
+* include codes from valueset EPAStructuralRoleofHealthcareProfessionalVS

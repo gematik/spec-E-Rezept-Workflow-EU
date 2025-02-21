@@ -23,7 +23,7 @@
     "include": [
       {
         "valueSet": [
-          "https://gematik.de/fhir/terminology/ValueSet/epa-ehealth-dsi-healthcare-facility-type-vs"
+          "https://gematik.de/fhir/directory/ValueSet/OrganizationProfessionOIDTypeVS"
         ]
       }
     ]

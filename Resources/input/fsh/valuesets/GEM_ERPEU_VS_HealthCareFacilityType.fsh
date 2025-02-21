@@ -3,4 +3,4 @@ Id: GEM-ERPEU-VS-HealthCareFacilityType
 Title: "ValueSet of NCPeH HealthCareFacility Types"
 Description: "Type of HealthCareFacility from NCPeH"
 * insert ValueSet(GEM_ERPEU_VS_HealthCareFacilityType)
-* include codes from valueset epa-ehealth-dsi-healthcare-facility-type-vs
+* include codes from valueset OrganizationProfessionOIDTypeVS
