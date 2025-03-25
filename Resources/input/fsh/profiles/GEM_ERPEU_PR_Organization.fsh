@@ -1,6 +1,7 @@
 Profile: GEM_ERPEU_PR_Organization
 Parent: Organization
 Id: GEM-ERPEU-PR-Organization
+// TODO: Take from TI Common
 Title: "Organization Information Received from the EU"
 Description: "This Organization Profile is sent by the NCPeH when redeeming a Prescription in the EU"
 * insert Profile(GEM_ERPEU_PR_Organization)
