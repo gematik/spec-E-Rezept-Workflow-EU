@@ -74,7 +74,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "prescription-id"
     * value[x] 1..1
     * value[x] only Identifier
-    * valueIdentifier only GEM_ERP_PR_PrescriptionId
+    * valueIdentifier only EPrescriptionId
     * resource 0..0
     * part 0..0
   * part[practitionerName]

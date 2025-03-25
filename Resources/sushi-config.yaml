@@ -10,4 +10,4 @@ dependencies:
   de.gematik.fhir.directory: 0.11.25
   de.gematik.epa.medication: 1.0.5-1
   de.gematik.terminology: 1.0.5
-  de.gematik.erezept-workflow.r4: 1.5.0-beta
+  de.gematik.ti: 1.0.0
