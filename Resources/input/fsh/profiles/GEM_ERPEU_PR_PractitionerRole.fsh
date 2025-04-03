@@ -1,5 +1,5 @@
 Profile: GEM_ERPEU_PR_PractitionerRole
-Parent: PractitionerRole
+Parent: TIPractitionerRole
 // TODO: Take from TI Common
 Id: GEM-ERPEU-PR-PractitionerRole
 Title: "PractitionerRole Information Received from the EU"

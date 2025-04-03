@@ -116,8 +116,8 @@
     "fshName": "Example-EU-Organization",
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
-    "startLine": 10,
-    "endLine": 24
+    "startLine": 11,
+    "endLine": 25
   },
   {
     "outputFile": "Parameters-Example-EU-PermissionRequest.json",
@@ -189,15 +189,15 @@
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
     "startLine": 1,
-    "endLine": 8
+    "endLine": 9
   },
   {
     "outputFile": "PractitionerRole-Example-EU-PractitionerRole.json",
     "fshName": "Example-EU-PractitionerRole",
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
-    "startLine": 26,
-    "endLine": 32
+    "startLine": 27,
+    "endLine": 33
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-EX-MedicinalPackageDescription.json",
@@ -253,7 +253,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Organization.fsh",
     "startLine": 1,
-    "endLine": 38
+    "endLine": 39
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json",
@@ -301,7 +301,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Practitioner.fsh",
     "startLine": 1,
-    "endLine": 17
+    "endLine": 18
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json",
@@ -309,7 +309,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_PractitionerRole.fsh",
     "startLine": 1,
-    "endLine": 12
+    "endLine": 13
   },
   {
     "outputFile": "StructureDefinition-logical-eu-dispense-data.json",

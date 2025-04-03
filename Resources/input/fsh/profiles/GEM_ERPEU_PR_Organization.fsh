@@ -1,5 +1,5 @@
 Profile: GEM_ERPEU_PR_Organization
-Parent: Organization
+Parent: TIOrganization
 Id: GEM-ERPEU-PR-Organization
 // TODO: Take from TI Common
 Title: "Organization Information Received from the EU"
