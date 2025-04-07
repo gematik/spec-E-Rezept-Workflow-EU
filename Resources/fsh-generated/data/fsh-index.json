@@ -253,7 +253,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Organization.fsh",
     "startLine": 1,
-    "endLine": 39
+    "endLine": 38
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json",
@@ -301,7 +301,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Practitioner.fsh",
     "startLine": 1,
-    "endLine": 18
+    "endLine": 17
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json",
@@ -309,7 +309,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_PractitionerRole.fsh",
     "startLine": 1,
-    "endLine": 13
+    "endLine": 12
   },
   {
     "outputFile": "StructureDefinition-logical-eu-dispense-data.json",

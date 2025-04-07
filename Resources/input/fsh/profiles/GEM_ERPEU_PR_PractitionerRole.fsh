@@ -1,6 +1,5 @@
 Profile: GEM_ERPEU_PR_PractitionerRole
 Parent: TIPractitionerRole
-// TODO: Take from TI Common
 Id: GEM-ERPEU-PR-PractitionerRole
 Title: "PractitionerRole Information Received from the EU"
 Description: "This PractitionerRole Profile is sent by the NCPeH when redeeming a Prescription in the EU"
