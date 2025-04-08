@@ -511,7 +511,7 @@
         ],
         "binding": {
           "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_HealthCareFacilityType"
+          "valueSet": "https://gematik.de/fhir/directory/ValueSet/OrganizationProfessionOIDTypeVS"
         }
       },
       {

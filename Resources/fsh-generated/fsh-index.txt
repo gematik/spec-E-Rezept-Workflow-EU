@@ -30,7 +30,7 @@ StructureDefinition-GEM-ERPEU-PR-AccessCode.json                        GEM_ERPE
 StructureDefinition-GEM-ERPEU-PR-Consent.json                           GEM_ERPEU_PR_Consent                               Profile     profiles/GEM_ERPEU_PR_Consent.fsh                               1 - 25
 StructureDefinition-GEM-ERPEU-PR-Medication.json                        GEM_ERPEU_PR_Medication                            Profile     profiles/GEM_ERPEU_PR_Medication.fsh                            1 - 10
 StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 37
-StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 38
+StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 28
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json   GEM_ERPEU_PR_PAR_Access_Authorization_Request      Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Request.fsh    1 - 30
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Response.json  GEM_ERPEU_PR_PAR_Access_Authorization_Response     Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Response.fsh   1 - 48
 StructureDefinition-GEM-ERPEU-PR-PAR-Close-Operation-Input.json         GEM_ERPEU_PR_PAR_CloseOperation_Input              Profile     parameters/GEM_ERPEU_PR_PAR_CloseOperation_Input.fsh            1 - 141
@@ -41,6 +41,5 @@ StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json                  GEM_ERPE
 StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 128
 ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json                           GEM_ERPEU_VS_Consent_PolicyRule                    ValueSet    valuesets/GEM_ERPEU_VS_Consent_PolicyRule.fsh                   1 - 6
 ValueSet-GEM-ERPEU-VS-ConsentType.json                                  GEM_ERPEU_VS_ConsentType                           ValueSet    valuesets/GEM_ERPEU_VS_ConsentType.fsh                          1 - 6
-ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json                       GEM_ERPEU_VS_HealthCareFacilityType                ValueSet    valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh               1 - 6
 ValueSet-GEM-ERPEU-VS-PractitionerRole.json                             GEM_ERPEU_VS_PractitionerRole                      ValueSet    valuesets/GEM_ERPEU_VS_PractitionerRole.fsh                     2 - 7
 ValueSet-GEM-ERPEU-VS-RequestType.json                                  GEM_ERPEU_VS_RequestType                           ValueSet    valuesets/GEM_ERPEU_VS_RequestType.fsh                          1 - 6

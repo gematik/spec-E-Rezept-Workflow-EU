@@ -68,55 +68,6 @@
         "mustSupport": true
       },
       {
-        "id": "Organization.type",
-        "path": "Organization.type",
-        "short": "Organization Type",
-        "definition": "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office",
-        "min": 1,
-        "max": "1"
-      },
-      {
-        "id": "Organization.type.coding",
-        "path": "Organization.type.coding",
-        "definition": "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office",
-        "min": 1,
-        "max": "1",
-        "mustSupport": true,
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_HealthCareFacilityType"
-        }
-      },
-      {
-        "id": "Organization.type.coding.system",
-        "path": "Organization.type.coding.system",
-        "min": 1,
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type.coding.code",
-        "path": "Organization.type.coding.code",
-        "min": 1,
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type.coding.display",
-        "path": "Organization.type.coding.display",
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type:providerType",
-        "path": "Organization.type",
-        "sliceName": "providerType",
-        "max": "1"
-      },
-      {
-        "id": "Organization.type:profession",
-        "path": "Organization.type",
-        "sliceName": "profession",
-        "max": "1"
-      },
-      {
         "id": "Organization.address",
         "path": "Organization.address",
         "comment": "The address information is required for a dispensing organization. That means that the data can either be given or also stated with a data absent reason.",

@@ -253,7 +253,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Organization.fsh",
     "startLine": 1,
-    "endLine": 38
+    "endLine": 28
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json",
@@ -332,14 +332,6 @@
     "fshName": "GEM_ERPEU_VS_ConsentType",
     "fshType": "ValueSet",
     "fshFile": "valuesets/GEM_ERPEU_VS_ConsentType.fsh",
-    "startLine": 1,
-    "endLine": 6
-  },
-  {
-    "outputFile": "ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json",
-    "fshName": "GEM_ERPEU_VS_HealthCareFacilityType",
-    "fshType": "ValueSet",
-    "fshFile": "valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh",
     "startLine": 1,
     "endLine": 6
   },

@@ -12,16 +12,6 @@ Description: "This Organization Profile is sent by the NCPeH when redeeming a Pr
   * system MS
   * value 1..1 MS
 
-* type 1..1 MS
-  * ^short = "Organization Type"
-  * ^definition = "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office"
-  * coding 1..1 MS
-    * ^definition = "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office"
-  * coding from GEM_ERPEU_VS_HealthCareFacilityType (required)
-    * system 1..1 MS
-    * code 1..1 MS
-    * display 0..1 MS
-
 * name 1..1 MS
 
 * address 1..1 MS
