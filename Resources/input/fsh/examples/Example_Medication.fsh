@@ -72,7 +72,7 @@ Usage: #example
 * code.text = "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
 * form = http://standardterms.edqm.eu#11210000 "Solution for infusion"
 * ingredient[+]
-  * itemCodeableConcept = http://fhir.de/CodeSystem/bfarm/atc#L01DB01 "Doxorubicin"
+  * itemCodeableConcept = http://fhir.de/CodeSystem/bfarm/atc|2024#L01DB01 "Doxorubicin"
   * isActive = true
   * strength.numerator.value = 85
   * strength.numerator.unit = "mg"
@@ -87,7 +87,7 @@ Usage: #example
 * code.text = "Infusion bestehend aus 85mg Doxorubicin aufgeloest zur Verabreichung in 250ml 5-%iger (50 mg/ml) Glucose-Infusionsloesung"
 * form = http://standardterms.edqm.eu#11210000 "Solution for infusion"
 * ingredient[+]
-  * itemCodeableConcept = http://fhir.de/CodeSystem/bfarm/atc#L01DB01 "Doxorubicin"
+  * itemCodeableConcept = http://fhir.de/CodeSystem/bfarm/atc|2024#L01DB01 "Doxorubicin"
   * isActive = true
   * strength.numerator.value.extension.url = "http://hl7.org/fhir/StructureDefinition/data-absent-reason"
   * strength.numerator.value.extension.valueCode = #unknown

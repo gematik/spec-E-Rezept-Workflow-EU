@@ -253,7 +253,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Organization.fsh",
     "startLine": 1,
-    "endLine": 28
+    "endLine": 32
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json",
