@@ -336,14 +336,6 @@
     "endLine": 6
   },
   {
-    "outputFile": "ValueSet-GEM-ERPEU-VS-PractitionerRole.json",
-    "fshName": "GEM_ERPEU_VS_PractitionerRole",
-    "fshType": "ValueSet",
-    "fshFile": "valuesets/GEM_ERPEU_VS_PractitionerRole.fsh",
-    "startLine": 2,
-    "endLine": 7
-  },
-  {
     "outputFile": "ValueSet-GEM-ERPEU-VS-RequestType.json",
     "fshName": "GEM_ERPEU_VS_RequestType",
     "fshType": "ValueSet",

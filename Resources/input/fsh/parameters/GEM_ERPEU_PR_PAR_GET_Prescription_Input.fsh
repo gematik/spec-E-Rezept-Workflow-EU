@@ -89,7 +89,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "practitionerRole"
     * value[x] 1..1
     * value[x] only Coding
-    * valueCoding from GEM_ERPEU_VS_PractitionerRole (required)
+    * valueCoding from EPAStructuralRoleofHealthcareProfessionalVS (required)
       * system 1..1 MS
     * resource 0..0
     * part 0..0

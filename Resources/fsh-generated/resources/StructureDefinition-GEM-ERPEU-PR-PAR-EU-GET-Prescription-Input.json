@@ -409,7 +409,7 @@
         ],
         "binding": {
           "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_PractitionerRole"
+          "valueSet": "https://gematik.de/fhir/terminology/ValueSet/epa-structural-role-of-healthcare-professional-vs"
         }
       },
       {
