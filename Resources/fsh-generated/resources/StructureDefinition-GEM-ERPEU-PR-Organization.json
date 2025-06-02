@@ -68,24 +68,6 @@
         "mustSupport": true
       },
       {
-        "id": "Organization.type:providerType",
-        "path": "Organization.type",
-        "sliceName": "providerType",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://gematik.de/fhir/directory/ValueSet/OrganizationTypeVS"
-        }
-      },
-      {
-        "id": "Organization.type:profession",
-        "path": "Organization.type",
-        "sliceName": "profession",
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://gematik.de/fhir/directory/ValueSet/OrganizationProfessionOIDTypeVS"
-        }
-      },
-      {
         "id": "Organization.address",
         "path": "Organization.address",
         "comment": "The address information is required for a dispensing organization. That means that the data can either be given or also stated with a data absent reason.",

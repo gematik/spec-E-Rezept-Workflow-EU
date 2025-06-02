@@ -79,6 +79,9 @@
       "name": "practitionerData",
       "use": "in",
       "type": "Practitioner",
+      "targetProfile": [
+        "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Practitioner"
+      ],
       "min": 1,
       "max": "1",
       "documentation": "Information on the practitioner who dispensed"
@@ -87,6 +90,9 @@
       "name": "organizationData",
       "use": "in",
       "type": "Organization",
+      "targetProfile": [
+        "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization"
+      ],
       "min": 1,
       "max": "1",
       "documentation": "Information on the organization where the dispensation happened"
@@ -94,6 +100,9 @@
     {
       "name": "practitionerRoleData",
       "type": "PractitionerRole",
+      "targetProfile": [
+        "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PractitionerRole"
+      ],
       "use": "in",
       "min": 1,
       "max": "1"

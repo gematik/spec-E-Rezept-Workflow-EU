@@ -8,7 +8,7 @@ Medication-Medication-Without-Strength-Numerator.json                   Medicati
 Medication-SimpleMedication.json                                        SimpleMedication                                   Instance    examples/Example_Medication.fsh                                 56 - 65
 Medication-SumatripanMedication.json                                    SumatripanMedication                               Instance    examples/Example_Medication.fsh                                 2 - 26
 MedicationDispense-Example-MedicationDispense-EU.json                   Example-MedicationDispense-EU                      Instance    examples/Example_EU-MedicationDispense.fsh                      1 - 11
-OperationDefinition-EUCloseOperation.json                               EUCloseOperation                                   Instance    operationdefinitions/GEM_ERPEU_OP_Close.fsh                     1 - 102
+OperationDefinition-EUCloseOperation.json                               EUCloseOperation                                   Instance    operationdefinitions/GEM_ERPEU_OP_Close.fsh                     1 - 105
 OperationDefinition-GET-Prescription-EU.json                            GET-Prescription-EU                                Instance    operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh          1 - 74
 OperationDefinition-Grant-EU-Access-Permission.json                     Grant-EU-Access-Permission                         Instance    operationdefinitions/GEM_ERPEU_OP_Grant_Access_Permission.fsh   1 - 64
 OperationDefinition-Read-EU-Access-Permission.json                      Read-EU-Access-Permission                          Instance    operationdefinitions/GEM_ERPEU_OP_Read_Access_Permission.fsh    1 - 45

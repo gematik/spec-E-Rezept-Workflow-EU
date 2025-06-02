@@ -65,6 +65,7 @@ Usage: #definition
   * name = #practitionerData
   * use = #in
   * type = #Practitioner
+  * targetProfile[+] = Canonical(GEM_ERPEU_PR_Practitioner)
   * min = 1
   * max = "1"
   * documentation = "Information on the practitioner who dispensed"
@@ -72,12 +73,14 @@ Usage: #definition
   * name = #organizationData
   * use = #in
   * type = #Organization
+  * targetProfile[+] = Canonical(GEM_ERPEU_PR_Organization)
   * min = 1
   * max = "1"
   * documentation = "Information on the organization where the dispensation happened"
 * parameter[+]
   * name = #practitionerRoleData
   * type = #PractitionerRole
+  * targetProfile[+] = Canonical(GEM_ERPEU_PR_PractitionerRole)
   * use = #in
   * min = 1
   * max = "1"
