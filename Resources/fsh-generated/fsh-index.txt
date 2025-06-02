@@ -30,7 +30,7 @@ StructureDefinition-GEM-ERPEU-PR-AccessCode.json                        GEM_ERPE
 StructureDefinition-GEM-ERPEU-PR-Consent.json                           GEM_ERPEU_PR_Consent                               Profile     profiles/GEM_ERPEU_PR_Consent.fsh                               1 - 25
 StructureDefinition-GEM-ERPEU-PR-Medication.json                        GEM_ERPEU_PR_Medication                            Profile     profiles/GEM_ERPEU_PR_Medication.fsh                            1 - 10
 StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json                GEM_ERPEU_PR_MedicationDispense                    Profile     profiles/GEM_ERPEU_PR_MedicationDispense.fsh                    1 - 37
-StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 33
+StructureDefinition-GEM-ERPEU-PR-Organization.json                      GEM_ERPEU_PR_Organization                          Profile     profiles/GEM_ERPEU_PR_Organization.fsh                          1 - 28
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json   GEM_ERPEU_PR_PAR_Access_Authorization_Request      Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Request.fsh    1 - 30
 StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Response.json  GEM_ERPEU_PR_PAR_Access_Authorization_Response     Profile     parameters/GEM_ERPEU_PR_PAR_Access_Authorization_Response.fsh   1 - 48
 StructureDefinition-GEM-ERPEU-PR-PAR-Close-Operation-Input.json         GEM_ERPEU_PR_PAR_CloseOperation_Input              Profile     parameters/GEM_ERPEU_PR_PAR_CloseOperation_Input.fsh            1 - 141
