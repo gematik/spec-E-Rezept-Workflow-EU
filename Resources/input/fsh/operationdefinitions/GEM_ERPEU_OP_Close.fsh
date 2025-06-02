@@ -65,7 +65,7 @@ Usage: #definition
   * name = #practitionerData
   * use = #in
   * type = #Practitioner
-  * targetProfile[+] = Canonical(GEM_ERPEU_PR_Practitioner)
+  // * targetProfile[+] = Canonical(GEM_ERPEU_PR_Practitioner) opd-3 "A targetProfile can only be specified for parameters of type Reference or Canonical"
   * min = 1
   * max = "1"
   * documentation = "Information on the practitioner who dispensed"
@@ -73,14 +73,14 @@ Usage: #definition
   * name = #organizationData
   * use = #in
   * type = #Organization
-  * targetProfile[+] = Canonical(GEM_ERPEU_PR_Organization)
+  // * targetProfile[+] = Canonical(GEM_ERPEU_PR_Organization) opd-3 "A targetProfile can only be specified for parameters of type Reference or Canonical"
   * min = 1
   * max = "1"
   * documentation = "Information on the organization where the dispensation happened"
 * parameter[+]
   * name = #practitionerRoleData
   * type = #PractitionerRole
-  * targetProfile[+] = Canonical(GEM_ERPEU_PR_PractitionerRole)
+  // * targetProfile[+] = Canonical(GEM_ERPEU_PR_PractitionerRole) opd-3 "A targetProfile can only be specified for parameters of type Reference or Canonical"
   * use = #in
   * min = 1
   * max = "1"
