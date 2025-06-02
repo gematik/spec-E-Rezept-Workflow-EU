@@ -1,6 +1,6 @@
 {
   "resourceType": "CodeSystem",
-  "status": "draft",
+  "status": "active",
   "content": "complete",
   "name": "GEM_ERPEU_CS_ConsentType",
   "id": "GEM-ERPEU-CS-ConsentType",
@@ -14,7 +14,7 @@
       "display": "Consent for redeeming e-prescriptions in EU countries"
     }
   ],
-  "date": "2025-02-28",
+  "date": "2025-06-02",
   "publisher": "gematik GmbH",
   "contact": [
     {

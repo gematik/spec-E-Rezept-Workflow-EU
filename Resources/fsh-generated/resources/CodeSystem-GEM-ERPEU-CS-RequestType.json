@@ -1,6 +1,6 @@
 {
   "resourceType": "CodeSystem",
-  "status": "draft",
+  "status": "active",
   "content": "complete",
   "name": "GEM_ERPEU_CS_RequestType",
   "id": "GEM-ERPEU-CS-RequestType",
@@ -22,7 +22,7 @@
       "display": "Abruf eines E-Rezeptes"
     }
   ],
-  "date": "2025-02-28",
+  "date": "2025-06-02",
   "publisher": "gematik GmbH",
   "contact": [
     {

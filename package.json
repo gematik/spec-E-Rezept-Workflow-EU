@@ -1,6 +1,6 @@
 {
   "name": "de.gematik.erezept.eu",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "fhirVersions": [
     "4.0.1"
   ],
