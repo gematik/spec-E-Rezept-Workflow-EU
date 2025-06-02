@@ -17,19 +17,6 @@
   "differential": {
     "element": [
       {
-        "id": "Parameters",
-        "path": "Parameters",
-        "constraint": [
-          {
-            "key": "workflow-parameters-get-prescription-eu-1",
-            "severity": "error",
-            "human": "Prescription IDs must be present if the request type is 'e-prescriptions-retrieval'",
-            "expression": "parameter.where(name = 'requestData').part.where(name = 'requesttype').valueCoding.code = 'e-prescriptions-retrieval' implies parameter.where(name = 'requestData').part.where(name = 'prescription-id').exists()",
-            "source": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
-          }
-        ]
-      },
-      {
         "id": "Parameters.meta",
         "path": "Parameters.meta",
         "min": 1,
@@ -83,7 +70,16 @@
         "path": "Parameters.parameter",
         "sliceName": "requestData",
         "min": 1,
-        "max": "1"
+        "max": "1",
+        "constraint": [
+          {
+            "key": "workflow-parameters-get-prescription-eu-1",
+            "severity": "error",
+            "human": "Prescription IDs must be present if the request type is 'e-prescriptions-retrieval'",
+            "expression": "part.where(name = 'requesttype').value.code = 'e-prescriptions-retrieval' implies part.where(name = 'prescription-id').exists()",
+            "source": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
+          }
+        ]
       },
       {
         "id": "Parameters.parameter:requestData.name",

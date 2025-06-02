@@ -14,6 +14,7 @@
   "type": false,
   "instance": false,
   "inputProfile": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input",
+  "outputProfile": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Output",
   "parameter": [
     {
       "name": "requestData",
@@ -86,6 +87,14 @@
           "type": "Coding"
         }
       ]
+    },
+    {
+      "name": "return",
+      "use": "out",
+      "min": 0,
+      "max": "1",
+      "type": "Bundle",
+      "documentation": "Depending on the requesttype this operation returns a Bundle containing eRezept KBV_PR_ERP_Bundle Prescription-Bundles."
     }
   ]
 }

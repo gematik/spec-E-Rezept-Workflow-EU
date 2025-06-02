@@ -10,6 +10,7 @@ Usage: #definition
 * instance = false
 
 * inputProfile = Canonical(GEM_ERPEU_PR_PAR_GET_Prescription_Input)
+* outputProfile = Canonical(GEM_ERPEU_PR_PAR_GET_Prescription_Output)
 
 // in
 * parameter[+]
@@ -72,3 +73,12 @@ Usage: #definition
     * min = 1
     * max = "1"
     * type = #Coding
+
+// out
+* parameter[+]
+  * name = #return
+  * use = #out
+  * min = 0
+  * max = "1"
+  * type = #Bundle
+  * documentation = "Depending on the requesttype this operation returns a Bundle containing eRezept KBV_PR_ERP_Bundle Prescription-Bundles."

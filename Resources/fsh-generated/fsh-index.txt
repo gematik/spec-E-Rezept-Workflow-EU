@@ -9,7 +9,7 @@ Medication-SimpleMedication.json                                        SimpleMe
 Medication-SumatripanMedication.json                                    SumatripanMedication                               Instance    examples/Example_Medication.fsh                                 2 - 26
 MedicationDispense-Example-MedicationDispense-EU.json                   Example-MedicationDispense-EU                      Instance    examples/Example_EU-MedicationDispense.fsh                      1 - 11
 OperationDefinition-EUCloseOperation.json                               EUCloseOperation                                   Instance    operationdefinitions/GEM_ERPEU_OP_Close.fsh                     1 - 105
-OperationDefinition-GET-Prescription-EU.json                            GET-Prescription-EU                                Instance    operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh          1 - 74
+OperationDefinition-GET-Prescription-EU.json                            GET-Prescription-EU                                Instance    operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh          1 - 84
 OperationDefinition-Grant-EU-Access-Permission.json                     Grant-EU-Access-Permission                         Instance    operationdefinitions/GEM_ERPEU_OP_Grant_Access_Permission.fsh   1 - 64
 OperationDefinition-Read-EU-Access-Permission.json                      Read-EU-Access-Permission                          Instance    operationdefinitions/GEM_ERPEU_OP_Read_Access_Permission.fsh    1 - 45
 OperationDefinition-Revoke-EU-Access-Permission.json                    Revoke-EU-Access-Permission                        Instance    operationdefinitions/GEM_ERPEU_OP_Revoke_Access_Permission.fsh  1 - 10
@@ -38,6 +38,7 @@ StructureDefinition-GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input.json     GEM_ERPE
 StructureDefinition-GEM-ERPEU-PR-PAR-PATCH-Task-Input.json              GEM_ERPEU_PR_PAR_PATCH_Task_Input                  Profile     parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Single_Input.fsh         1 - 23
 StructureDefinition-GEM-ERPEU-PR-Practitioner.json                      GEM_ERPEU_PR_Practitioner                          Profile     profiles/GEM_ERPEU_PR_Practitioner.fsh                          1 - 17
 StructureDefinition-GEM-ERPEU-PR-PractitionerRole.json                  GEM_ERPEU_PR_PractitionerRole                      Profile     profiles/GEM_ERPEU_PR_PractitionerRole.fsh                      1 - 12
+StructureDefinition-gem-erpeu-pr-par-get-prescription-output.json       GEM_ERPEU_PR_PAR_GET_Prescription_Output           Profile     parameters/GEM_ERPEU_PR_PAR_GET_Prescription_Output.fsh         1 - 22
 StructureDefinition-logical-eu-dispense-data.json                       GEM_ERPEU_LOG_DispenseData                         Logical     logicalmodels/logical-eu-dispense-data.fsh                      1 - 128
 ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json                           GEM_ERPEU_VS_Consent_PolicyRule                    ValueSet    valuesets/GEM_ERPEU_VS_Consent_PolicyRule.fsh                   1 - 6
 ValueSet-GEM-ERPEU-VS-ConsentType.json                                  GEM_ERPEU_VS_ConsentType                           ValueSet    valuesets/GEM_ERPEU_VS_ConsentType.fsh                          1 - 6

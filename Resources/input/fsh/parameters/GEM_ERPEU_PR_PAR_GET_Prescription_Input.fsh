@@ -4,7 +4,6 @@ Id: GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input
 Title: "GEM ERPEU PR PAR GET Prescription Input"
 Description: "This profile defines the parameters for receiving dispense information for a prescription that was redeemed in the EU"
 * insert Profile(GEM_ERPEU_PR_PAR_GET_Prescription_Input)
-* obeys workflow-parameters-get-prescription-eu-1
 
 * parameter 1..1 MS
 
@@ -16,6 +15,7 @@ Description: "This profile defines the parameters for receiving dispense informa
   requestData 1..1
 
 * parameter[requestData]
+  * obeys workflow-parameters-get-prescription-eu-1
   * name MS
   * name = "requestData"
   * value[x] 0..0
@@ -112,6 +112,6 @@ Description: "This profile defines the parameters for receiving dispense informa
 
 Invariant: workflow-parameters-get-prescription-eu-1
 Description: "Prescription IDs must be present if the request type is 'e-prescriptions-retrieval'"
-Expression: "parameter.where(name = 'requestData').part.where(name = 'requesttype').valueCoding.code = 'e-prescriptions-retrieval' implies parameter.where(name = 'requestData').part.where(name = 'prescription-id').exists()"
+Expression: "part.where(name = 'requesttype').value.code = 'e-prescriptions-retrieval' implies part.where(name = 'prescription-id').exists()"
 Severity: #error
 

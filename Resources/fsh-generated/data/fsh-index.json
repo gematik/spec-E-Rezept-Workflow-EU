@@ -85,7 +85,7 @@
     "fshType": "Instance",
     "fshFile": "operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh",
     "startLine": 1,
-    "endLine": 74
+    "endLine": 84
   },
   {
     "outputFile": "OperationDefinition-Grant-EU-Access-Permission.json",
@@ -310,6 +310,14 @@
     "fshFile": "profiles/GEM_ERPEU_PR_PractitionerRole.fsh",
     "startLine": 1,
     "endLine": 12
+  },
+  {
+    "outputFile": "StructureDefinition-gem-erpeu-pr-par-get-prescription-output.json",
+    "fshName": "GEM_ERPEU_PR_PAR_GET_Prescription_Output",
+    "fshType": "Profile",
+    "fshFile": "parameters/GEM_ERPEU_PR_PAR_GET_Prescription_Output.fsh",
+    "startLine": 1,
+    "endLine": 22
   },
   {
     "outputFile": "StructureDefinition-logical-eu-dispense-data.json",
