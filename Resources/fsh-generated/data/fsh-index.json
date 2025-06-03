@@ -4,8 +4,8 @@
     "fshName": "ExampleGetConsent",
     "fshType": "Instance",
     "fshFile": "examples/Example_Consent.fsh",
-    "startLine": 16,
-    "endLine": 24
+    "startLine": 13,
+    "endLine": 21
   },
   {
     "outputFile": "CodeSystem-GEM-ERPEU-CS-ConsentType.json",
@@ -28,8 +28,8 @@
     "fshName": "ExampleEUConsent",
     "fshType": "Instance",
     "fshFile": "examples/Example_Consent.fsh",
-    "startLine": 2,
-    "endLine": 14
+    "startLine": 1,
+    "endLine": 11
   },
   {
     "outputFile": "Medication-Medication-Without-Strength-Code.json",
@@ -37,15 +37,15 @@
     "fshType": "Instance",
     "fshFile": "examples/Example_Medication.fsh",
     "startLine": 68,
-    "endLine": 85
+    "endLine": 81
   },
   {
     "outputFile": "Medication-Medication-Without-Strength-Numerator.json",
     "fshName": "Medication-Without-Strength-Numerator",
     "fshType": "Instance",
     "fshFile": "examples/Example_Medication.fsh",
-    "startLine": 87,
-    "endLine": 105
+    "startLine": 83,
+    "endLine": 99
   },
   {
     "outputFile": "Medication-SimpleMedication.json",
@@ -77,7 +77,7 @@
     "fshType": "Instance",
     "fshFile": "operationdefinitions/GEM_ERPEU_OP_Close.fsh",
     "startLine": 1,
-    "endLine": 102
+    "endLine": 105
   },
   {
     "outputFile": "OperationDefinition-GET-Prescription-EU.json",
@@ -85,7 +85,7 @@
     "fshType": "Instance",
     "fshFile": "operationdefinitions/GEM_ERPEU_OP_GET_Prescription.fsh",
     "startLine": 1,
-    "endLine": 77
+    "endLine": 84
   },
   {
     "outputFile": "OperationDefinition-Grant-EU-Access-Permission.json",
@@ -116,8 +116,8 @@
     "fshName": "Example-EU-Organization",
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
-    "startLine": 10,
-    "endLine": 24
+    "startLine": 11,
+    "endLine": 25
   },
   {
     "outputFile": "Parameters-Example-EU-PermissionRequest.json",
@@ -134,6 +134,22 @@
     "fshFile": "examples/Example-EU-AccessCode.fsh",
     "startLine": 9,
     "endLine": 16
+  },
+  {
+    "outputFile": "Parameters-Example-PATCH-Task-Single-Input-Request-False.json",
+    "fshName": "Example-PATCH-Task-Single-Input-Request-False",
+    "fshType": "Instance",
+    "fshFile": "examples/Example_GEM_ERPEU_PR_PAR_PATCH_Task_Input.fsh",
+    "startLine": 8,
+    "endLine": 13
+  },
+  {
+    "outputFile": "Parameters-Example-PATCH-Task-Single-Input-Request-True.json",
+    "fshName": "Example-PATCH-Task-Single-Input-Request-True",
+    "fshType": "Instance",
+    "fshFile": "examples/Example_GEM_ERPEU_PR_PAR_PATCH_Task_Input.fsh",
+    "startLine": 1,
+    "endLine": 6
   },
   {
     "outputFile": "Parameters-ExampleEUCloseInputParameters.json",
@@ -173,15 +189,31 @@
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
     "startLine": 1,
-    "endLine": 8
+    "endLine": 9
   },
   {
     "outputFile": "PractitionerRole-Example-EU-PractitionerRole.json",
     "fshName": "Example-EU-PractitionerRole",
     "fshType": "Instance",
     "fshFile": "examples/Example-EU-Entities.fsh",
-    "startLine": 26,
-    "endLine": 32
+    "startLine": 27,
+    "endLine": 33
+  },
+  {
+    "outputFile": "StructureDefinition-GEM-ERPEU-EX-MedicinalPackageDescription.json",
+    "fshName": "GEM_ERPEU_EX_MedicinalPackageDescription",
+    "fshType": "Extension",
+    "fshFile": "extensions/GEM_ERPEU_EX_PackageDescription.fsh",
+    "startLine": 1,
+    "endLine": 9
+  },
+  {
+    "outputFile": "StructureDefinition-GEM-ERPEU-EX-MedicinalPackageIdentifier.json",
+    "fshName": "GEM_ERPEU_EX_MedicinalPackageIdentifier",
+    "fshType": "Extension",
+    "fshFile": "extensions/GEM_ERPEU_EX_PackageIdentifier.fsh",
+    "startLine": 1,
+    "endLine": 9
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-AccessCode.json",
@@ -200,12 +232,20 @@
     "endLine": 25
   },
   {
+    "outputFile": "StructureDefinition-GEM-ERPEU-PR-Medication.json",
+    "fshName": "GEM_ERPEU_PR_Medication",
+    "fshType": "Profile",
+    "fshFile": "profiles/GEM_ERPEU_PR_Medication.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-MedicationDispense.json",
     "fshName": "GEM_ERPEU_PR_MedicationDispense",
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_MedicationDispense.fsh",
     "startLine": 1,
-    "endLine": 80
+    "endLine": 37
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Organization.json",
@@ -213,7 +253,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/GEM_ERPEU_PR_Organization.fsh",
     "startLine": 1,
-    "endLine": 38
+    "endLine": 28
   },
   {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-AccessAuthorization-Request.json",
@@ -248,6 +288,14 @@
     "endLine": 111
   },
   {
+    "outputFile": "StructureDefinition-GEM-ERPEU-PR-PAR-PATCH-Task-Input.json",
+    "fshName": "GEM_ERPEU_PR_PAR_PATCH_Task_Input",
+    "fshType": "Profile",
+    "fshFile": "parameters/GEM_ERPEU_PR_PAR_PATCH_Task_Single_Input.fsh",
+    "startLine": 1,
+    "endLine": 23
+  },
+  {
     "outputFile": "StructureDefinition-GEM-ERPEU-PR-Practitioner.json",
     "fshName": "GEM_ERPEU_PR_Practitioner",
     "fshType": "Profile",
@@ -264,12 +312,20 @@
     "endLine": 12
   },
   {
+    "outputFile": "StructureDefinition-gem-erpeu-pr-par-get-prescription-output.json",
+    "fshName": "GEM_ERPEU_PR_PAR_GET_Prescription_Output",
+    "fshType": "Profile",
+    "fshFile": "parameters/GEM_ERPEU_PR_PAR_GET_Prescription_Output.fsh",
+    "startLine": 1,
+    "endLine": 22
+  },
+  {
     "outputFile": "StructureDefinition-logical-eu-dispense-data.json",
     "fshName": "GEM_ERPEU_LOG_DispenseData",
     "fshType": "Logical",
     "fshFile": "logicalmodels/logical-eu-dispense-data.fsh",
     "startLine": 1,
-    "endLine": 159
+    "endLine": 128
   },
   {
     "outputFile": "ValueSet-GEM-ERPEU-VS-Consent-PolicyRule.json",
@@ -286,22 +342,6 @@
     "fshFile": "valuesets/GEM_ERPEU_VS_ConsentType.fsh",
     "startLine": 1,
     "endLine": 6
-  },
-  {
-    "outputFile": "ValueSet-GEM-ERPEU-VS-HealthCareFacilityType.json",
-    "fshName": "GEM_ERPEU_VS_HealthCareFacilityType",
-    "fshType": "ValueSet",
-    "fshFile": "valuesets/GEM_ERPEU_VS_HealthCareFacilityType.fsh",
-    "startLine": 1,
-    "endLine": 9
-  },
-  {
-    "outputFile": "ValueSet-GEM-ERPEU-VS-PractitionerRole.json",
-    "fshName": "GEM_ERPEU_VS_PractitionerRole",
-    "fshType": "ValueSet",
-    "fshFile": "valuesets/GEM_ERPEU_VS_PractitionerRole.fsh",
-    "startLine": 2,
-    "endLine": 7
   },
   {
     "outputFile": "ValueSet-GEM-ERPEU-VS-RequestType.json",

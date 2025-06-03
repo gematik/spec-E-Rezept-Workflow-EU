@@ -2,17 +2,17 @@
   "resourceType": "StructureDefinition",
   "id": "GEM-ERPEU-PR-PractitionerRole",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PractitionerRole",
-  "version": "1.0",
+  "version": "1.0.0",
   "name": "GEM_ERPEU_PR_PractitionerRole",
   "title": "PractitionerRole Information Received from the EU",
-  "status": "draft",
-  "date": "2025-01-01",
+  "status": "active",
+  "date": "2025-06-02",
   "description": "This PractitionerRole Profile is sent by the NCPeH when redeeming a Prescription in the EU",
   "fhirVersion": "4.0.1",
   "kind": "resource",
   "abstract": false,
   "type": "PractitionerRole",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/PractitionerRole",
+  "baseDefinition": "https://gematik.de/fhir/ti/StructureDefinition/ti-practitioner-role",
   "derivation": "constraint",
   "differential": {
     "element": [
@@ -24,9 +24,29 @@
       {
         "id": "PractitionerRole.meta.profile",
         "path": "PractitionerRole.meta.profile",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed",
+          "description": "Slicing for meta profile",
+          "ordered": false
+        },
         "min": 1,
         "max": "1",
-        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PractitionerRole|1.5"
+        "mustSupport": true
+      },
+      {
+        "id": "PractitionerRole.meta.profile:workflowEUProfile",
+        "path": "PractitionerRole.meta.profile",
+        "sliceName": "workflowEUProfile",
+        "min": 1,
+        "max": "1",
+        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PractitionerRole|1.0",
+        "mustSupport": true
       },
       {
         "id": "PractitionerRole.practitioner",
@@ -39,8 +59,7 @@
               "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Practitioner"
             ]
           }
-        ],
-        "mustSupport": true
+        ]
       },
       {
         "id": "PractitionerRole.organization",
@@ -53,8 +72,7 @@
               "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization"
             ]
           }
-        ],
-        "mustSupport": true
+        ]
       }
     ]
   }

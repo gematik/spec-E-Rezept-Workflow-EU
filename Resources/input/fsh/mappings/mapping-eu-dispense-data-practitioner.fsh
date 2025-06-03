@@ -8,4 +8,3 @@ Description: "This mapping maps the logical information of the EU DispenseData t
   * HPIdentifier -> "Practitioner.identifier"
   * GivenName -> "Practitioner.name.given"
   * FamilyNameSurname -> "Practitioner.family"
-  * FamilyNameSurname -> "Practitioner.family.extension[nachname]"

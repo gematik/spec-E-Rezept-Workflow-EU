@@ -17,3 +17,4 @@ Alias: $eu-access-code-ns = https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_
 Alias: $sid-identifier-rx-originator-process = https://gematik.de/fhir/epa-medication/sid/rx-originator-process-identifier
 Alias: $sid-identifier-dispensation = https://gematik.de/fhir/epa-medication/sid/dispensation-identifier
 Alias: $cs-drug-category = https://gematik.de/fhir/epa-medication/CodeSystem/epa-drug-category-cs
+Alias: $cs-oid-practitioner-role = urn:oid:2.16.840.1.113883.2.9.6.2.7

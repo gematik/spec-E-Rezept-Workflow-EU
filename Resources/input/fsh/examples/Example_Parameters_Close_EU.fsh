@@ -19,7 +19,7 @@ Title: "Example EU-Close Parameters"
     * valueString = "Sanches"
   * part[practitionerRole]
     * name = "practitionerRole"
-    * valueCoding = urn:oid:2.16.840.1.113883.2.9.6.2.7#2262 "Pharmacists"
+    * valueCoding = $cs-oid-practitioner-role#2262 "Pharmacists"
   * part[pointOfCare]
     * name = "pointOfCare"
     * valueString = "Super Pharmacia"

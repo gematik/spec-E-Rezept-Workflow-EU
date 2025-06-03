@@ -1,18 +1,16 @@
 Instance: GET-Prescription-EU
 InstanceOf: OperationDefinition
 Usage: #definition
-* insert OperationVersioning
+* insert Operation(GET-Prescription-EU)
 * description = "The Operation gets Presciption Information from the ERP System for usage in the e-prescription workflow for EU countries"
 * code = #get-eu-prescriptions
-* url = "https://gematik.de/fhir/erp/OperationDefinition/GET-Prescription-EU-OperationDefinition"
-* name = "GET-Prescription-EU"
-* kind = #operation
 * affectsState = false
 * system = true
 * type = false
 * instance = false
 
 * inputProfile = Canonical(GEM_ERPEU_PR_PAR_GET_Prescription_Input)
+* outputProfile = Canonical(GEM_ERPEU_PR_PAR_GET_Prescription_Output)
 
 // in
 * parameter[+]
@@ -27,12 +25,6 @@ Usage: #definition
     * min = 1
     * max = "1"
     * type = #Coding
-  * part[+]
-    * name = #prescription-id
-    * use = #in
-    * min = 0
-    * max = "*"
-    * type = #Identifier
   * part[+]
     * name = #kvnr
     * use = #in
@@ -51,6 +43,12 @@ Usage: #definition
     * min = 1
     * max = "1"
     * type = #Coding
+  * part[+]
+    * name = #prescription-id
+    * use = #in
+    * min = 0
+    * max = "*"
+    * type = #Identifier
   * part[+]
     * name = #practitionerName
     * use = #in
@@ -75,3 +73,12 @@ Usage: #definition
     * min = 1
     * max = "1"
     * type = #Coding
+
+// out
+* parameter[+]
+  * name = #return
+  * use = #out
+  * min = 0
+  * max = "1"
+  * type = #Bundle
+  * documentation = "Depending on the requesttype this operation returns a Bundle containing eRezept KBV_PR_ERP_Bundle Prescription-Bundles."

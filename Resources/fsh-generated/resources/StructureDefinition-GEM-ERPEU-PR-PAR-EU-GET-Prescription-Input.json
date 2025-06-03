@@ -2,11 +2,11 @@
   "resourceType": "StructureDefinition",
   "id": "GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input",
-  "version": "1.0",
+  "version": "1.0.0",
   "name": "GEM_ERPEU_PR_PAR_GET_Prescription_Input",
-  "title": "GEM_ERPEU_PR_PAR_GET_Prescription_Input",
-  "status": "draft",
-  "date": "2025-01-01",
+  "title": "GEM ERPEU PR PAR GET Prescription Input",
+  "status": "active",
+  "date": "2025-06-02",
   "description": "This profile defines the parameters for receiving dispense information for a prescription that was redeemed in the EU",
   "fhirVersion": "4.0.1",
   "kind": "resource",
@@ -17,29 +17,37 @@
   "differential": {
     "element": [
       {
-        "id": "Parameters",
-        "path": "Parameters",
-        "constraint": [
-          {
-            "key": "workflow-parameters-get-prescription-eu-1",
-            "severity": "error",
-            "human": "Prescription IDs must be present if the request type is 'e-prescriptions-retrieval'",
-            "expression": "parameter.where(name = 'requestData').part.where(name = 'requesttype').valueCoding.code = 'e-prescriptions-retrieval' implies parameter.where(name = 'requestData').part.where(name = 'prescription-id').exists()",
-            "source": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
-          }
-        ]
-      },
-      {
         "id": "Parameters.meta",
         "path": "Parameters.meta",
-        "min": 1
+        "min": 1,
+        "mustSupport": true
       },
       {
         "id": "Parameters.meta.profile",
         "path": "Parameters.meta.profile",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed",
+          "description": "Slicing for meta profile",
+          "ordered": false
+        },
         "min": 1,
         "max": "1",
-        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input|1.5"
+        "mustSupport": true
+      },
+      {
+        "id": "Parameters.meta.profile:workflowEUProfile",
+        "path": "Parameters.meta.profile",
+        "sliceName": "workflowEUProfile",
+        "min": 1,
+        "max": "1",
+        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input|1.0",
+        "mustSupport": true
       },
       {
         "id": "Parameters.parameter",
@@ -62,7 +70,16 @@
         "path": "Parameters.parameter",
         "sliceName": "requestData",
         "min": 1,
-        "max": "1"
+        "max": "1",
+        "constraint": [
+          {
+            "key": "workflow-parameters-get-prescription-eu-1",
+            "severity": "error",
+            "human": "Prescription IDs must be present if the request type is 'e-prescriptions-retrieval'",
+            "expression": "part.where(name = 'requesttype').value.code = 'e-prescriptions-retrieval' implies part.where(name = 'prescription-id').exists()",
+            "source": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
+          }
+        ]
       },
       {
         "id": "Parameters.parameter:requestData.name",
@@ -304,7 +321,7 @@
           {
             "code": "Identifier",
             "profile": [
-              "https://gematik.de/fhir/erp/StructureDefinition/GEM_ERP_PR_PrescriptionId"
+              "https://gematik.de/fhir/ti/StructureDefinition/e-prescription-id"
             ]
           }
         ]
@@ -388,7 +405,7 @@
         ],
         "binding": {
           "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_PractitionerRole"
+          "valueSet": "https://gematik.de/fhir/terminology/ValueSet/epa-structural-role-of-healthcare-professional-vs"
         }
       },
       {
@@ -476,7 +493,7 @@
         ],
         "binding": {
           "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_HealthCareFacilityType"
+          "valueSet": "https://gematik.de/fhir/directory/ValueSet/OrganizationProfessionOIDTypeVS"
         }
       },
       {

@@ -2,17 +2,17 @@
   "resourceType": "StructureDefinition",
   "id": "GEM-ERPEU-PR-Organization",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization",
-  "version": "1.0",
+  "version": "1.0.0",
   "name": "GEM_ERPEU_PR_Organization",
   "title": "Organization Information Received from the EU",
-  "status": "draft",
-  "date": "2025-01-01",
+  "status": "active",
+  "date": "2025-06-02",
   "description": "This Organization Profile is sent by the NCPeH when redeeming a Prescription in the EU",
   "fhirVersion": "4.0.1",
   "kind": "resource",
   "abstract": false,
   "type": "Organization",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Organization",
+  "baseDefinition": "https://gematik.de/fhir/ti/StructureDefinition/ti-organization",
   "derivation": "constraint",
   "differential": {
     "element": [
@@ -24,9 +24,29 @@
       {
         "id": "Organization.meta.profile",
         "path": "Organization.meta.profile",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "closed",
+          "description": "Slicing for meta profile",
+          "ordered": false
+        },
         "min": 1,
         "max": "1",
-        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization|1.5"
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.meta.profile:workflowEUProfile",
+        "path": "Organization.meta.profile",
+        "sliceName": "workflowEUProfile",
+        "min": 1,
+        "max": "1",
+        "fixedCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization|1.0",
+        "mustSupport": true
       },
       {
         "id": "Organization.identifier",
@@ -34,8 +54,7 @@
         "short": "Organization Identifier",
         "definition": "An identifier for the organization",
         "comment": "There are not yet specific identifier systems defined. Therefore the field system is optional, but has to be used if there is a known identifier system.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       },
       {
         "id": "Organization.identifier.system",
@@ -49,91 +68,41 @@
         "mustSupport": true
       },
       {
-        "id": "Organization.type",
-        "path": "Organization.type",
-        "short": "Organization Type",
-        "definition": "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office",
-        "min": 1,
-        "max": "1",
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type.coding",
-        "path": "Organization.type.coding",
-        "definition": "States the type of the organization as: pharmacy, hospital, doctor's office, dentitst's office",
-        "min": 1,
-        "max": "1",
-        "mustSupport": true,
-        "binding": {
-          "strength": "required",
-          "valueSet": "https://gematik.de/fhir/erp-eu/ValueSet/GEM_ERPEU_VS_HealthCareFacilityType"
-        }
-      },
-      {
-        "id": "Organization.type.coding.system",
-        "path": "Organization.type.coding.system",
-        "min": 1,
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type.coding.code",
-        "path": "Organization.type.coding.code",
-        "min": 1,
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.type.coding.display",
-        "path": "Organization.type.coding.display",
-        "mustSupport": true
-      },
-      {
-        "id": "Organization.name",
-        "path": "Organization.name",
-        "min": 1,
-        "mustSupport": true
-      },
-      {
         "id": "Organization.address",
         "path": "Organization.address",
         "comment": "The address information is required for a dispensing organization. That means that the data can either be given or also stated with a data absent reason.",
         "min": 1,
-        "max": "1",
-        "mustSupport": true
+        "max": "1"
       },
       {
         "id": "Organization.address.line",
         "path": "Organization.address.line",
         "comment": "This information is required. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       },
       {
         "id": "Organization.address.city",
         "path": "Organization.address.city",
         "comment": "This information is required. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       },
       {
         "id": "Organization.address.state",
         "path": "Organization.address.state",
         "comment": "This information is required. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       },
       {
         "id": "Organization.address.postalCode",
         "path": "Organization.address.postalCode",
         "comment": "This information is required. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       },
       {
         "id": "Organization.address.country",
         "path": "Organization.address.country",
         "comment": "This information is required. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
-        "mustSupport": true
+        "min": 1
       }
     ]
   }

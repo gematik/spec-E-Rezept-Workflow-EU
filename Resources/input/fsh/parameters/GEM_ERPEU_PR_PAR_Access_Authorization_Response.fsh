@@ -1,7 +1,7 @@
 Profile: GEM_ERPEU_PR_PAR_Access_Authorization_Response
 Parent: Parameters
 Id: GEM-ERPEU-PR-PAR-AccessAuthorization-Response
-Title: "Response Access Authorization for EU ePrescriptions"
+Title: "GEM ERPEU PR PAR Access Authorization Response"
 Description: "Displays Response Parameters for EU Access Authorization"
 * insert Profile(GEM_ERPEU_PR_PAR_Access_Authorization_Response)
 

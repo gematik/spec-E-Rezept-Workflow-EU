@@ -71,7 +71,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "practitionerRole"
     * value[x] 1..1
     * value[x] only Coding
-    * valueCoding from GEM_ERPEU_VS_PractitionerRole (required)
+    * valueCoding from EPAStructuralRoleofHealthcareProfessionalVS (required)
       * system 1..1 MS
     * resource 0..0
     * part 0..0
@@ -87,7 +87,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "healthcare-facility-type"
     * value[x] 1..1
     * value[x] only Coding
-    * valueCoding from GEM_ERPEU_VS_HealthCareFacilityType (required)
+    * valueCoding from TIOrganizationProfessionTypeOidVS (required)
       * system 1..1 MS
     * resource 0..0
     * part 0..0
@@ -137,7 +137,7 @@ Description: "This profile defines the parameters for receiving dispense informa
     * name = "medication"
     * value[x] 0..0
     * resource 1..1
-    * resource only GEM_ERP_PR_Medication
+    * resource only GEM_ERPEU_PR_Medication
     * part 0..0
 
 Invariant: erp-eu-parameters-close-dispense-medication-references

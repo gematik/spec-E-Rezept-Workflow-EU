@@ -4,8 +4,9 @@ Usage: #example
 Title: "Example-EU-Practitioner"
 Description: "Example of an EU Practitioner"
 * identifier[+].value = "EU-1234567890"
-* name.family = "Sanches"
-* name.given = "Pedro"
+* name[+].text = "Pedro Sanches"
+* name[=].family = "Sanches"
+* name[=].given = "Pedro"
 
 Instance: Example-EU-Organization
 InstanceOf: GEM_ERPEU_PR_Organization
