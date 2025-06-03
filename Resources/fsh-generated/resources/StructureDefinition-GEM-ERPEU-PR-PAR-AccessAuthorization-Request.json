@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "name": "GEM_ERPEU_PR_PAR_Access_Authorization_Request",
   "title": "GEM ERPEU PR PAR Access Authorization Request",
-  "status": "active",
+  "status": "draft",
   "date": "2025-06-02",
   "description": "Displays Parameters for EU Access Authorization",
   "fhirVersion": "4.0.1",

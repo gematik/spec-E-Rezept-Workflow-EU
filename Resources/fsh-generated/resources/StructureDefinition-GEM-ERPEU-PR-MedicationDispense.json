@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "name": "GEM_ERPEU_PR_MedicationDispense",
   "title": "Dispensation of the Prescription from the EU",
-  "status": "active",
+  "status": "draft",
   "date": "2025-06-02",
   "description": "Handles information about the redeem of the prescription and the submited medication from the EU.",
   "fhirVersion": "4.0.1",

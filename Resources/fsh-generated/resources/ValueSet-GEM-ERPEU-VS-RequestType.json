@@ -1,6 +1,6 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
+  "status": "draft",
   "name": "GEM_ERPEU_VS_RequestType",
   "id": "GEM-ERPEU-VS-RequestType",
   "title": "ValueSet of NCPeH Request Types",
