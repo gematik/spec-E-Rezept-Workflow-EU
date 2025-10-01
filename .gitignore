@@ -3,3 +3,15 @@ scripts/validation_script-config.yaml
 validation_results/**
 fhirpkg.lock.json
 *.sh
+validation_results/**
+fhirpkg.lock.json
+fsh-index.*
+.DS_Store
+Thumbs.db
+.simplifier/
+fsh-index.*
+input-cache/
+output/
+temp/
+fsh-generated/
+template/
