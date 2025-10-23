@@ -16,11 +16,11 @@ publisher:
   email: erp-umsetzung@gematik.de
 
 dependencies:
-  de.basisprofil.r4: 1.5.3
-  de.gematik.fhir.directory: 0.13.1
-  de.gematik.epa.medication: 1.1.5
-  de.gematik.terminology: 1.0.6
-  de.gematik.ti: 1.1.0
+  de.basisprofil.r4: 1.5.4
+  de.gematik.fhir.directory: 1.0.0
+  de.gematik.epa.medication: 1.2.0
+  de.gematik.terminology: 1.0.7
+  de.gematik.ti: 1.1.1
 
 menu:
   Start: index.html
