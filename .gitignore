@@ -3,3 +3,11 @@ scripts/validation_script-config.yaml
 validation_results/**
 fhirpkg.lock.json
 *.sh
+output
+temp
+input-cache
+fsh-generated/includes
+fsh-generated/data
+fsh-generated/fsh-index.txt
+
+template
