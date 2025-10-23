@@ -1,6 +1,6 @@
 {
   "resourceType": "ValueSet",
-  "status": "active",
+  "status": "draft",
   "name": "GEM_ERPEU_VS_Consent_PolicyRule",
   "id": "GEM-ERPEU-VS-Consent-PolicyRule",
   "title": "ValueSet of Consent PolyRule Codes",

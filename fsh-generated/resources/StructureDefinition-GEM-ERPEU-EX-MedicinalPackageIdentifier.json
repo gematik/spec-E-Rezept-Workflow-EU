@@ -4,7 +4,7 @@
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_EX_MedicinalPackageIdentifier",
   "version": "1.0.0",
   "name": "GEM_ERPEU_EX_MedicinalPackageIdentifier",
-  "status": "active",
+  "status": "draft",
   "date": "2025-06-02",
   "description": "Identifier of a packaged medicinal product refers to a specific pack size of a specific product.",
   "fhirVersion": "4.0.1",

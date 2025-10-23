@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "name": "GEM_ERPEU_LOG_DispenseData",
   "title": "Dispense Data from EU",
-  "status": "active",
+  "status": "draft",
   "date": "2025-06-02",
   "description": "Logical Information that is Provided in the dispensation document by the NCPeH of country B for Dispensing Medication",
   "fhirVersion": "4.0.1",
