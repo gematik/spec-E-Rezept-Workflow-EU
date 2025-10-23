@@ -29,5 +29,9 @@
   "whenHandedOver": "2025-10-01",
   "medicationReference": {
     "reference": "Medication/SumatripanMedication"
+  },
+  "quantity": {
+    "value": 2,
+    "unit": "pkg"
   }
 }

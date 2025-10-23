@@ -112,6 +112,15 @@
         "id": "MedicationDispense.quantity",
         "path": "MedicationDispense.quantity",
         "short": "Number of dispensed packages/ units",
+        "constraint": [
+          {
+            "key": "erp-eu-positiveAnzahlPackungen",
+            "human": "Der Wert der Packungen muss positiv sein (größer gleich 0).",
+            "source": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_MedicationDispense",
+            "severity": "error",
+            "expression": "value >= 0"
+          }
+        ],
         "mustSupport": true
       },
       {
