@@ -14,7 +14,7 @@ Description: "This Organization Profile is sent by the NCPeH when redeeming a Pr
 
 * name 1..1 MS
 
-* address 1..1 MS
+* address 0..1 MS
   * ^comment = "The address information is required for a dispensing organization. That means that the data can either be given or also stated with a data absent reason."
   * line 1..* MS
     * ^comment = "This information is required. That means that the data can either be given or also stated with a data absent reason."

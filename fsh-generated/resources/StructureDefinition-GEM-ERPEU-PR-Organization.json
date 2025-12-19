@@ -71,7 +71,6 @@
         "id": "Organization.address",
         "path": "Organization.address",
         "comment": "The address information is required for a dispensing organization. That means that the data can either be given or also stated with a data absent reason.",
-        "min": 1,
         "max": "1"
       },
       {
