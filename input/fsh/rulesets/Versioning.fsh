@@ -21,7 +21,7 @@ RuleSet: DateTimeStamp(field)
 
 // Rules to set meta.profile in profiles and instances
 RuleSet: PackageMetaProfileExactly(profile)
-* insert MetaProfileExactly(https://gematik.de/fhir/erp-eu/{profile}, 1.0)
+* insert MetaProfileExactly(https://gematik.de/fhir/erp-eu/{profile}, 1.1)
 
 RuleSet: MetaProfileExactly(profile, version)
 * meta.profile[workflowEUProfile] = "{profile}|{version}" (exactly)
