@@ -1,0 +1,441 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "de.gematik.erezept.eu",
+  "url": "https://gematik.de/fhir/erp-eu//ImplementationGuide/de.gematik.erezept.eu",
+  "version": "1.1.0",
+  "name": "ERezeptWorkflowEU",
+  "title": "E-Rezept Workflow EU",
+  "status": "active",
+  "publisher": "gematik GmbH",
+  "contact": [
+    {
+      "name": "gematik GmbH",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "https://gematik.de"
+        },
+        {
+          "system": "email",
+          "value": "erp-umsetzung@gematik.de"
+        }
+      ]
+    }
+  ],
+  "description": "Dieser IG Beschreibt Datenmodelle für den E-Rezept-Fachdienst mit dem NCPeH Deutschland",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "DE",
+          "system": "urn:iso:std:iso:3166",
+          "display": "Germany"
+        }
+      ]
+    }
+  ],
+  "packageId": "de.gematik.erezept.eu",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "packageId": "de.basisprofil.r4",
+      "version": "1.5.4",
+      "uri": "http://fhir.org/packages/de.basisprofil.r4/ImplementationGuide/de.basisprofil.r4",
+      "id": "de_basisprofil_r4"
+    },
+    {
+      "packageId": "de.gematik.fhir.directory",
+      "version": "1.0.0",
+      "uri": "http://fhir.org/packages/de.gematik.fhir.directory/ImplementationGuide/de.gematik.fhir.directory",
+      "id": "de_gematik_fhir_directory"
+    },
+    {
+      "packageId": "de.gematik.epa.medication",
+      "version": "1.3.0",
+      "uri": "https://gematik.de/fhir/epa-medication/ImplementationGuide/de.gematik.epa.medication",
+      "id": "de_gematik_epa_medication"
+    },
+    {
+      "packageId": "de.gematik.terminology",
+      "version": "1.0.8",
+      "uri": "https://gematik.de/fhir/terminology/ImplementationGuide/de.gematik.terminology",
+      "id": "de_gematik_terminology"
+    },
+    {
+      "packageId": "de.gematik.ti",
+      "version": "1.2.0",
+      "uri": "https://gematik.de/fhir/ti/ImplementationGuide/de.gematik.ti",
+      "id": "de_gematik_ti"
+    }
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "CodeSystem/GEM-ERPEU-CS-RequestType"
+        },
+        "name": "CodeSystem of NCPeH Request Types",
+        "description": "Type of Request from NCPeH",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/GEM-ERPEU-CS-ConsentType"
+        },
+        "name": "CodeSystem of types for a consent",
+        "description": "Type of patient consent.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-Consent"
+        },
+        "name": "Consent for ePrescriptions",
+        "description": "Records the consent of the patient for an operation in the context of ePrescription.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-MedicationDispense"
+        },
+        "name": "Dispensation of the Prescription from the EU",
+        "description": "Handles information about the redeem of the prescription and the submited medication from the EU.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/logical-eu-dispense-data"
+        },
+        "name": "Dispense Data from EU",
+        "description": "Logical Information that is Provided in the dispensation document by the NCPeH of country B for Dispensing Medication",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-Medication"
+        },
+        "name": "EU-Medication",
+        "description": "Medication of a Prescription or Dispensation from the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/EUCloseOperation"
+        },
+        "name": "EUCloseOperation",
+        "description": "The operation $close finishes the e-prescription workflow and creates a receipt. The Output of this operation is a signed Bundle, to be used for further financial processing. The status of the Task then changes into #completed",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Parameters/ExampleEUCloseInputParameters"
+        },
+        "name": "Example EU-Close Parameters",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_CloseOperation_Input"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/ExampleEUGETPrescriptionDEMOGRAPHICS"
+        },
+        "name": "Example EU-GET Prescription Parameters",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/ExampleEUGETPrescriptionE-PRESCRIPTIONS-LIST"
+        },
+        "name": "Example EU-GET Prescription Parameters",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/ExampleEUGETPrescriptionE-PRESCRIPTIONS-RETRIEVAL"
+        },
+        "name": "Example EU-GET Prescription Parameters",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_GET_Prescription_Input"
+      },
+      {
+        "reference": {
+          "reference": "Bundle/ExampleGetConsent"
+        },
+        "name": "Example for a Bundle with a Consent",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Consent/f97a0772-c99f-4159-90c6-2a41c7d96779"
+        },
+        "name": "Example for a Consent to redeem EU Prescritptions",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Consent"
+      },
+      {
+        "reference": {
+          "reference": "MedicationDispense/Example-MedicationDispense-EU"
+        },
+        "name": "Example Medication Dispense",
+        "description": "Example of a Medication Dispense.",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_MedicationDispense"
+      },
+      {
+        "reference": {
+          "reference": "Organization/Example-EU-Organization"
+        },
+        "name": "Example-EU-Organization",
+        "description": "Example of an EU Organization",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Organization"
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/Example-EU-Practitioner"
+        },
+        "name": "Example-EU-Practitioner",
+        "description": "Example of an EU Practitioner",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Practitioner"
+      },
+      {
+        "reference": {
+          "reference": "PractitionerRole/Example-EU-PractitionerRole"
+        },
+        "name": "Example-EU-PractitionerRole",
+        "description": "Example of an EU PractitionerRole",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PractitionerRole"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/Example-PATCH-Task-Single-Input-Request-True"
+        },
+        "name": "Example_PATCH_Task_Single_Input",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_PATCH_Task_Input"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/Example-PATCH-Task-Single-Input-Request-False"
+        },
+        "name": "Example_PATCH_Task_Single_Input",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_PATCH_Task_Input"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PAR-Close-Operation-Input"
+        },
+        "name": "GEM ERP PR EU CloseOperation Input",
+        "description": "This profile defines the parameters for receiving dispense information for a prescription that was redeemed in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PAR-AccessAuthorization-Request"
+        },
+        "name": "GEM ERPEU PR PAR Access Authorization Request",
+        "description": "Displays Parameters for EU Access Authorization",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PAR-AccessAuthorization-Response"
+        },
+        "name": "GEM ERPEU PR PAR Access Authorization Response",
+        "description": "Displays Response Parameters for EU Access Authorization",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PAR-EU-GET-Prescription-Input"
+        },
+        "name": "GEM ERPEU PR PAR GET Prescription Input",
+        "description": "This profile defines the parameters for receiving dispense information for a prescription that was redeemed in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/gem-erpeu-pr-par-get-prescription-output"
+        },
+        "name": "GEM ERPEU PR PAR GET Prescription Output",
+        "description": "This profile defines the output parameters for the Get Prescription Operation",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PAR-PATCH-Task-Input"
+        },
+        "name": "GEM ERPEU PR PAR PATCH Task Input",
+        "description": "This profile defines the parameters for patching the Task to mark the prescription as to-be-redeemed in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-EX-MedicinalPackageDescription"
+        },
+        "name": "GEM_ERPEU_EX_MedicinalPackageDescription",
+        "description": "Description of a packaged medicinal product.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-EX-MedicinalPackageIdentifier"
+        },
+        "name": "GEM_ERPEU_EX_MedicinalPackageIdentifier",
+        "description": "Identifier of a packaged medicinal product refers to a specific pack size of a specific product.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Parameters/Example-EU-PermissionRequest"
+        },
+        "name": "GEM_ERPEU_PR_PAR_Access_Authorization_Request",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_Access_Authorization_Request"
+      },
+      {
+        "reference": {
+          "reference": "Parameters/Example-EU-PermissionResponse"
+        },
+        "name": "GEM_ERPEU_PR_PAR_Access_Authorization_Response",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_PAR_Access_Authorization_Response"
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/GET-Prescription-EU"
+        },
+        "name": "GET-Prescription-EU",
+        "description": "The Operation gets Presciption Information from the ERP System for usage in the e-prescription workflow for EU countries",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/Grant-EU-Access-Permission"
+        },
+        "name": "Grant-EU-Access-Permission",
+        "description": "This operation receives the access code and the country that the patient wants to grant access to. The operation validates the country and creates registeres the Access Code.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-AccessCode"
+        },
+        "name": "Identifier Profile for EU AccessCode",
+        "description": "The AccessCode that is generated by the FdV in order to access the ePrescription in an EU country.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Medication/Medication-Without-Strength-Code"
+        },
+        "name": "Medication Without code or system for Strength",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
+      },
+      {
+        "reference": {
+          "reference": "Medication/Medication-Without-Strength-Numerator"
+        },
+        "name": "Medication Without code or system for Strength",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-Organization"
+        },
+        "name": "Organization Information Received from the EU",
+        "description": "This Organization Profile is sent by the NCPeH when redeeming a Prescription in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-Practitioner"
+        },
+        "name": "Practitioner Information Received from the EU",
+        "description": "This Practitioner Profile is sent by the NCPeH when redeeming a Prescription in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/GEM-ERPEU-PR-PractitionerRole"
+        },
+        "name": "PractitionerRole Information Received from the EU",
+        "description": "This PractitionerRole Profile is sent by the NCPeH when redeeming a Prescription in the EU",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/Read-EU-Access-Permission"
+        },
+        "name": "Read-EU-Access-Permission",
+        "description": "This operation reads the currenty in the E-Rezept-Fachdienst registered Access Code for redeeming ePrescriptions in an EU country.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "OperationDefinition/Revoke-EU-Access-Permission"
+        },
+        "name": "Revoke-EU-Access-Permission",
+        "description": "This operation revokes the currently registered access code for redeeming prescriptions in an EU country.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Medication/SumatripanMedication"
+        },
+        "name": "Sample Medication Sumatripan",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
+      },
+      {
+        "reference": {
+          "reference": "Medication/SimpleMedication"
+        },
+        "name": "Sample Simple Medication",
+        "exampleCanonical": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Medication"
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/GEM-ERPEU-VS-ConsentType"
+        },
+        "name": "ValueSet of Consent Codes",
+        "description": "Type of Consents for the ePrescription.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/GEM-ERPEU-VS-Consent-PolicyRule"
+        },
+        "name": "ValueSet of Consent PolyRule Codes",
+        "description": "Type of Policy Rules for Consents of the ePrescription.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/GEM-ERPEU-VS-RequestType"
+        },
+        "name": "ValueSet of NCPeH Request Types",
+        "description": "Type of Request from NCPeH",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2025+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "release"
+      },
+      {
+        "code": "path-pages",
+        "value": "input/content"
+      }
+    ]
+  }
+}

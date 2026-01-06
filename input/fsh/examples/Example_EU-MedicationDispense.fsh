@@ -9,3 +9,6 @@ Description: "Example of a Medication Dispense."
 * performer.actor = Reference(Example-EU-PractitionerRole)
 * insert Date(whenHandedOver)
 * medicationReference = Reference(SumatripanMedication)
+* quantity
+  * value = 2
+  * unit = "pkg"
