@@ -40,7 +40,7 @@ Description: "Handles information about the redeem of the prescription and the s
 Invariant: erp-eu-positiveAnzahlPackungen
 Description: "Der Wert der Packungen muss positiv sein (größer gleich 0)."
 * severity = #error
-* expression = "value >= 0"
+* expression = "value>=0"
 
 Invariant: erp-eu-abgabeDatumsFormat
 Description: "Wert muss ein Datum in der Form: YYYY-MM-DD sein."
