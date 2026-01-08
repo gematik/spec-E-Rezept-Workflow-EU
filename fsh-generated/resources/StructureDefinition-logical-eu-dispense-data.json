@@ -2,11 +2,11 @@
   "resourceType": "StructureDefinition",
   "id": "logical-eu-dispense-data",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_LOG_DispenseData",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "GEM_ERPEU_LOG_DispenseData",
   "title": "Dispense Data from EU",
   "status": "active",
-  "date": "2026-01-06",
+  "date": "2026-01-08",
   "description": "Logical Information that is Provided in the dispensation document by the NCPeH of country B for Dispensing Medication",
   "fhirVersion": "4.0.1",
   "mapping": [

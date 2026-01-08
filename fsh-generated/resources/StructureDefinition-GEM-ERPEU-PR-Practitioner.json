@@ -2,11 +2,11 @@
   "resourceType": "StructureDefinition",
   "id": "GEM-ERPEU-PR-Practitioner",
   "url": "https://gematik.de/fhir/erp-eu/StructureDefinition/GEM_ERPEU_PR_Practitioner",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "name": "GEM_ERPEU_PR_Practitioner",
   "title": "Practitioner Information Received from the EU",
   "status": "active",
-  "date": "2026-01-06",
+  "date": "2026-01-08",
   "description": "This Practitioner Profile is sent by the NCPeH when redeeming a Prescription in the EU",
   "fhirVersion": "4.0.1",
   "kind": "resource",
@@ -64,6 +64,18 @@
         "path": "Practitioner.identifier.value",
         "min": 1,
         "mustSupport": true
+      },
+      {
+        "id": "Practitioner.name",
+        "path": "Practitioner.name",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://fhir.de/StructureDefinition/humanname-de-basis"
+            ]
+          }
+        ]
       }
     ]
   }
