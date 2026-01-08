@@ -46,6 +46,12 @@
       "id": "de_basisprofil_r4"
     },
     {
+      "packageId": "de.gematik.fhir.directory",
+      "version": "0.13.1",
+      "uri": "http://fhir.org/packages/de.gematik.fhir.directory/ImplementationGuide/de.gematik.fhir.directory",
+      "id": "de_gematik_fhir_directory"
+    },
+    {
       "packageId": "de.gematik.epa.medication",
       "version": "1.1.5",
       "uri": "https://gematik.de/fhir/epa-medication/ImplementationGuide/de.gematik.epa.medication",
