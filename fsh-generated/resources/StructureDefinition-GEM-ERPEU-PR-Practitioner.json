@@ -64,6 +64,18 @@
         "path": "Practitioner.identifier.value",
         "min": 1,
         "mustSupport": true
+      },
+      {
+        "id": "Practitioner.name",
+        "path": "Practitioner.name",
+        "type": [
+          {
+            "code": "HumanName",
+            "profile": [
+              "http://fhir.de/StructureDefinition/humanname-de-basis"
+            ]
+          }
+        ]
       }
     ]
   }
