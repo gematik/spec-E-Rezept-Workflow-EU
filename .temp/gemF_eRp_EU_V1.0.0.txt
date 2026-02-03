@@ -1,0 +1,3062 @@
+
+
+=== Page 1 ===
+Elektronische Gesundheitskarte und Telematikinfrastruktur
+Feature:
+EU Zugriff E-Rezept
+Version: 1.0.0
+Revision: 1175180
+Stand: 12.03.2025
+Status: freigegeben
+Klassifizierung: öffentlich
+Referenzierung: gemF_eRp_EU
+input.docx Spezifikation Seite 1 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 2 ===
+Feature: EU Zugriff E-Rezept
+Dokumentinformationen
+Änderungen zur Vorversion
+Anpassungen des vorliegenden Dokuments im Vergleich zur Vorversion können Sie der
+nachfolgenden Tabelle entnehmen.
+Dokumentenhistorie
+Versio Stand Kap./ Grund der Änderung, besondere Hinweise Bearbeitung
+n Seite
+1.0.0 12.03.202 initiale Erstellung gematik
+5
+input.docx Spezifikation Seite 2 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 3 ===
+Feature: EU Zugriff E-Rezept
+Inhaltsverzeichnis
+1 Einordnung des Dokuments.....................................................6
+1.1 Zielsetzung...........................................................................................6
+1.2 Zielgruppe............................................................................................6
+1.3 Abgrenzungen.......................................................................................6
+1.4 Methodik...............................................................................................6
+2 Epic und User Story................................................................8
+3 Einordnung in die Telematikinfrastruktur.................................9
+4 Fachliches Konzept...............................................................10
+4.1 Einlösbare Rezepte..............................................................................10
+4.2 Autorisierung......................................................................................10
+4.2.1 Autorisierung des LE-EU für Zugriff auf die Anwendung E-Rezept.....................10
+4.2.2 Autorisierung des LE-EU für Zugriff auf Daten eines Versicherten....................11
+5 Technisches Konzept.............................................................12
+5.1 Statusmodell des Workflows................................................................12
+5.2 Use Cases zur Verwaltung der Einwilligung durch den Versicherten.......13
+5.2.1 Einwilligung durch den Versicherten erteilen....................................................13
+5.2.2 Einwilligung durch den Versicherten widerrufen...............................................14
+5.2.3 Einwilligungen durch den Versicherten einsehen..............................................15
+5.3 Use Cases zur Verwaltung der Zugriffsberechtigung durch den
+Versicherten.............................................................................................16
+5.3.1 Zugriffsberechtigung durch Versicherten erstellen...........................................16
+5.3.2 Zugriffsberechtigung durch Versicherten löschen.............................................17
+5.3.3 Zugriffsberechtigungen durch Versicherten einsehen......................................19
+5.4 Use Cases zur Verwaltung der E-Rezepte durch den Versicherten..........19
+5.4.1 E-Rezept durch den Versicherten markieren.....................................................20
+5.5 Use Cases im Rahmen der Belieferung durch eine Apotheke im
+europäischen Ausland...............................................................................21
+5.5.1 Demographische Daten eines Versicherten abrufen.........................................21
+5.5.2 Liste der einlösbaren E-Rezepte eines Versicherten abrufen............................22
+5.5.3 Liste ausgewählter E-Rezepte eines Versicherten abrufen...............................24
+5.5.4 Abgabe von E-Rezepten im europäischen Ausland...........................................26
+6 Datenschutz und Informationssicherheit................................30
+7 Spezifikation........................................................................34
+7.1 Anforderungen an den E-Rezept-Fachdienst..........................................34
+7.1.1 Änderung in 5.2.3 Verwaltung der Nutzersession.............................................34
+7.1.2 Änderungen in 5.3 Routing von Requests.........................................................34
+7.1.3 Änderungen in 5.4 Fehlercodes........................................................................34
+input.docx Spezifikation Seite 3 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 4 ===
+Feature: EU Zugriff E-Rezept
+7.1.4 Änderungen in 5.5 Protokollierungen................................................................36
+7.1.5 Neues Kapitel in 6.11 Verordnungen für Einlösen im europäischen Ausland.....41
+7.1.5.1 Neues Kapitel 6.11.1 HTTP-Operation POST get-eu-prescriptions...............41
+7.1.6 Neues Kapitel 6.1.2.8 POST /Task/<id>/$eu-close............................................45
+7.1.7 Neues Kapitel 6.1.3 HTTP-Operation PATCH......................................................46
+7.1.8 Änderung in 6.1.1 HTTP-Operation GET............................................................47
+7.1.9 Änderung in 6.4 Ressource Consent.................................................................47
+7.1.9.1 Änderung in HTTP-Operation DELETE.........................................................47
+7.1.9.2 Änderung in HTTP-Operation POST.............................................................47
+7.1.10 Neues Kapitel in 6.12 Zugriffsberechtigung für Einlösen im europäischen
+Ausland......................................................................................................................48
+7.1.10.1 Neues Kapitel 6.12.1 HTTP-Operation DELETE..........................................48
+7.1.10.2 Neues Kapitel 6.12.2 HTTP-Operation GET...............................................48
+7.1.10.3 Neues Kapitel 6.12.3 HTTP-Operation POST.............................................49
+7.1.10.4 Neues Kapitel 6.12.4 Zulässige europäische Länder................................50
+7.2 Anforderungen an das E-Rezept-FdV.....................................................51
+7.2.1.1 Änderungen in 5.2.1 Übersicht Anwendungsfälle.......................................51
+7.2.1.2 Änderungen in 5.2.3 Anwendungsfälle.......................................................52
+7.2.1.3 Neues Kapitel 5.2.3.x E-Rezept markieren.................................................52
+7.2.1.4 Änderungen in Kapitel 5.2.3.19 Einwilligungen..........................................53
+7.2.1.4.1 Änderung in 5.2.3.19.1 Einwilligung zum Speichern der
+Abrechnungsinformationen erteilen....................................................................53
+7.2.1.4.2 Änderung in 5.2.3.19.2 Einwilligungsinformation abrufen....................55
+7.2.1.4.3 Änderung in 5.2.3.19.3 Einwilligung zum Speichern der
+Abrechnungsinformationen widerrufen...............................................................55
+7.2.1.5 Neues Kapitel 5.2.3.x Zugriffsberechtigung für Einlösen im europäischen
+Ausland..................................................................................................................57
+7.2.1.5.1 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung erteilen.........................57
+7.2.1.5.2 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung anzeigen.......................58
+7.2.1.5.3 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung abrufen.........................59
+7.2.1.5.4 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung löschen.........................60
+7.3 Daten- und Informationsmodell............................................................61
+7.3.1 Anpassungen in de.gematik.erezept.workflow.r4.............................................61
+7.3.2 Neues FHIR Package de.gematik.erezept-workflow-eu.....................................61
+7.3.2.1 Profile.........................................................................................................61
+7.3.2.2 Terminologien............................................................................................62
+7.3.3 Änderung in Kapitel 2.1 FHIR-Ressourcen.........................................................62
+7.3.4 Neues Kapitel 2.x Zugriffsberechtigung für Einlösen im europäischen Ausland63
+7.3.5 Änderung in Kapitel 2.5 Zugriffsprotokoll..........................................................63
+7.4 Anforderungen an den NCPeH-FD.........................................................64
+7.4.1 Änderungen in gemILF_PS_eRp 5.1.1 Kommunikation zu den Diensten der TI..64
+7.4.2 Änderungen in gemILF_PS_eRp 5.1.2 Verschlüsselte Kommunikation zur VAU
+des E-Rezept-Fachdienstes........................................................................................66
+7.4.3 Änderungen in gemILF_PS_eRp 5.1.3 Zertifikatsprüfung...................................66
+7.4.3.1 Änderungen in gemILF_PS_eRp 5.1.3.2 Zertifikatsprüfung von Internet-
+Zertifikaten............................................................................................................66
+7.4.3.2 Änderungen in gemILF_PS_eRp 5.1.4.1 Übergreifende Festlegungen zur
+Nutzung des IDP-Dienstes......................................................................................67
+7.4.3.3 Änderungen in gemILF_PS_eRp 5.1.4.2 Abruf von Token beim IDP-Dienst..68
+7.4.4 Zuweisungen von Anforderungen aus gemSpec_Krypt.....................................71
+7.4.5 Änderung in gemSpec_DM_eRp 2.1 FHIR-Ressourcen.......................................71
+7.4.6 Änderungen in der gemKPT_Betr......................................................................72
+input.docx Spezifikation Seite 4 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 5 ===
+Feature: EU Zugriff E-Rezept
+7.4.6.1 Änderung in 5.3.2.9 Anwendung E-Rezept (PDT50, PDT59)........................72
+7.4.7 Änderungen in der gemSpec_Perf.....................................................................73
+7.4.7.1 Änderung in 3.2.2.2 Format........................................................................73
+7.5 Test....................................................................................................73
+7.5.1 Testunterstützung für den PET..........................................................................73
+8 Anhang A – Verzeichnisse......................................................75
+8.1 Abkürzungen.......................................................................................75
+8.2 Abbildungsverzeichnis.........................................................................76
+8.3 Tabellenverzeichnis.............................................................................76
+8.4 Referenzierte Dokumente....................................................................77
+8.4.1 Dokumente der gematik...................................................................................77
+8.4.2 Weitere Dokumente..........................................................................................80
+input.docx Spezifikation Seite 5 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 6 ===
+Feature: EU Zugriff E-Rezept
+1 Einordnung des Dokuments
+Dieses Dokument beschreibt das Feature zur Übermittlung von Verordnungen für
+Einlösen im europäischen Ausland für die Komponenten der Anwendung E-Rezept. Das
+Feature umfasst die Definition der Prozessparameter und Ergänzungen der
+workflowspezifischen Anforderungen an die Schnittstellen des E-Rezept-Fachdienstes
+sowie die Darstellung der Use Cases für Versicherte für das Management der Einwilligung
+und Zugriffsberechtigung zum Einlösen von E-Rezepten im europäischen Ausland.
+1.1 Zielsetzung
+Die Beschreibung des Funktionsumfangs als Feature erleichtert das Verständnis und die
+Nachvollziehbarkeit der Lösung, ausgehend von der Darstellung der Nutzersicht auf Epic-
+Ebene, über das technische Konzept bis zur Spezifikation der technischen Details. Mit den
+hier aufgestellten Anforderungen sollen Hersteller in der Lage sein, den zusätzlichen
+Funktionsumfang ihrer verantworteten Komponente bzw. Produkttyp bewerten und
+umsetzen zu können.
+1.2 Zielgruppe
+Das Dokument richtet sich an den Hersteller und Anbieter des Produkttyps E-Rezept-
+Fachdienst sowie Hersteller von Clientsystemen für den Zugriff auf den E-Rezept-
+Fachdienst.
+1.3 Abgrenzungen
+Die Festlegungen zum E-Rezept der bisher spezifizierten Workflows für
+apothekenpflichtige Arzneimittel sind nicht Gegenstand dieses Dokuments. Auch sollen
+die Ausführungen dieses Dokuments nicht im Widerspruch zu den bisherigen
+Festlegungen verstanden werden.
+Folgende Aspekte sindnicht Gegenstand dieses Feature Dokuments:
+• Anbindung der Telematikinfrastruktur (TI) an die eHealth Digital Service
+Infrastructure (eHDSI),
+• Mapping der Informationen zwischen dem für die Verordnung in Deutschland und der
+Übermittlung im Rahmen des Einlösens im europäischen Ausland genutzten
+Datenmodell,
+• Abrechnung von im europäischen Ausland eingelösten E-Rezepten.
+1.4 Methodik
+User Stories
+Eine User Story ist eine in Alltagssprache formulierte Software-Anforderung. Sie ist
+bewusst kurzgehalten und umfasst in der Regel nicht mehr als zwei Sätze. User Stories
+input.docx Spezifikation Seite 6 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 7 ===
+Feature: EU Zugriff E-Rezept
+werden im Rahmen der agilen Softwareentwicklung zusammen mit Akzeptanztests zur
+Spezifikation von Anforderungen eingesetzt. [Wikipedia: User Story]
+Aus diesem Grund kann in den User Stories eine abweichende Terminologie genutzt
+werden, welche für den Leser nachvollziehbar (bspw. Patient = Versicherter) ist.
+Anforderungen / Anwendungsfälle
+Anforderungen und Anwendungsfälle als Ausdruck normativer Festlegungen werden
+durch eine eindeutige ID sowie die dem [RFC2119] entsprechenden, in Großbuchstaben
+geschriebenen deutschen Schlüsselworte MUSS, DARF NICHT, SOLL, SOLL NICHT, KANN
+gekennzeichnet.
+Anforderungen und Anwendungsfälle werden im Dokument wie folgt dargestellt:
+<ID> - <Titel der Anforderung / Titel des Anwendungsfalles>
+Text / Beschreibung
+[<=]
+Dabei umfasst die Anforderung/der Anwendungsfall sämtliche zwischen ID und Textmarke
+[<=] angeführten Inhalte.
+Hinweise auf offene Punkte
+Themen, die noch intern geklärt werden müssen oder eine Entscheidung seitens der
+Gesellschafter erfordern, sind wie folgt im Dokument gekennzeichnet:
+Beispiel für einen offenen Punkt.
+input.docx Spezifikation Seite 7 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 8 ===
+Feature: EU Zugriff E-Rezept
+2 Epic und User Story
+Das fachliche Konzept zum Einlösen von E-Rezepten im europäischen Ausland wurde im
+Rahmen von "Feature ePrescription/eDispensation Land A" [gemF_ePres-eDisp]
+abgestimmt.
+input.docx Spezifikation Seite 8 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 9 ===
+Feature: EU Zugriff E-Rezept
+3 Einordnung in die Telematikinfrastruktur
+Die Unterstützung des Einlösens von E-Rezepten im europäischen Ausland setzt auf die
+bestehende Infrastruktur der Anwendung E-Rezept auf.
+Die Kommunikation mit den abgebenden Leistungserbringern im europäischen Ausland
+(LE-EU) wird durch den National Contact Point eHealth in Deutschland (NCPeH-Fachdienst
+(Deutschland), NCPeH-FD) gebündelt. Der NCPeH-FD verbindet die TI mit der eHDSI. Der
+NCPeH-FD ist ein neues Client System des E-Rezept-Fachdienstes.
+Der Versicherte nutzt für die Verwaltung von Einwilligung und Zugriffsberechtigung ein E-
+Rezept-FdV, welches direkt mit dem E-Rezept-Fachdienst kommuniziert.
+Abbildung 1: Übersicht Architektur
+input.docx Spezifikation Seite 9 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 10 ===
+Feature: EU Zugriff E-Rezept
+4 Fachliches Konzept
+4.1 Einlösbare Rezepte
+Für das europäische Nutzungsszenario ePrescription/eDispensation dürfen folgende E-
+Rezepte nicht verarbeitet werden:
+• Betäubungsmittel,
+• Arzneimittel, die nach ärztlicher Verschreibung oder nach den Vorschriften eines
+Arzneibuchs für den Versicherten zubereitet werden (bezeichnet als "formula
+magistralis" oder "extemporale Zubereitungen").
+• Arzneimittel, die als Humanarzneimittel eingestuft sind, aber nicht durch ein
+industrielles Verfahren hergestellt oder bei deren Herstellung kein industrielles
+Verfahren angewandt wurde.
+• Arzneimittel, die nicht als Humanarzneimittel eingestuft sind,
+• noch nicht gültige oder abgelaufene E-Rezepte.
+Zusätzlich bestehen Einschränkungen, wenn das Mapping aus den Verordnungsdaten in
+das geforderte europäische Datenformat nicht möglich ist.
+Der E-Rezept-Fachdienst prüft bei Operationsaufrufen, ob die E-Rezepte die folgenden
+Kriterien erfüllen:
+• Workflow 160 oder 200 (Verordnung für apothekenpflichtige Arzneimittel, keine
+Workflowsteuerung durch den Leistungserbringer),
+• PZN-Verordnung (KBV_PR_ERP_Medication_PZN) mit strukturierter Angabe der
+Stückzahl sowie der Packungsgröße, getrennt nach Einheit und numerischem Wert,
+• Gültigkeitszeitraum ist erreicht,
+• Gültigkeitszeitraum ist nicht überschritten,
+• der Workflow zum E-Rezept hat den Status "offen".
+Ein E-Rezept, welches die obigen Kriterien erfüllt, wird im Kontext dieses Features als
+einlösbares E-Rezept bezeichnet.
+Ein Versicherter kann sich im E-Rezept-FdV anzeigen lassen, welche seiner E-Rezepte im
+europäischen Ausland einlösbar sind.
+4.2 Autorisierung
+4.2.1 Autorisierung des LE-EU für Zugriff auf die Anwendung E-
+Rezept
+Die Authentisierung des LE-EU erfolgt im Land B (Ausland). Hierbei wird dem LE-EU eine
+Rolle zugeordnet. Bei der Übermittlung des Requests aus dem Land B zum NCPeH-FD
+wird die Rollen-Information und ggf. eine Permission-Information übermittelt. Der NCPeH-
+FD prüft die Permission für den Zugriff auf die Anwendung E-Rezept. Falls keine
+Permission übermittelt wurde, führt der NCPeH-FD eine Rollenprüfung durch.
+input.docx Spezifikation Seite 10 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 11 ===
+Feature: EU Zugriff E-Rezept
+Der E-Rezept-Fachdienst führt keine Permission- oder Rollenprüfung durch.
+4.2.2 Autorisierung des LE-EU für Zugriff auf Daten eines
+Versicherten
+Ein Versicherter muss den Zugriff eines LE-EU auf seine E-Rezepte autorisieren. Dafür
+verwendet der Versicherte einen länderspezifischen zufälligen 6-stelligen alpha-
+nummerischen Zugriffscode (a-z, A-Z, 0-9) und übermittelt diesen zusammen mit seiner
+Versicherten-ID an den LE-EU.
+Versicherten-ID und Zugriffscode bilden zusammen die Information zur
+Zugriffsberechtigung und dienen der Autorisierung des LE-EU beim Operationsaufruf am
+E-Rezept-Fachdienst.
+Der Zugriffscode wird dezentral im E-Rezept-Frontend des Versicherten (FdV) erzeugt.
+Das E-Rezept-FdV registriert den Zugriffscode am E-Rezept-Fachdienst.
+Ein Zugriffscode kann nur am E-Rezept-Fachdienst registriert werden, wenn eine
+"Einwilligung zum Einlösen im EU-Ausland" des Versicherten vorliegt.
+Bei der Registrierung des Zugriffscodes am E-Rezept-Fachdienst wird geprüft, ob
+einlösbare Rezepte im E-Rezept-Fachdienst für die KVNR des Versicherten vorliegen. Falls
+keine einlösbaren E-Rezepte vorliegen, wird der Zugriffscode nicht registriert und der
+Versicherte erhält eine entsprechende Meldung in seinem E-Rezept-FdV.
+Ein Zugriffscode ist eine Stunde gültig.
+Der Versicherte kann einen Zugriffscode vor dem Ende des Gültigkeitszeitraumes löschen
+und somit die Zugriffsberechtigung widerrufen.
+Wenn der Versicherte einen neuen Zugriffscode erstellt, dann wird ein zuvor bestehender
+Zugriffscode überschrieben und somit nicht mehr für die Autorisierung akzeptiert.
+Der registrierte Zugriffscode wird dem Nutzer im E-Rezept-FdV zusammen mit dem
+Gültigkeitszeitraum angezeigt, damit der Nutzer den Zugriffscode der LEI-EU übermitteln
+kann.
+Nach Ablauf der Gültigkeit löscht der E-Rezept-Fachdienst den Zugriffscode.
+Es gibt keine Möglichkeit in der Rolle Vertreter den Zugriff des LE-EU auf die Daten des
+Versicherten zu autorisieren.
+input.docx Spezifikation Seite 11 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 12 ===
+Feature: EU Zugriff E-Rezept
+5 Technisches Konzept
+5.1 Statusmodell des Workflows
+Für die Übermittlung von ärztlichen und zahnärztlichen Verordnungen für
+apothekenpflichtige Arzneimittel in Deutschland wird das folgende Statusmodell
+umgesetzt.
+Abbildung 2: ABB_SYSLERP_001 Übersicht der Fachanwendung E-Rezept
+Für die im Rahmen des Einlösens im europäischen Ausland vorgegebenen
+Prozessschritten lässt sich das Statusmodell nicht vollständig anwenden, da kein
+Prozessschritt vorgesehen ist, ein zur Abgabe vorgesehenes E-Rezept an den
+Versicherten zurückzugeben, wenn die Abgabe nicht erfolgen kann.
+Tabelle 1: Statusübergänge
+Anwendungsfall Anwendungsfall Status des Status des
+ePrescription/eDispensation E-Rezept E-Rezepts E-Rezepts
+vor nach
+Operation Operation
+Identifizierung des Versicherten Use Case (UC) offen (ready) offen (ready)
+im Abgabeland Demographische
+Daten eines
+input.docx Spezifikation Seite 12 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 13 ===
+Feature: EU Zugriff E-Rezept
+Versicherten abrufen
+Auflistung von E-Rezepten des UC Liste der offen (ready) offen (ready)
+Versicherten einlösbaren E-Rezepte
+eines Versicherten
+abrufen
+Abruf der abzugebenden E- UC Liste ausgewählter offen (ready) in Abgabe
+Rezepte des Versicherten E-Rezepte eines (gesperrt) (in-
+Abruf der abzugebenden E- Versicherten abrufen progress)
+Rezepte des Versicherten als
+Original
+Abgabe von Arzneimitteln an UC Abgabe von E- in Abgabe quittiert
+Versicherte im Abgabeland Rezepten im (gesperrt) (in- (completed)
+europäischen Ausland progress)
+Sobald ein E-Rezept durch eine LE-EU mit dem Anwendungsfall "Abruf der abzugebenden
+E-Rezepten des Versicherten" abgerufen wurde, kann es nicht mehr erneut abgerufen
+werden oder in einer anderen Apotheke eingelöst werden.
+5.2 Use Cases zur Verwaltung der Einwilligung durch den
+Versicherten
+Es werden die im Rahmen des Features "E-Rezepte für PKV-Versicherte:
+apothekenpflichtige Arzneimittel" eingeführten Anwendungsfälle zum Verwalten der
+"Einwilligung zum Speichern der Abrechnungsinformationen" verallgemeinert.
+5.2.1 Einwilligung durch den Versicherten erteilen
+Mit diesem Anwendungsfall kann der Versicherte seine "Einwilligung zum Einlösen im EU-
+Ausland" erteilen.
+Die Einwilligung wird unbefristet erteilt.
+AF_10084-01 -E-Rezept - Einwilligung durch Versicherten erteilen
+Alle am Anwendungsfall "Einwilligung durch Versicherten erteilen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 2: Einwilligung durch Versicherten erteilen
+Name Einwilligung durch Versicherten erteilen
+Vorbedingungen • Ein Versicherter hat eine Datenverarbeitung ausgewählt, für die
+er eine Einwilligung erteilen möchte.
+Kurzbeschreibun • Ein Versicherter wählt im E-Rezept-FdV die Operation zum
+g Erteilen der Einwilligung aus.
+(Außenansicht)
+• Der E-Rezept-Fachdienst speichert die Einwilligung.
+Nachbedingunge • Die Einwilligung ist im E-Rezept-Fachdienst gespeichert. Das
+n Erteilen der Einwilligung ist im E-Rezept-Fachdienst protokolliert.
+input.docx Spezifikation Seite 13 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 14 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 3: SD-Einwilligung durch Versicherten erteilen
+[<=, , ]
+5.2.2 Einwilligung durch den Versicherten widerrufen
+Mit diesem Anwendungsfall kann der Versicherte seine zuvor erteilte Einwilligung auf dem
+E-Rezept-Fachdienst widerrufen.
+AF_10085-01 -E-Rezept - Einwilligung durch Versicherten widerrufen
+Alle am Anwendungsfall "Einwilligung durch Versicherten widerrufen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 3: Einwilligung durch Versicherten widerrufen
+Name Einwilligung durch Versicherten widerrufen
+Vorbedingungen • Ein Versicherter hat eine Datenverarbeitung ausgewählt, für die
+er eine Einwilligung widerrufen möchte.
+• Im E-Rezept-FdV liegt die Information vor, dass die Einwilligung
+für diese Datenverarbeitung erteilt wurde.
+Kurzbeschreibun • Ein Versicherter wählt über ein E-Rezept-FdV die Operation zum
+g Widerrufen der Einwilligung auf.
+(Außenansicht)
+• Der E-Rezept-Fachdienst prüft, ob zuvor die Einwilligung erteilt
+wurde und löscht diese. Der E-Rezept-Fachdienst löscht für die
+Einwilligung relevante Daten unwiederbringlich.
+Nachbedingunge • Das Widerrufen der Einwilligung ist im E-Rezept-Fachdienst
+n protokolliert.
+input.docx Spezifikation Seite 14 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 15 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 4: SD-Einwilligung durch Versicherten widerrufen
+[<=, , ]
+Hinweis zu relevanten Daten: Mit dem Widerruf der "Einwilligung zum Einlösen im EU-
+Ausland" wird ein ggf. zuvor registrierter Zugriffscode gelöscht.
+5.2.3 Einwilligungen durch den Versicherten einsehen
+Mit diesem Anwendungsfall kann der Versicherte einsehen, welche Einwilligungen auf
+dem E-Rezept-Fachdienst für seine KVNR hinterlegt sind.
+AF_10086-01 -E-Rezept - Einwilligungen durch Versicherten einsehen
+Alle am Anwendungsfall "Einwilligungen durch Versicherten einsehen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 4: Einwilligungen durch Versicherten einsehen
+Name Einwilligungen durch Versicherten einsehen
+Vorbedingungen • keine
+Kurzbeschreibun • Das E-Rezept-FdV führt die Operation zur Abfrage der
+g Einwilligungen aus.
+(Außenansicht)
+• Der E-Rezept-Fachdienst gibt die Information an das E-Rezept-
+FdV.
+Nachbedingunge • Die Information steht zur Anzeige im E-Rezept-FdV bereit.
+n
+input.docx Spezifikation Seite 15 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 16 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 5: SD-Einwilligungen durch Versicherten einsehen
+[<=, , ]
+5.3 Use Cases zur Verwaltung der Zugriffsberechtigung durch den
+Versicherten
+5.3.1 Zugriffsberechtigung durch Versicherten erstellen
+AF_10395 -E-Rezept - Zugriffsberechtigung durch Versicherten erstellen
+Alle am Anwendungsfall "Zugriffsberechtigung durch Versicherten erstellen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 5: Zugriffsberechtigung durch Versicherten erstellen
+Name Zugriffsberechtigung durch Versicherten erstellen
+Vorbedingungen • Der Versicherte hat seine "Einwilligung zum Einlösen im EU-
+Ausland" erteilt.
+• Im E-Rezept-FdV liegt die Information vor, welche europäischen
+Länder das Einlösen von in Deutschland verordneten E-Rezepten
+unterstützen.
+Kurzbeschreibun • Der Nutzer wählt im E-Rezept-FdV das Land aus, in dem er seine
+g E-Rezepte einlesen möchte und fordert einen Zugriffscode an.
+(Außenansicht)
+• Das E-Rezept-FdV erstellt einen zufälligen Zugriffscode.
+• Das E-Rezept-FdV übermittelt den Zugriffscode und die
+Länderinformation an den E-Rezept-Fachdienst.
+• Der E-Rezept-Fachdienst prüft die Einwilligung, löscht einen ggf.
+bestehenden Zugriffscode, hinterlegt den übermittelten
+Zugriffscode und liefert die Gültigkeitsdauer des Zugriffscodes an
+input.docx Spezifikation Seite 16 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 17 ===
+Feature: EU Zugriff E-Rezept
+das E-Rezept-FdV.
+• Das E-Rezept-FdV zeigt den Zugriffscode und die Gültigkeitsdauer
+an.
+Nachbedingunge • Der Zugriffscode ist im E-Rezept-Fachdienst hinterlegt und kann
+n zur Autorisierung des Zugriffs eines LE-EU genutzt werden.
+Abbildung 6:SD-Zugriffsberechtigung durch Versicherten erstellen
+[<=, , ]
+5.3.2 Zugriffsberechtigung durch Versicherten löschen
+Mit diesem Anwendungsfall kann der Versicherte eine zuvor erstellte
+Zugriffsberechtigung löschen.
+AF_10405 -E-Rezept - Zugriffsberechtigung durch Versicherten löschen
+Alle am Anwendungsfall "Zugriffsberechtigung durch Versicherten löschen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+input.docx Spezifikation Seite 17 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 18 ===
+Feature: EU Zugriff E-Rezept
+Tabelle 6: Zugriffsberechtigung durch Versicherten löschen
+Name Zugriffsberechtigung durch Versicherten löschen
+Vorbedingungen • keine
+Kurzbeschreibun • Der Nutzer wählt im E-Rezept-FdV aus, dass er eine bestehende
+g Zugriffsberechtigung löschen möchte.
+(Außenansicht)
+• Das E-Rezept-FdV übermittelt den Löschwunsch an den E-Rezept-
+Fachdienst.
+• Der E-Rezept-Fachdienst löscht eine ggf. bestehende
+Zugriffsberechtigung.
+• Das E-Rezept-FdV löscht die Zugriffsberechtigung.
+Nachbedingunge • Es ist keine Zugriffsberechtigung für den Versicherten im E-
+n Rezept-Fachdienst registriert.
+• Die Zugriffsberechtigung wird im E-Rezept-FdV nicht mehr
+angezeigt.
+Abbildung 7: SD-Zugriffsberechtigung durch Versicherten löschen
+[<=, , ]
+5.3.3 Zugriffsberechtigungen durch Versicherten einsehen
+Mit diesem Anwendungsfall kann der Versicherte sich eine Zugriffsberechtigung im E-
+Rezept-FdV anzeigen lassen, wenn die Informationen zur Zugriffsberechtigung nicht lokal
+im E-Rezept-FdV gespeichert sind.
+input.docx Spezifikation Seite 18 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 19 ===
+Feature: EU Zugriff E-Rezept
+AF_10406 -E-Rezept - Zugriffsberechtigung durch Versicherten einsehen
+Alle am Anwendungsfall "Zugriffsberechtigung durch Versicherten einsehen" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 7: Zugriffsberechtigung durch Versicherten einsehen
+Name Zugriffsberechtigung durch Versicherten einsehen
+Vorbedingungen • keine
+Kurzbeschreibun • Das E-Rezept-FdV führt die Operation zur Abfrage der
+g Zugriffsberechtigung aus.
+(Außenansicht)
+• Der E-Rezept-Fachdienst gibt die Information an das E-Rezept-
+FdV.
+• Das E-Rezept-FdV zeigt den Zugriffscode und die Gültigkeitsdauer
+an.
+Nachbedingunge • keine
+n
+Abbildung 8: SD-Zugriffsberechtigung durch Versicherten einsehen
+[<=, , ]
+5.4 Use Cases zur Verwaltung der E-Rezepte durch den
+Versicherten
+5.4.1 E-Rezept durch den Versicherten markieren
+Mit diesem Anwendungsfall kann der Versicherte ein E-Rezept für das Einlösen im EU-
+Ausland markieren. Bei der Abfrage eines LE-EU werden ausschließlich im EU-Ausland
+einlösbare E-Rezepte ausgeliefert, welche zuvor durch den Versicherten markiert wurden.
+Der Anwendungsfall wird ebenfalls dafür genutzt, eine Markierung zu löschen.
+AF_10408 -E-Rezept durch den Versicherten markieren
+input.docx Spezifikation Seite 19 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 20 ===
+Feature: EU Zugriff E-Rezept
+Alle am Anwendungsfall "E-Rezept durch den Versicherten markieren" beteiligten
+Produkttypen und Komponenten MÜSSEN die nachfolgenden Festlegungen umsetzen.
+Tabelle 8: E-Rezept durch den Versicherten markieren
+Name E-Rezept durch den Versicherten markieren
+Vorbedingungen • keine
+Kurzbeschreibun • Der Nutzer wählt im E-Rezept-FdV das zu markierende E-Rezept
+g sowie die Option für die Markierung aus.
+(Außenansicht)
+• Das E-Rezept-FdV übermittelt die Information an den E-Rezept-
+Fachdienst.
+• Der E-Rezept-Fachdienst speichert die Information.
+Nachbedingunge • Die Information zur Markierung ist im E-Rezept-Fachdienst
+n gespeichert.
+• Der Datenzugriff ist im E-Rezept-Fachdienst protokolliert.
+Abbildung 9: SD E-Rezept durch den Versicherten markieren
+[<=, Anb_TI-GW_KIM-M, KIM-M, funkt. Eignung: Test Produkt/FA (Anwendung), funkt.
+Eignung: Anbietererklärung, funkt. Eignung: Test Produkt/FA]
+5.5 Use Cases im Rahmen der Belieferung durch eine Apotheke im
+europäischen Ausland
+Hinweis: Der Anwendungsfall zur optional umzusetzenden Anforderung "07.04. Option to
+discard a previously performed dispensation" wird durch den NCPeH-FD nicht umgesetzt.
+input.docx Spezifikation Seite 20 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 21 ===
+Feature: EU Zugriff E-Rezept
+5.5.1 Demographische Daten eines Versicherten abrufen
+Mit diesem Anwendungsfall werden die demographischen Daten zu einem Versicherten
+vom E-Rezept-Fachdienst abgerufen.
+AF_10396 -E-Rezept - Demographische Daten eines Versicherten abrufen
+Die am Anwendungsfall "Demographische Daten eines Versicherten abrufen" beteiligten
+Produkttypen und Komponenten der Anwendung E-Rezept MÜSSEN die nachfolgenden
+Festlegungen umsetzen.
+Name Demographische Daten eines Versicherten abrufen
+Vorbedingungen • Der Versicherte hat seine Einwilligung zum Einlösen im EU-
+Ausland erteilen (Anwendungsfall "Einwilligung durch
+Versicherten erteilen").
+• Der Versicherte hat eine Zugriffsberechtigung für Land B erteilt
+(Anwendungsfall "Zugriffsberechtigung durch Versicherten
+erstellen").
+• Der Versicherte hat mindestens ein E-Rezept zum Einlösen im EU-
+Ausland markiert.
+Kurzbeschreibun • Der Versicherte übermittelt die Informationen zur
+g Zugriffsberechtigung an den LE-EU.
+(Außenansicht)
+• Der LE-EU informiert den Versicherten über die
+Datenschutzrechte. Der Versicherte willigt gegenüber dem LE-EU
+in die Verarbeitung der Daten ein.
+• Der LE-EU sendet einen Request über den eHDSI an das Land A
+(Deutschland).
+• Der NCPeH-FD prüft die Permission aus der Anfrage und falls
+nicht vorhanden die Rolle des anfragenden LE-EU.
+• Der NCPeH-FD sendet einen Request für die Liste einlösbarer E-
+Rezepte des Versicherten an den E-Rezept-Fachdienst.
+• Der E-Rezept-Fachdienst übermittelt das aktuellste einlösbaren E-
+Rezept an den NCPeH-FD.
+• Der NCPeH-FD extrahiert die notwendigen Informationen und
+erstellt den Response für den LE-EU.
+Nachbedingunge • Der Status der einlösbaren E-Rezepte des Versicherten ist
+n unverändert.
+• Die Abfrage ist im E-Rezept-Fachdienst protokolliert.
+• Der LE-EU stehen die demographischen Daten des Versicherten
+zur Verfügung.
+input.docx Spezifikation Seite 21 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 22 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 10: SD Demographische Daten eines Versicherten abrufen
+[<=, , ]
+5.5.2 Liste der einlösbaren E-Rezepte eines Versicherten abrufen
+Mit diesem Anwendungsfall werden die im europäischen Ausland einlösbaren E-Rezepte
+zu einem Versicherten vom E-Rezept-Fachdienst abgerufen.
+AF_10397 -E-Rezept - Liste der einlösbaren E-Rezepte eines Versicherten
+abrufen
+Die am Anwendungsfall "Liste der einlösbaren E-Rezepte eines Versicherten abrufen"
+beteiligten Produkttypen und Komponenten der Anwendung E-Rezept MÜSSEN die
+nachfolgenden Festlegungen umsetzen.
+Name Liste der einlösbaren E-Rezepte eines Versicherten abrufen
+Vorbedingungen • Der Versicherte hat eine Zugriffsberechtigung für Land B erteilt.
+• Der Versicherte hat die Informationen zur Zugriffsberechtigung
+an den LE-EU übermittelt. (Anwendungsfall "Demographische
+input.docx Spezifikation Seite 22 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 23 ===
+Feature: EU Zugriff E-Rezept
+Daten eines Versicherten abrufen")
+• Der Versicherte hat mindestens ein E-Rezept zum Einlösen im EU-
+Ausland markiert.
+Kurzbeschreibun • Der LE-EU sendet einen Request über den eHDSI an das Land A
+g (Deutschland).
+(Außenansicht)
+• Der NCPeH-FD prüft das Vorliegen einer Behandlungsbeziehung
+zwischen LE-EU und Versicherten.
+• Der NCPeH-FD prüft die Permission aus der Anfrage und falls
+nicht vorhanden die Rolle des anfragenden LE-EU.
+• Der NCPeH-FD sendet einen Request für die Liste einlösbarer E-
+Rezepte des Versicherten an den E-Rezept-Fachdienst.
+• Der E-Rezept-Fachdienst übermittelt die Liste der einlösbaren E-
+Rezepte an den NCPeH-FD.
+• Der NCPeH-FD extrahiert die notwendigen Informationen,
+transkodiert die Informationen und erstellt den Response für den
+LE-EU.
+Nachbedingunge • Der Status der einlösbaren E-Rezepte des Versicherten ist
+n unverändert.
+• Die Abfrage ist im E-Rezept-Fachdienst protokolliert.
+• Der LE-EU stehen die Liste der einlösbaren E-Rezepte des
+Versicherten zur Verfügung.
+input.docx Spezifikation Seite 23 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 24 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 11: SD Liste der einlösbaren E-Rezepte eines Versicherten abrufen
+[<=, , ]
+5.5.3 Liste ausgewählter E-Rezepte eines Versicherten abrufen
+Mit diesem Anwendungsfall werden die zum Einlösen vorgesehenen E-Rezepte zu einem
+Versicherten vom E-Rezept-Fachdienst abgerufen.
+AF_10398 -E-Rezept - Liste ausgewählter E-Rezepte eines Versicherten abrufen
+Die am Anwendungsfall "Liste ausgewählter E-Rezepte eines Versicherten abrufen"
+beteiligten Produkttypen und Komponenten der Anwendung E-Rezept MÜSSEN die
+nachfolgenden Festlegungen umsetzen.
+Name Liste ausgewählter E-Rezepte eines Versicherten abrufen
+Vorbedingungen • Der Versicherte hat eine Zugriffsberechtigung für Land B erteilt.
+• Der Versicherte hat die Informationen zur Zugriffsberechtigung
+an den LE-EU übermittelt. (Anwendungsfall "Demographische
+input.docx Spezifikation Seite 24 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 25 ===
+Feature: EU Zugriff E-Rezept
+Daten eines Versicherten abrufen")
+• Der LE-EU hat die Liste der einlösbaren E-Rezepte für den
+Versicherten abgerufen.
+Kurzbeschreibun • Der LE-EU sendet einen Request mit einer Liste von Rezept-ID,
+g über den eHDSI an das Land A (Deutschland).
+(Außenansicht)
+• Der NCPeH-FD prüft das Vorliegen einer Behandlungsbeziehung
+zwischen LE-EU und Versicherten.
+• Der NCPeH-FD prüft die Permission aus der Anfrage und falls
+nicht vorhanden die Rolle des anfragenden LE-EU.
+• Der NCPeH-FD sendet einen Request mit der Liste von Rezept-IDs
+des Versicherten an den E-Rezept-Fachdienst.
+• Der E-Rezept-Fachdienst ändert den Status der abgefragten E-
+Rezepte, falls der Status "offen" ist, in "in Abgabe (gesperrt)".
+• Der E-Rezept-Fachdienst übermittelt die Liste der E-Rezepte an
+den NCPeH-FD.
+• Der NCPeH-FD transformiert und transkodiert die E-Rezepte in
+das entsprechende eHDSI-Dokumentenformat und erstellt den
+Response für den LE-EU.
+Nachbedingunge • Der Status der einlösbaren E-Rezepte des Versicherten ist "in
+n Abgabe (gesperrt)".
+• Die Abfrage ist im E-Rezept-Fachdienst protokolliert.
+• Der LE-EU stehen die Liste der E-Rezepte des Versicherten zur
+Verfügung.
+input.docx Spezifikation Seite 25 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 26 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 12: SD-Liste ausgewählter E-Rezepte eines Versicherten abrufen
+[<=, , ]
+5.5.4 Abgabe von E-Rezepten im europäischen Ausland
+Mit diesem Anwendungsfall werden die Dispensierinformationen zu einem eingelösten E-
+Rezept an den E-Rezept-Fachdienst übermittelt.
+AF_10399 -E-Rezept - Abgabe von E-Rezepten im europäischen Ausland
+Die am Anwendungsfall "Abgabe von E-Rezepten im europäischen Ausland" beteiligten
+Produkttypen und Komponenten der Anwendung E-Rezept MÜSSEN die nachfolgenden
+Festlegungen umsetzen.
+Name Abgabe von E-Rezepten im europäischen Ausland
+Vorbedingungen • Der Versicherte hat eine Zugriffsberechtigung für Land B erteilt.
+input.docx Spezifikation Seite 26 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 27 ===
+Feature: EU Zugriff E-Rezept
+• Der Versicherte hat die Informationen zur Zugriffsberechtigung
+an den LE-EU übermittelt. (Anwendungsfall "Demographische
+Daten eines Versicherten abrufen")
+• Der LE-EU hat ausgewählte E-Rezepte des Versicherten
+abgerufen.
+Kurzbeschreibun • Der Versicherte übermittelt, falls der zuvor übermittelte
+g Zugriffscode zeitlich nicht mehr gültig ist, einen neuen
+(Außenansicht) Zugriffscode an den LE-EU.
+• Der LE-EU sendet einen eDispensation Request für ein E-Rezept
+über den eHDSI an Land A (Deutschland).
+• Der NCPeH-FD prüft das Vorliegen einer Behandlungsbeziehung
+zwischen LE-EU und Versicherten.
+• Der NCPeH-FD prüft die Permission und falls nicht vorhanden die
+Rolle des anfragenden LE-EU.
+• Der NCPeH-FD transformiert und transkodiert die Information zu
+jedem eDispensation Document in einen
+Dispensierinformationsdatensatz für das E-Rezept.
+• Der NCPeH-FD sendet für jedes übermittelte eDispensation
+Document (CDA) einen Request mit den
+Dispensierinformationsdatensatz für das E-Rezept an den E-
+Rezept-Fachdienst.
+• Der E-Rezept-Fachdienst speichert die Dispensierinformationen
+und ändert den Status des Task zu "completed".
+• Der E-Rezept-Fachdienst übermittelt den Status der Operation an
+den NCPeH-FD. Der NCPeH-FD übermittelt den Status an den LE-
+EU.
+Nachbedingunge • Der Status der eingelösten E-Rezepte ist "completed".
+n
+• Der Datenzugriff ist im E-Rezept-Fachdienst für jedes E-Rezept
+protokolliert.
+input.docx Spezifikation Seite 27 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 28 ===
+Feature: EU Zugriff E-Rezept
+Abbildung 13: SD Abgabe von E-Rezepten im europäischen Ausland
+[<=, , ]
+Hinweis: Für den Anwendungsfall "Abgabe von E-Rezepten im europäischen Ausland" wird
+angenommen, dass die vollständigen Dispensierinformationen zu einer ePrescription (E-
+Rezept) in genau einem eDispensation Dokument (CDA) vom LE-EU übermittelt werden.
+Nach der Bereitstellung der Dispensierinformationen im E-Rezept-Fachdienst kann der
+Versicherte diese mit seinem E-Rezept-FdV herunterladen und anzeigen lassen.
+input.docx Spezifikation Seite 28 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 29 ===
+Feature: EU Zugriff E-Rezept
+Eine Übermittlung der Dispensierinformationen an den ePA Medication Service ist
+perspektivisch vorgesehen. Die Funktionalität wird ergänzt, sobald die Voraussetzungen
+in den verwendeten Datenmodellen geschaffen wurden.
+input.docx Spezifikation Seite 29 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 30 ===
+Feature: EU Zugriff E-Rezept
+6 Datenschutz und Informationssicherheit
+Die gesetzlichen Grundlagen zu diesem Feature sind insbesondere in § 361 Abs. 5 SGB V
+festgelegt. Danach muss der Versicherte vor einem Zugriff von Leistungserbringern aus
+dem EU-Ausland über den NCPeH-FD grundsätzlich in die Übermittlung eingewilligt
+haben. Zudem muss der Versicherte jeden konkreten Zugriff durch einen
+Leistungserbringer aus dem EU-Ausland (LE-EU) in diesem Rahmen technisch freigeben.
+Die Einwilligung wird durch den Versicherten mittels eines FdV mit E-Rezept-
+Funktionalität gegeben (bzw. widerrufen) und im E-Rezept-Fachdienst gespeichert (bzw.
+gelöscht). Sie ist länderunspezifisch, d.h. sie gilt für alle teilnehmenden Länder in der EU.
+In der Umsetzung kann die Einwilligung in das Verfahren in Verbindung mit der ersten
+Freigabe eines Zugriffs für einen LE-EU erfolgen.
+Die technische Freigabe für einen Leistungserbringer im EU-Ausland erteilt der
+Versicherte durch einen sechsstelligen alphanumerischen Zugriffscode, den er im FdV
+angezeigt bekommt und die er dem Leistungserbringer mitteilt (z.B. durch Vorzeigen des
+im FdV angezeigten Zugriffscodes). Der Zugriffscode ist nach der Erzeugung einen
+begrenzten Zeitraum (höchstens eine Stunde) gültig. Nach Ablauf dieses Zeitraums muss
+ein neuer Zugriffscode erzeugt werden. Der Versicherte kann auch vor Ablauf des
+Zeitraums einen neuen Zugriffscode erzeugen, wobei der vorherige Zugriffscode damit
+ungültig wird. Der E-Rezept-Fachdienst erhält den jeweils gültigen Zugriffscode vom FdV
+und lehnt Anfragen mit einem ungültigen Zugriffscode ab. Neben dem Zugriffscode erhält
+der E-Rezept-Fachdienst vom FdV die Information, in welchem Land der aktuelle
+Zugriffscode Verwendung finden soll. Die Information, in welchem Land sich der LE-EU
+befindet, erhält der E-Rezept-Fachdienst vom deutschen NCPeH-FD. Stimmen die beiden
+Informationen nicht überein, lehnt der E-Rezept-Fachdienst die Anfrage ebenfalls ab.
+Anwendungsfälle
+Aus diesem Feature ergeben sich für den E-Rezept-Fachdienst ein neuer direkter Akteur,
+der NCPeH-FD in Deutschland, der zur Ausführung folgender Anwendungsfälle mit seiner
+eigenen kryptografischen Identität auf den E-Rezept-Fachdienst zugreift:
+• Demographische Daten eines Versicherten abrufen
+Damit berechtigte LE-EU die E-Rezepte des Versicherten abrufen können, ist es
+notwendig, die demografischen Daten des Versicherten zuvor in Deutschland ermitteln zu
+lassen. Ein LE-EU kann die ermittelten demografischen Versichertendaten mit den auf der
+eGK oder einem Ausweisdokument abgebildeten Daten vergleichen und so auf Richtigkeit
+prüfen. Die Ermittlung dieser Daten erfolgt aus einem E-Rezept des Versicherten im E-
+Rezept-Fachdienst – sofern mindestens eines vorhanden ist.
+• Liste der einlösbaren E-Rezepte eines Versicherten abrufen
+Mittels KVNR und Zugriffscode ruft der LE-EU die Liste aller einlösbaren E-Rezepte vom E-
+Rezept-Fachdienst ab. Dabei liefert der E-Rezept-Fachdienst alle Informationen aus den E-
+Rezepten an den NCPeH-FD, der zur Erstellung der Liste nur bestimmte Informationen
+verwendet (mindestens die obligatorischen Angaben gemäß den europäischen
+Vorgaben). Der E-Rezept-Fachdienst liefert keine Informationen zu E-Rezepten, die in den
+europäischen Vorgaben ausgeschlossen sind, z.B. Betäubungsmittel und Arzneimittel, die
+nach ärztlicher Verschreibung oder nach den Vorschriften eines Arzneibuchs für den
+Versicherten zubereitet werden.
+• Liste ausgewählter E-Rezepte eines Versicherten abrufen
+input.docx Spezifikation Seite 30 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 31 ===
+Feature: EU Zugriff E-Rezept
+Ausgehend von der Liste der einlösbaren E-Rezepte für einen Versicherten, kann
+der LE-EU eine Liste der zur Einlösung ausgewählten E-Rezepte abrufen
+(transkodiert und im Original).
+• Abgabe von E-Rezepten im europäischen Ausland
+Beim Einlösen von E-Rezepten erfolgt die Übermittlung der Datensätze über die an
+den Versicherten abgegebenen Arzneimittel mittels des NCPeH-FD an den E-
+Rezept-Fachdienst.
+Daneben gibt es die Anwendungsfälle für die Versicherten zur Erteilung, zur Einsicht und
+zum Widerruf der Einwilligung.
+Aufgrund der starken Abhängigkeit von Systemen außerhalb der TI werden keine
+Aussagen zur Verfügbarkeit dieser Anwendungsfälle getroffen. Die Verfügbarkeit der
+Komponenten bzw. Dienste der TI ist hierfür in jedem Fall ausreichend.
+Informationsobjekte
+Durch dieses Feature werden die folgenden wesentlichen Informationsobjekte eingeführt:
+Informations- Beschreibung Personen Vertraulichkei Integritä
+objekt -bezug t t
+Zugriffscode Sechsstelliger nein hoch hoch
+alphanumerischerZugriffscod
+e zur Autorisierung eines LE- Der Eine
+EU zum Abruf und Einlösung Schutzbedarf Verletzun
+von E-Rezepten eines für die g der
+Versicherten. Vertraulichkeit Integrität
+des verhindert
+Freischaltcodes den
+wird mit „hoch“ Zugriff auf
+bewertet, da E-
+der Rezepte.
+Zugriffscode
+zwar für den
+Zugriff auf E-
+Rezepte bzw.
+deren Einlösung
+erforderlich ist,
+die Kenntnis
+des
+Zugriffscodes
+allein aber nicht
+für das Einlösen
+eines E-Rezepts
+ausreicht.
+Authentifizierung und Autorisierung
+Der NCPeH-FD in Deutschland ist ein neuer (VAU-) Client im E-Rezept-System. Die
+Authentifizierung des NCPeH-FD in Deutschland findet durch den Authorization Server des
+E-Rezept-Fachdienstes statt, der einen ACCESS_TOKEN ausstellt, der im E-Rezept-
+Fachdienst validiert wird.Dabei findet ein länderspezifisches Zertifikat Verwendung – also
+input.docx Spezifikation Seite 31 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 32 ===
+Feature: EU Zugriff E-Rezept
+nicht das Zertifikat des NCPeH-FD in Deutschland, sondern ein Zertifikat, dass den
+NCPeH-FD im jeweiligen anfragenden EU-Ausland repräsentiert.
+Indirekt wirkende Akteure sind Leistungserbringer im EU-Ausland, die über den NCPeH-FD
+in ihrem Land und den NCPeH-FD in Deutschland Daten aus dem E-Rezept-Fachdienst
+abrufen können. Die Authentisierung der Leistungserbringer im EU-Ausland erfolgt durch
+den NCPeH-FD in ihrem Land (vgl. unten Grenzen der Sicherheitsleistung).
+Die Kommunikation zwischen dem NCPeH-FD und dem E-Rezept-Fachdienst erfolgt zum
+einen über TLS mit serverseitiger Authentifizierung des E-Rezept-Fachdienstes und zum
+anderen mittels VAU-Verschlüsselung zwischen der VAU im NCPeH-FD und VAU im E-
+Rezept-Fachdienst. Hierbei prüft der E-Rezept-Fachdienst das VAU-Zertifikat der VAU im
+NCPeH-FD. Hierdurch wird eine beidseitige Authentifizierung der Systeme erreicht.
+Der Zugriffscode dient – in Kombination mit der KVNR - der Autorisierung eines LE-EU zum
+Abruf der E-Rezepte eines Versicherten.
+Protokollierung
+Die Protokollierung im E-Rezept-Fachdienst erfolgt für alle o.g. Anwendungsfälle und
+umfasst jeweils folgende Informationen:
+• das Land, aus dem der Zugriff erfolgte,
+• die Leistungserbringerinstitution, aus der der Zugriff erfolgte,
+• der Leistungserbringer-EU, der zugegriffen hat,
+• der ausgeführte Anwendungsfall,
+• falls ein E-Rezept eingelöst wurde: die Rezept-ID,
+• der Zeitpunkt des Zugriffs,
+• ob der Zugriff erfolgreich war bzw. warum ein Zugriff abgelehnt wurde (in für den
+Versicherten verständlicher Sprache).
+Abgelehnte Zugriffsversuche werden nur protokolliert, wenn die KVNR in Verbindung mit
+demZugriffscode passen, damit der Versicherte erkennen kann, ob er alle
+Voraussetzungen geschaffen hat, um es dem LE-EU zu ermöglichen, seine E-Rezepte
+abzurufen. Gründe für eine Ablehnung können sein:
+• Die Einwilligung wurde zwischenzeitlich entzogen.
+• Es liegen keine einlösbaren E-Rezept vor, aus denen die Daten extrahierbar wären.
+Falls die Kombination von KVNR und Zugriffscode nicht korrekt war, wird kein
+Protokolleintrag erzeugt, da eine Ablehnung auch an einer falschen KVNR liegen kann. In
+diesem Fall würde der Versicherte mit der übertragenden KVNR einen Protokolleintrag
+über einen abgelehnten Zugriff sehen, obwohl er keine Einlösung im Ausland ausgelöst
+hat. Da es sich aber nicht um einen Angriff handelt, könnte der Versicherte aus einem
+Protokolleintrag keine sinnvolle Handlung ableiten.
+Angriffe mittels Durchprobieren von KVNR- und Zugriffscode-Kombinationen müssen
+durch die NCPeH-FD mitigiert werden. In Verdachtsfällen, müssen die Protokolle in den
+NCPeH-FD ausgewertet werden.
+Robustheit
+Der NCPeH-FD in Deutschland prüft bei Anfragen an den E-Rezept-Fachdienst, ob die
+mitgegebene KVNR syntaktisch korrekt ist und dass der Zugriffscode sechsstellig ist.
+Damit werden syntaktisch unkorrekte Anfragen bereits im NCPeH-FD abgeblockt. Generell
+input.docx Spezifikation Seite 32 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 33 ===
+Feature: EU Zugriff E-Rezept
+muss der Anbieter des NCPeH-FDs Maßnahmen zur Erkennung und Verhinderung von
+dem Erraten eines Zugriffscodes umsetzen.
+Grenzen der Sicherheitsleistung
+Der E-Rezept-Fachdienst muss von integren und korrekt arbeitenden NCPeHs ausgehen.
+In der Realisierung der o.g. Anwendungsfälle übernehmen die NCPeH im EU-Ausland die
+Authentisierung der Leistungserbringer im jeweiligen Land. Anfragen von nicht-
+authentisierten Leistungserbringern werden nicht an den NCPeH-FD in Deutschland
+weitergeleitet und damit auch nicht an den E-Rezept-Fachdienst. Dies gilt auch für
+Anfragen aus EU-Ländern, die nicht in der Liste der teilnehmenden Länder stehen.
+Der NCPeH-FD in Deutschland protokolliert jegliche Transaktion, in der er involviert ist.
+Wie ein Betroffener diese Protokolldaten einsehen kann, wird durch den Betreiber des
+NCPeH-FD geregelt.
+Der NCPeH-FD in Deutschland muss grundlegende Denial-of-Service-
+Abwehrmechanismen implementieren. Diese sind nicht näher spezifiziert und deshalb
+kann hier auch keine Annahme über deren Wirksamkeit getroffen werden. Zumindest
+werden nur Anfragen mit syntaktisch korrekten KVNRs und ausschließlich sechsstelligen
+Zugriffscodes weitergereicht.
+Über die Sicherheit der Systeme der LE-EU kann keine Aussage getroffen werden. Ggf. ist
+die Situation in den verschiedenen EU-Ländern unterschiedlich.
+Aufgrund der Vorgaben der EU können Situationen entstehen, in denen eine
+Mehrfacheinlösung von E-Rezepten durch den E-Rezept-Fachdienst nicht verhindert
+werden kann. Dies betrifft insbesondere Situationen in grenznahen Gebieten, in denen ein
+Versicherter erst eine Einlösung im Ausland initiiert, aber das Medikament noch nicht
+erhält, er dann das E-Rezept in Deutschland regulär einlöst, um dann zurück in der EU-
+Apotheke das Medikament nochmals zu erhalten – sofern die EU-Apotheke das
+Medikament ausgibt, obwohl der E-Rezept-Fachdienst einen Fehler meldet (z.B. um den
+Umsatz dennoch zu machen). Ein finanzieller Schaden für Apotheken im Ausland würde
+hierbei nicht entstehen, da Versicherte die im Ausland erhaltenen Medikamente zunächst
+selbst bezahlen. Kostenträger können einen finanziellen Schaden abwenden, wenn sie
+durch geeignete Prüfungen eine oben geschilderte mehrfache Einlösung eines E-Rezepts
+feststellen. Für Apotheker in Deutschland könnte ein finanzieller Schaden entstehen, falls
+der Kostenträger einem Versicherten die Rechnung für ein im Ausland erhaltenes
+Medikament erstattet, bevor die Abrechnung des E-Rezepts durch die Apotheke in
+Deutschland erfolgt – unter der Annahme, dass der Kostenträger in diesem Fall das E-
+Rezept nicht noch einmal abrechnen wird. Solche Schadensszenarien können nicht durch
+die Komponenten und Dienste der TI abgewendet werden.
+input.docx Spezifikation Seite 33 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 34 ===
+Feature: EU Zugriff E-Rezept
+7 Spezifikation
+7.1 Anforderungen an den E-Rezept-Fachdienst
+Die nachfolgenden Anforderungen werden in das Dokument [gemSpec_FD_eRp]
+übernommen.
+7.1.1 Änderung in 5.2.3 Verwaltung der Nutzersession
+A_19992-01 -E-Rezept-Fachdienst - Blocklisting zu häufig verwendeter
+ACCESS_TOKEN
+Der E-Rezept-Fachdienst MUSS ein während einer konfigurierbaren Dauer vielfach
+vorgelegtes ACCESS_TOKEN (z.B. mehr als 10 mal innerhalb einer Sekunde) für den Rest
+der angegebenen Gültigkeitsdauer auf einer Blocklist führen und eingehende HTTP-
+Requests mit diesem ACCESS_TOKEN mit dem HTTP-Status-Code 429 ablehnen, damit ein
+Überlastungsangriff (DOS-Attacke) auf den E-Rezept-Fachdienst unterbunden werden
+kann.
+Der E-Rezept-Fachdienst MUSS bei dieser Prüfung die ACCESS_TOKEN des NCPeH-FD
+(RolleprofessionOID = oid_ncpeh) ausnehmen.[<=, eRp_FD, Sich.techn. Eignung:
+Produktgutachten]
+7.1.2 Änderungen in 5.3 Routing von Requests
+Die Werte sollen von Clients des E-Rezepts wie folgt verwendet werden:
+• l (kleines L) - Leistungserbringer,
+• v - Versicherte,
+• k - Kostenträger,
+• s - Sonstige (aktuell nicht verwendet).
+A_21572-01 -E-Rezept-Fachdienst - Routing-Informationen X-erp-user
+Der E-Rezept-Fachdienstes KANN am Eingangspunkt eine Routingentscheidung zu einem
+nutzergruppenspezifischen Verarbeitungskontext anhand des Headers "X-erp-user" im
+äußeren http-Request treffen.[<=, eRp_FD, funkt. Eignung: Herstellererklärung]
+7.1.3 Änderungen in 5.4 Fehlercodes
+HTTP- Bedeutung in welchen Operationen Bedingung
+Status- als Statuscode möglich
+Code
+200 Operation ... Die Operation wurde
+erfolgreich POST /Task/<id>/$eu- erfolgreich bearbeitet. In der
+beendet, in der close Rückgabe sind die erzeugten
+Rückgabe ist ggf. POST /$get-eu- bzw. gelesenen Daten
+input.docx Spezifikation Seite 34 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 35 ===
+Feature: EU Zugriff E-Rezept
+das Ergebnis der prescriptions enthalten.
+Operation POST /$grant-eu-access-
+enthalten. permission
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+204 Die Operation ...
+liefert keinen DELETE /$revoke-eu-
+Rückgabewert access-permission
+400 Bad Request, der ... In der aufgerufenen Operation
+Operationsaufruf POST /Task/<id>/$eu- werden vom Client Daten für
+enthält ungültige close die Verarbeitung erwartet.
+Daten. POST /$get-eu- Entsprechen sie nicht dem
+prescriptions erwarteten FHIR-Profil oder
+POST /$grant-eu-access- sind sie ungültig (bspw.
+permission Signatur), werden sie vom E-
+DELETE /$revoke-eu- Rezept-Fachdienst
+access-permission zurückgewiesen.
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+401 Der Nutzer ... Der Aufruf enthält keine oder
+konnte nicht POST /Task/<id>/$eu- abgelaufene oder ungültige
+authentifiziert close Authentifizierungsinformatione
+werden. POST /$get-eu- n im HTTP-Request-
+prescriptions HeaderAuthorization.
+POST /$grant-eu-access-
+permission
+DELETE /$revoke-eu-
+access-permission
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+403 Der Nutzer ist ... Gemäß Rollenprüfung in jedem
+nicht berechtigt, POST /Task/<id>/$eu- Operationsaufruf sind nur
+die aufgerufene close bestimmte Operationen je
+Operation POST /$get-eu- aufrufendem Nutzer zulässig.
+anzufordern. prescriptions
+POST /$grant-eu-access-
+permission
+DELETE /$revoke-eu-
+access-permission
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+404 Die adressierte ... Die über die <id> adressierte
+Ressource wurde POST /Task/<id>/$eu- Ressource existiert nicht, d.h.
+nicht gefunden. close wurde auch nicht
+PATCH /Task/<id> zwischenzeitlich gelöscht
+input.docx Spezifikation Seite 35 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 36 ===
+Feature: EU Zugriff E-Rezept
+(siehe Code 410).
+405 Die Anfrage ist ... In der Operation wird eine
+gültig, jedoch in POST /Task/<id>/$eu- unzulässige Kombination aus
+Kombination mit close HTTP-Operation auf eine
+anderen POST /$get-eu- bestimmte Ressource ggf. in
+Aufrufparametern prescriptions Verbindung mit einer FHIR-
+nicht gültig. POST /$grant-eu-access- Operation aufgerufen ...
+permission
+DELETE /$revoke-eu-
+access-permission
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+408 Request Timeout. ... Der E-Rezept-Fachdienst ist
+Die Anfrage POST /Task/<id>/$eu- überlastet und kann die
+konnte innerhalb close Anfrage innerhalb der
+der erwarteten POST /$get-eu- Wartezeit des
+Zeit nicht prescriptions Clientsystems nicht
+beantwortet POST /$grant-eu-access- beantworten.
+werden. permission
+DELETE /$revoke-eu-
+access-permission
+GET /$read-eu-access-
+permission
+PATCH /Task/<id>
+429 Der Client hat zu ... Das Clientsystem hat innerhalb
+viele Aufrufe POST /Task/<id>/$eu- des konfigurierten
+innerhalb einer close Zeitabschnitts zu viele
+festgelegten POST /$get-eu- Requests geschickt.
+Zeitspanne prescriptions
+getätigt. POST /$grant-eu-access-
+permission
+PATCH /Task/<id>
+7.1.4 Änderungen in 5.5 Protokollierungen
+A_19284-11 -E-Rezept-Fachdienst - Versichertenprotokoll zu Operationen
+Der E-Rezept-Fachdienst MUSS jeden Aufruf der folgenden Operationen protokollieren:
+Tabelle 9: TAB_eRPFD_004 Versichertenprotokoll
+Operation Rolle des Beschreibung (ggf. als
+zugreifenden Nutzers Vorschlag für einen
+lesbaren Protokolleintrag in
+einfacher Sprache)
+http GET /Task/<id>
+- Versicherter, Patient/Versicherter/Vertreter
+input.docx Spezifikation Seite 36 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 37 ===
+Feature: EU Zugriff E-Rezept
+Vertreter hat das E-Rezept
+heruntergeladen
+Apotheker Apotheke hat die E-Rezept-
+Quittung heruntergeladen
+http GET /Task
+Apotheker • im Erfolgsfall beim
+passenden
+AcceptPN3VSDMxx=false:
+Apotheke hat mit Ihrer
+eGK die Liste der
+offenen E-Rezepte
+abgerufen.
+• im Erfolgsfall bei PN3 und
+passende
+AcceptPN3VSDMxx=true:
+Apotheke hat mit Ihrer
+eGK die Liste der
+offenen E-Rezepte
+abgerufen. (Offline-
+Check wurde akzeptiert)
+• im Fehlerfall PN3 und
+passende
+AcceptPN3VSDMxx=false:
+Apotheke konnte
+aufgrund eines
+Fehlerfalls nicht die Liste
+der offenen E-Rezepte
+mit Ihrer eGK abgerufen.
+(Offline-Check wurde
+nicht akzeptiert)
+• im sonstigen Fehlerfall:
+Apotheke konnte
+aufgrund eines
+Fehlerfalls nicht die Liste
+der offenen E-Rezepte
+mit Ihrer eGK abgerufen.
+Kostenträger Krankenkasse hat die Liste der
+offenen E-Rezepte (DiGA-
+Verordnungen) abgerufen.
+http POST /Task
+$activate Arzt-/Zahnarztpraxis/ Arzt-/Zahnarztpraxis/
+Krankenhaus/ Krankenhaus/Psychotherapeut
+Psychotherapeut hat das E-Rezept bereitgestellt
+input.docx Spezifikation Seite 37 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 38 ===
+Feature: EU Zugriff E-Rezept
+$accept Apotheke Apotheke hat das E-Rezept
+heruntergeladen
+Kostenträger Krankenkasse hat das E-Rezept
+heruntergeladen
+$reject Apotheke Apotheke hat das E-Rezept
+zurückgegeben
+Kostenträger Krankenkasse hat das E-Rezept
+zurückgegeben
+$dispense Apotheke Apotheke hat das E-Rezept
+beliefert
+$close Apotheke Apotheke hat das E-Rezept
+abgeschlossen
+Kostenträger Krankenkasse hat das E-Rezept
+abgeschlossen
+$eu-close NCPeH-FD Der
+Parameters.parameter:request
+Data.part:practitionerRole
+Parameters.parameter:request
+Data.part:practitionerName hat
+in
+Parameters.parameter:request
+Data.part:healthcare-facility-
+type
+Parameters.parameter:request
+Data.part:pointOfCare in Land
+B (Klartext aus:
+Parameters.parameter:request
+Data.part:countryCode) Ihr E-
+Rezept eingelöst.
+$abort Versicherter, Patient/Versicherter/Vertreter
+Vertreter hat das E-Rezept gelöscht
+Arzt-/Zahnarztpraxis/ Arzt-/Zahnarztpraxis/
+Krankenhaus/ Krankenhaus/Psychotherapeut
+Psychotherapeut hat das E-Rezept gelöscht
+Apotheke Apotheke hat das E-Rezept
+gelöscht
+http PATCH /Task/<id> Versicherter Versicherter hat Markierung zu
+Einlösung im EU Ausland
+gespeichert
+GET /MedicationDispense?<parameter>=...
+input.docx Spezifikation Seite 38 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 39 ===
+Feature: EU Zugriff E-Rezept
+Versicherter, Patient/Versicherter hat
+Vertreter Medikament-Informationen
+heruntergeladen
+http DELETE Versicherter Versicherter hat
+/ChargeItem/<id> Abrechnungsinformation
+gelöscht
+http GET Versicherter Versicherter hat
+/ChargeItem/<id> Abrechnungsinformation
+gelesen
+Apotheke Apotheke hat
+Abrechnungsinformation
+gelesen
+http POST /ChargeItem Apotheke Apotheke hat
+Abrechnungsinformation
+bereitgestellt
+http PATCH Versicherter Versicherter hat Markierung zu
+/ChargeItem/<id> Abrechnungsinformation
+gespeichert
+http PUT Apotheke Apotheke hat PKV-
+/ChargeItem/<id> Abgabedatensatz gespeichert
+http POST /Consent Versicherter Versicherter hat Einwilligung
+für "Beschreibung für
+Consent.category.coding.code"
+erteilt.
+http DELETE /Consent Versicherter Versicherter hat Einwilligung
+für "Beschreibung
+fürConsent.category.coding.cod
+e" widerrufen.
+http POST /$grant-eu- Versicherter Sie haben eine
+access-permission Zugriffsberechtigung zum
+Einlösen von E-Rezepten für
+das Land "Land B" erteilt.
+http DELETE /$revoke- Versicherter Sie haben die
+eu-access-permission Zugriffsberechtigung zum
+Einlösen von E-Rezepten für
+das Land "Land B" gelöscht.
+POST /$get-eu-
+prescriptions
+Parameters.parameter:requ NCPeH-FD Der
+estData.part:requesttype Parameters.parameter:request
+Data.part:practitionerRole
+input.docx Spezifikation Seite 39 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 40 ===
+Feature: EU Zugriff E-Rezept
+= demographics Parameters.parameter:request
+Data.part:practitionerName hat
+in
+Parameters.parameter:request
+Data.part:healthcare-facility-
+type
+Parameters.parameter:request
+Data.part:pointOfCare in Land
+B (Klartext
+aus: Parameters.parameter:req
+uestData.part:countryCode)
+Ihre Patientendaten abgerufen.
+Parameters.parameter:requ NCPeH-FD Der
+estData.part:requesttype Parameters.parameter:request
+= e-prescriptions-list Data.part:practitionerRole
+Parameters.parameter:request
+Data.part:practitionerName hat
+in
+Parameters.parameter:request
+Data.part:healthcare-facility-
+type
+Parameters.parameter:request
+Data.part:pointOfCare in Land
+B (Klartext aus:
+Parameters.parameter:request
+Data.part:countryCode) Ihre
+offenen E-Rezepte abgerufen.
+Parameters.parameter:requ NCPeH-FD Der
+estData.part:requesttype Parameters.parameter:request
+= e-prescriptions-retrieval Data.part:practitionerRole
+Parameters.parameter:request
+Data.part:practitionerName hat
+in
+Parameters.parameter:request
+Data.part:healthcare-facility-
+type
+Parameters.parameter:request
+Data.part:pointOfCare in Land
+B (Klartext aus:
+Parameters.parameter:request
+Data.part:countryCode) Ihre
+einzulösenden E-Rezepte
+abgerufen.
+Automatisches Löschen durch den Fachdienst
+Ressource Task E-Rezept-Fachdienst Veraltete E-Rezepte vom
+Fachdienst automatisch
+gelöscht
+Ressource Veraltete Medikament-
+MedicationDispense Informationen vom Fachdienst
+input.docx Spezifikation Seite 40 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 41 ===
+Feature: EU Zugriff E-Rezept
+automatisch gelöscht
+Ressource Communication Veraltete Nachrichten vom
+Fachdienst automatisch
+gelöscht
+Ressource ChargeItem Veraltete
+Abrechnungsinformation vom
+E-Rezept-Fachdienst
+automatisch gelöscht
+und die gelesene bzw. geschriebene Ressource im Protokolleintrag
+AuditEvent.entity.what als Referenz hinzufügen sowie die KVNR des betroffenen
+Versicherten in AuditEvent.entity.name speichern.
+Mit diesen Informationen kann der Versicherte die Zugriffe auf seine Daten
+nachvollziehen und bei einem unberechtigten Zugriff ggf. intervenieren.[<=, eRp_FD,
+funkt. Eignung: Test Produkt/FA]
+7.1.5 Neues Kapitel in 6.11 Verordnungen für Einlösen im
+europäischen Ausland
+7.1.5.1 Neues Kapitel 6.11.1 HTTP-Operation POST get-eu-prescriptions
+Der abgebenden Apotheke im europäischen Ausland werden Ressourcen des
+MedicationRequest sowie die darin verknüpften Ressourcen mit Informationen über im
+europäischen Ausland einlösbare Verordnungen bereitgestellt. Der Zugriff auf diese
+Ressourcen erfolgt ausschließlich lesend durch den deutschen NCPeH-FD, der die
+Informationen entsprechend aufbereitet und weiterleitet.
+A_27059 -E-Rezept-Fachdienst - eu-prescription abfragen - Rollenprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions sicherstellen, dass ausschließlich Nutzer in der
+Rolle:
+• oid_ncpeh,
+die Operation am Fachdienst aufrufen dürfen und die RolleprofessionOID des Aufrufers
+im ACCESS_TOKEN im HTTP-RequestHeaderAuthorization feststellen, damit E-Rezepte
+nicht durch Unberechtigte abgerufen werden können.[<=, eRp_FD, Sich.techn. Eignung:
+Produktgutachten]
+A_27060 -E-Rezept-Fachdienst - eu-prescription abfragen - Schemaprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD das im http-Body des Requests
+enthaltene Parameter-Objekt gegen
+das Profil [GEM_ERP_PR_PAR_EU_GET_Prescription_EU_Input]prüfenund im Fehlerfall die
+Operation mit HTTP-Fehlercode 400 abbrechen.[<=, eRp_FD, funkt. Eignung: Test
+Produkt/FA]
+A_27061 -E-Rezept-Fachdienst - eu-prescription abfragen - Prüfung Einwilligung
+für KVNR
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass für die
+inParameters.parameter:requestData.part:kvnr übermittelte KVNR ein Consent-
+Datensatz mitConsent.patient.identifier = KVNR und
+Consent.category.coding.code = EUDISPCONS existiert und bei fehlgeschlagener
+input.docx Spezifikation Seite 41 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 42 ===
+Feature: EU Zugriff E-Rezept
+Prüfung die Operation mit dem HTTP-Fehlercode 403 abbrechen, damit nur
+Verordnungsdaten für Versicherte übermittelt werden, die eine Einwilligung erteilt haben.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27062 -E-Rezept-Fachdienst - eu-prescription abfragen - Prüfung
+Zugriffsberechtigung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass zu dem
+inParameters.parameter:requestData.part:kvnr,
+Parameters.parameter:requestData.part:accessCode und
+Parameters.parameter:requestData.part:countryCode übermittelte Tripple von KVNR,
+Zugriffs- und Ländercode eine zeitliche gültige Zugriffsberechtigung im E-Rezept-
+Fachdienst existiert und bei fehlgeschlagener Prüfung die Operation mit dem HTTP-
+Fehlercode 403 abbrechen, damit nur Verordnungsdaten für Versicherte übermittelt
+werden, wenn eine gültige Zugriffsberechtigung vorliegt.[<=, eRp_FD, funkt. Eignung:
+Test Produkt/FA]
+A_27063 -E-Rezept-Fachdienst - eu-prescription abfragen - Filter einlösbarer E-
+Rezepte
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass nur
+Ressourcen eines Tasks bereitgestellt werden, die folgende Kriterien erfüllen:
+• Task.extension:flowType = 160oder 200
+• MedicationRequests.medicationvom Typ KBV_PR_ERP_Medication_PZN
+• Task.for = KVNRfür die KVNR aus Parameters.parameter:requestData.part:kvnr
+• Task.ExpiryDatenicht vor dem aktuellen Datum
+• FallsMedicationRequest.extension:Mehrfachverordnung.extension:Kennzeichen
+= true, dann
+MedicationRequest.extension:Mehrfachverordnung.extension:Zeitraum.value[
+x]:valuePeriod.startnicht nach dem aktuellen Datum
+• Task.extension:eu-isRedeemableByPatientAuthorization = true
+damit eine Apotheke im europäischen Ausland nur einlösbare E-Rezepte abrufen kann.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27587 -E-Rezept-Fachdienst - eu-prescription abfragen - Filter Status -
+Abfrage der aktuellsten Verordnungsinformationen
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions?_count=1 durch den NCPeH-FD sicherstellen, dass
+nur eine Ressource eines Tasks bereitgestellt wird, die folgendes Kriterium erfüllt:
+• Task.status=ready.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27588 -E-Rezept-Fachdienst - eu-prescription abfragen - Filter Status -
+Abfrage aller einlösbaren Verordnungsinformationen
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass wenn
+Parameters.parameter:requestData.part:prescription-id leer ist, nur Ressourcen
+eines Tasks bereitgestellt werden, die folgendes Kriterium erfüllen:
+• Task.status=ready.
+input.docx Spezifikation Seite 42 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 43 ===
+Feature: EU Zugriff E-Rezept
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27589 -E-Rezept-Fachdienst - eu-prescription abfragen - Filter Status -
+Abfrage nach Liste Rezept-Ids
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass wenn
+Parameters.parameter:requestData.part:prescription-id nicht leer ist, nur
+Ressourcen eines Tasks bereitgestellt werden, die folgendes Kriterium erfüllen:
+• Task.status=ready
+ODER
+(Task.status =in-progress UND Task.owner = Telematik-ID aus dem
+ACCESS_TOKEN).
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27064 -E-Rezept-Fachdienst - eu-prescription abfragen - Schema des
+Response
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass die FHIR-
+Ressourcen zu einlösbaren Verordnungen in einem übergreifenden FHIR-Bundle gruppiert
+werden, absteigend sortiert nach dem medicationrequest.authored-on Datum, wobei
+das Bundle pro Verordnung ein FHIR-Bundle vom Typ
+https://fhir.kbv.de/StructureDefinition/KBV_PR_ERP_Bundle enthält, mit der unter
+https://gematik.de/fhir/erp/NamingSystem/GEM_ERP_NS_PrescriptionId
+abgelegten Task-ID sowie den im MedicationRequest referenzierten Ressourcen
+MedicationRequest, Medication, Patient, Practitioner und Coverage.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27065 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage der
+aktuellsten Verordnungsinformationen
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions?_count=1 durch den NCPeH-FD sicherstellen, dass
+die Ressourcen der zuletzt ausgestellten einlösbaren Verordnung zurückgegeben werden
+und falls keine Verordnung vorliegt, mit dem HTTP-Statuscode 404 antworten.[<=,
+eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27066 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage aller
+einlösbaren Verordnungsinformationen
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass wenn
+Parameters.parameter:requestData.part:prescription-id leer ist, die Ressourcen
+aller einlösbaren Verordnung zurückgegeben werden und falls keine Verordnung vorliegt,
+mit dem HTTP-Statuscode 404 antworten.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27067 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage nach Liste
+Rezept-Ids
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD sicherstellen, dass wenn
+Parameters.parameter:requestData.part:prescription-id nicht leer ist, die
+Ressourcen aller einlösbaren Verordnung zurückgegeben werden, deren Task-IDs
+inParameters.parameter:requestData.part:prescription-id enthalten sind, und falls
+keine Verordnung vorliegt, mit dem HTTP-Statuscode 404 antworten.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27580 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage nach Liste
+Rezept-Ids - Statuswechsel Task
+input.docx Spezifikation Seite 43 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 44 ===
+Feature: EU Zugriff E-Rezept
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD, wenn
+Parameters.parameter:requestData.part:prescription-id nicht leer ist, für alle
+Tasks deren Task-IDs inParameters.parameter:requestData.part:prescription-id
+enthalten sind, den Status auf Task.status = in-progress setzen.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27581 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage nach Liste
+Rezept-Ids - Secret
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD, wenn
+Parameters.parameter:requestData.part:prescription-id nicht leer ist, für alle
+Tasks deren Task-IDs inParameters.parameter:requestData.part:prescription-id
+enthalten sind, eine 256 Bit Zufallszahl mit einer Mindestentropie von 120 Bit
+erzeugen, hexadezimal kodieren ([0-9a-f]{64}) und diese im zu speichernden Task als
+externe ID in Task.identifier:Secret als [Identifier Profile for Secret
+(GEM_ERP_PR_Secret)] hinzufügen.[<=, eRp_FD, Sich.techn. Eignung: Produktgutachten]
+A_27582 -E-Rezept-Fachdienst - eu-prescription abfragen - Abfrage nach Liste
+Rezept-Ids - Task Owner
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/$get-eu-prescriptions durch den NCPeH-FD, wenn
+Parameters.parameter:requestData.part:prescription-id nicht leer ist, für alle
+Tasks deren Task-IDs inParameters.parameter:requestData.part:prescription-id
+enthalten sind, die Telematik-ID aus dem ACCESS_TOKEN in Task.owner speichern.[<=,
+eRp_FD, Sich.techn. Eignung: Produktgutachten]
+7.1.6 Neues Kapitel 6.1.2.8 POST /Task/<id>/$eu-close
+Die FHIR-Operation $eu-close beendet den E-Rezept-Workflow des unter der <id>
+geführten Tasks und speichert die von der europäischen Apotheke übermittelten
+Dispensierinformationen für den Versicherten. Diese Operation steht ausschließlich
+demNCPeH-FD zur Verfügung.
+A_27068 -E-Rezept-Fachdienst - Task schließen - EU - Rollenprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/Task/<id>/$eu-close sicherstellen, dass ausschließlich Nutzer in der Rolle:
+• oid_ncpeh,
+die Operation am Fachdienst aufrufen dürfen und die RolleprofessionOID des Aufrufers
+im ACCESS_TOKEN im HTTP-RequestHeaderAuthorization feststellen, damit der E-
+Rezept-Workflow nicht durch einen Unberechtigten abgeschlossen werden kann.
+[<=, eRp_FD, Sich.techn. Eignung: Produktgutachten]
+A_27069 -E-Rezept-Fachdienst - Task schließen - EU - Schemaprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/Task/<id>/$eu-close durch den NCPeH-FD das im http-Body des Requests
+enthaltene Parameter-Objekt gegen
+das Profil [GEM_ERP_PR_PAR_EU_CloseOperation_Input]prüfenund im Fehlerfall die
+Operation mit HTTP-Fehlercode 400 abbrechen.[<=, eRp_FD, funkt. Eignung: Test
+Produkt/FA]
+A_27070 -E-Rezept-Fachdienst - Task schließen - EU - Prüfung Einwilligung für
+KVNR
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/Task/<id>/$eu-close durch den NCPeH-FD sicherstellen, dass für die
+inParameters.parameter:requestData.part:kvnr übermittelte KVNR ein Consent-
+input.docx Spezifikation Seite 44 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 45 ===
+Feature: EU Zugriff E-Rezept
+Datensatz mitConsent.patient.identifier = KVNR und
+Consent.category.coding.code = EUDISPCONS existiert und bei fehlgeschlagener
+Prüfung die Operation mit dem HTTP-Fehlercode 403 abbrechen, damit nur
+Dispensierinformationen für Versicherte übermittelt werden, die eine Einwilligung erteilt
+haben.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27071 -E-Rezept-Fachdienst - Task schließen - EU - Prüfung
+Zugriffsberechtigung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/Task/<id>/$eu-close durch den NCPeH-FD sicherstellen, dass zu dem
+inParameters.parameter:requestData.part:kvnr,
+Parameters.parameter:requestData.part:accessCode und
+Parameters.parameter:requestData.part:countryCode übermittelte Tripple von KVNR,
+Zugriffs- und Ländercode eine zeitliche gültige Zugriffsberechtigung im E-Rezept-
+Fachdienst existiert und bei fehlgeschlagener Prüfung die Operation mit dem HTTP-
+Fehlercode 403 abbrechen, damit nur Dispensierinformationen übermittelt werden, wenn
+eine gültige Zugriffsberechtigung vorliegt.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27072 -E-Rezept-Fachdienst - Task schließen - EU - Statusprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts/Task/<id>/$eu-close durch den NCPeH-FD sicherstellen, dass Task.status
+= in-progress ist und bei Ungleichheit mit dem HTTP-Fehlercode 403 abbrechen.[<=,
+eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27074 -E-Rezept-Fachdienst - Task schließen - EU - Zeitstempel
+MedicationDispense
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts /Task/<id>/$eu-close durch den NCPeH-FD sicherstellen, dass der Zeitpunkt
+des Aufrufes in Task.extension:lastMedicationDispense im Format "YYYY-MM-
+DDThh:mm:ss+zz:zz" (FHIR-instant) angelegt und gespeichert wird.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27075 -E-Rezept-Fachdienst - Task schließen - EU - Status beenden
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation des
+Endpunkts /Task/<id>/$eu-close durch den NCPeH-FD sicherstellen, dass die zulässige
+Beendigung eines übermittelten Tasks im StatusTask.status = completed vollzogen
+wird, damit der Workflow für den Versicherten als beendet und das E-Rezept somit als
+eingelöst dargestellt wird.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+7.1.7 Neues Kapitel 6.1.3 HTTP-Operation PATCH
+Der Zugriff mittels der HTTP-Operation PATCH steht ausschließlich dem Versicherten zur
+Verfügung. Die PATCH-Operation führt zu keiner Statusänderung des Tasks.
+A_27548 -E-Rezept-Fachdienst – Task markieren - alles Markieren verbieten
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-Operation PATCH auf den Endpunkt
+/Task ohne Angabe einer <id> für eine konkrete Ressource mit dem HTTP-Fehlercode
+405 ablehnen, um das Markieren mehrerer Ressourcen über einen Request zu
+verhindern. [<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27549 -E-Rezept-Fachdienst - Task markieren - Versicherter - Rollenprüfung
+Versicherter markiert Rezepte
+Der E-Rezept-Fachdienst MUSS bei Aufruf der HTTP-PATCH-Operation auf den
+Endpunkt/Task/<id> sicherstellen, dass ausschließlich Versicherte in der Rolle:
+input.docx Spezifikation Seite 45 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 46 ===
+Feature: EU Zugriff E-Rezept
+• oid_versicherter,
+die Operation am E-Rezept-Fachdienst aufrufen dürfen und die Rolle professionOID des
+Aufrufers im ACCESS_TOKEN im HTTP-RequestHeader "Authorization" feststellen, damit E-
+Rezepte nicht durch Unberechtigte markiert werden können. [<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27550 -E-Rezept-Fachdienst -Task markieren -Versicherter - Prüfung KVNR
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-PATCH-Operation auf eine konkrete
+über <id> adressierte/Task/<id> Ressource durch einen Versicherten, den Versicherten
+anhand der KVNR aus dem ACCESS_TOKEN im "Authorization"-Header des HTTP-Requests
+identifizieren, diese gegen die im gespeicherten Datensatz inTask.for.identifier
+hinterlegte KVNR des begünstigten Versicherten prüfen und bei Ungleichheit den Aufruf
+mit dem HTTP-Fehlercode 403 abweisen, damit ausschließlich der begünstigte
+Versicherte als Berechtigter einen Task ändert.[<=, eRp_FD, funkt. Eignung: Test
+Produkt/FA]
+A_27551 -E-Rezept-Fachdienst -Task markieren -Versicherter - FHIR-Validierung
+Parameters
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-PATCH-Operation auf eine konkrete
+über <id> adressierte/Task/<id> Ressource durch einen Versicherten auf die Ressource
+übertragene Parameters Ressource gegen das FHIR-
+ProfilGEM_ERPEU_PR_PAR_PATCH_Task_Input prüfen und bei Nicht-Konformität den Aufruf
+mit dem http-Status-Code 400 ablehnen, damit nur FHIR-valide Ressourcen in den E-
+Rezept-Fachdienst akzeptiert werden. [<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27552 -E-Rezept-Fachdienst -Task markieren -Versicherter - Änderung
+Markierung Task Ressource
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-PATCH-Operation auf eine konkrete
+über <id> adressierte/Task/<id> Ressource durch einen Versicherten, den im Parameter
+eu-isRedeemableByPatientAuthorization enthaltenen boolschen Wert
+inTask.extension:eu-isRedeemableByPatientAuthorization.valueBoolean setzen.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+7.1.8 Änderung in 6.1.1 HTTP-Operation GET
+A_27273 -E-Rezept-Fachdienst - Task abrufen - Versicherter - Verordnung in
+Europa einlösbar
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-GET-Operation auf einen einzelnen
+/Task/<id> durch einen Versicherten in Task.extension:eu-
+eprescription.valueBoolean zurückgeben, ob die Verordnung den Kriterien zum
+Einlösen im europäischen Ausland entspricht, damit dem Versicherten dargestellt werden
+kann, ob das E-Rezept im europäischen Ausland einlösbar ist.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+Die Kriterien, ob eine Verordnung im europäischen Ausland einlösbar ist, sind in A_27063-
+* beschrieben.
+7.1.9 Änderung in 6.4 Ressource Consent
+7.1.9.1 Änderung in HTTP-Operation DELETE
+A_27131 -E-Rezept-Fachdienst - Consent löschen - EUDISPCONS - Löschen
+Zugriffsberechtigung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-Operation DELETE auf den Endpunkt
+/Consent mit ?category=EUDISPCONS alle dem Versicherten zugeordneten
+Zugriffsberechtigungen anhand der KVNR des Versicherten im ACCESS_TOKEN im
+input.docx Spezifikation Seite 46 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 47 ===
+Feature: EU Zugriff E-Rezept
+"Authorization"-Header des HTTP-Requests identifizieren und löschen.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+7.1.9.2 Änderung in HTTP-Operation POST
+A_22162-01 -E-Rezept-Fachdienst - Consent schreiben – nur eine Einwilligung
+pro KVNR und Einwilligungstyp
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den
+Endpunkt /Consent sicherstellen, dass noch keine Consent Ressource für die KVNR im
+ACCESS_TOKEN und Consent.category.coding.code = <Einwilligungstyp> aus URL-
+Parametercategory gespeichert ist, um maximal eine Einwilligung für den Versicherten
+für jeden Einwilligungstypen zu speichern. Im Fehlerfall muss der HTTP-Request mit dem
+HTTP-Fehlercode 409 abgewiesen werden.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+7.1.10 Neues Kapitel in 6.12 Zugriffsberechtigung für Einlösen im
+europäischen Ausland
+Einen Zugriffsberechtigung eines Versicherten für das Einlösen von E-Rezepten im
+europäischen Ausland beinhaltet die folgenden Informationen:
+• KVNR des Versicherten,
+• Ländercode des Landes, für welches die Zugriffsberechtigung durch den Versicherten
+erteilt wurde,
+• Zugriffscode,
+• gültig bis (1h ab Einstellen), wird durch den E-Rezept-Fachdienst beim Einstellen der
+Zugriffsberechtigung gesetzt.
+A_27083 -E-Rezept-Fachdienst - Zugriffsberechtigung - periodische Bereinigung
+Der E-Rezept-Fachdienst MUSS periodisch prüfen, dass keine zeitlich ungültigen
+Zugriffsberechtigungen gespeichert sind.[<=, eRp_FD, funkt. Eignung:
+Herstellererklärung]
+7.1.10.1 Neues Kapitel 6.12.1 HTTP-Operation DELETE
+Die Operation führt zum Löschen der für den Versicherten gespeicherten
+Zugriffsberechtigung. Diese Operation steht dem Versicherten, der die
+Zugriffsberechtigung erteilt hat, zur Verfügung.
+A_27084 -E-Rezept-Fachdienst - Zugriffsberechtigung löschen - Rollenprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-DELETE-Operation auf den
+Endpunkt /$revoke-eu-access-permission die Rolle professionOID des Aufrufers im
+ACCESS_TOKEN im HTTP-RequestHeader "Authorization" feststellen und sicherstellen,
+dass ausschließlich Versicherte in der Rolleoid_versicherter die Operation am E-
+Rezept-Fachdienst aufrufen dürfen, damit die Information zur Zugriffsberechtigung nicht
+durch Unberechtigte gelöscht werden kann.[<=, eRp_FD, Sich.techn. Eignung:
+Produktgutachten]
+A_27085 -E-Rezept-Fachdienst - Zugriffsberechtigung löschen - Löschen
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-DELETE-Operation auf den
+Endpunkt /$revoke-eu-access-permission die KVNR des Versicherten im
+ACCESS_TOKEN im HTTP-RequestHeader "Authorization" feststellen und, falls
+vorhanden, zu dieser KVNR gespeicherte Zugriffsberechtigungen löschen.[<=, eRp_FD,
+funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 47 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 48 ===
+Feature: EU Zugriff E-Rezept
+7.1.10.2 Neues Kapitel 6.12.2 HTTP-Operation GET
+Mit der FHIR-Operation kann die Zugriffsberechtigung für die im ACCESS_TOKEN
+angegebene KVNR abgerufen werden. Diese Operation steht Versicherten zur Verfügung.
+A_27086 -E-Rezept-Fachdienst - Zugriffsberechtigung lesen - Rollenprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-GET-Operation auf den Endpunkt
+/$read-eu-access-permission die Rolle professionOID des Aufrufers im
+ACCESS_TOKEN im HTTP-RequestHeader "Authorization" feststellen und sicherstellen,
+dass ausschließlich Versicherte in der Rolleoid_versicherter die Operation am E-
+Rezept-Fachdienst aufrufen dürfen, damit die Information zur Einwilligung nicht durch
+Unberechtigte ausgelesen werden kann.[<=, eRp_FD, Sich.techn. Eignung:
+Produktgutachten]
+A_27087 -E-Rezept-Fachdienst - Zugriffsberechtigung lesen - Response
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-GET-Operation auf den Endpunkt
+/$read-eu-access-permission die KVNR des Versicherten im ACCESS_TOKEN im HTTP-
+RequestHeader "Authorization" feststellen und im Response falls vorhanden eine
+Ressource des Profils [GEM_ERP_PR_PAR_EU_Access_Authorization_Response] mit zur
+KVNR gespeicherte zeitlich gültige Zugriffsberechtigung übermitteln.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+7.1.10.3 Neues Kapitel 6.12.3 HTTP-Operation POST
+Die FHIR-Operation führt zum Schreiben einer neuen Zugriffsberechtigung. Diese
+Operation steht Versicherten zur Verfügung.
+A_27088 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Rollenprüfung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission die Rolle professionOID des Aufrufers im
+ACCESS_TOKEN imHTTP-RequestHeader "Authorization" feststellen und sicherstellen,
+dass ausschließlich Versicherte in der Rolleoid_versicherter die Operation am E-
+Rezept-Fachdienst aufrufen dürfen, damit eine Zugriffsberechtigte nicht durch
+Unberechtigte erteilt werden kann.[<=, eRp_FD, Sich.techn. Eignung: Produktgutachten]
+A_27089 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Prüfung
+Einwillung für KVNR
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission die KVNR des Versicherten im ACCESS_TOKEN im HTTP-
+RequestHeader "Authorization" feststellen und sicherstellen, dass ein Consent-Datensatz
+mitConsent.patient.identifier = KVNR und Consent.category.coding.code =
+EUDISPCONS existiert und bei fehlgeschlagener Prüfung die Operation mit dem HTTP-
+Fehlercode 403 und dem OperationOutcome "Das Erstellen einer Zugriffsberechtigung ist
+erst zulässig, wenn eine Einwilligung durch den Nutzer zum Einlösen von E-Rezepten im
+europäischen Ausland erteilt wurde." abbrechen, damit nur Versicherte eine
+Zugriffsberechtigung schreiben, die eine Einwilligung erteilt haben.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27090 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Prüfung
+Ländercode
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission prüfen, dass der im Request übermittelte Ländercode
+(Parameters.parameter:countryCode) einem Land entspricht, welches die Anwendung
+ePrescription/eDispensation Szenario Land A unterstützt und bei fehlschlagender Prüfung
+die Operation mit dem HTTP-Fehlercode 409 und dem OperationOutcome "Für das
+angefragte Land ist Einlösen von E-Rezepten nicht möglich." abbrechen, damit der
+Versicherte nur für zulässige europäische Länder eine Zugriffsberechtigung erteilt.[<=,
+eRp_FD, funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 48 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 49 ===
+Feature: EU Zugriff E-Rezept
+A_27091 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Prüfung
+Zugriffscode
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission prüfen, dass der im Request übermittelte Zugriffscode
+(Parameters.parameter:accessCode) das korrekte Format hat und bei fehlschlagender
+Prüfung die Operation mit dem HTTP-Fehlercode 400und dem OperationOutcome "Der
+übermittelte Zugriffscode ist nicht zulässig." abbrechen.[<=, eRp_FD, funkt. Eignung:
+Test Produkt/FA]
+Die Formatvorgaben für den Zugriffscode sind in [gemSpec_DM_eRp#A_27097-
+*]spezifiziert.
+A_27092 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Löschen
+bestehender Zugriffsberechtigung
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission prüfen, ob für die im Request übermittelte KVNR
+Zugriffsberechtigungen gespeichert sind und falls ja, diese löschen.[<=, eRp_FD, funkt.
+Eignung: Test Produkt/FA]
+A_27093 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Neue
+Zugriffsberechtigung speichern
+Der E-Rezept-Fachdienst MUSS beim Aufruf der HTTP-POST-Operation auf den Endpunkt
+/$grant-eu-access-permission mit dem im Request übermittelten KVNR, Zugriffscode
+und Ländercode eine neue Zugriffsberechtigung speichern und den Wert valid_until
+auf aktuellen Zeitpunkt + 1h setzen.[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+A_27094 -E-Rezept-Fachdienst - Zugriffsberechtigung schreiben - Response
+Der E-Rezept-Fachdienst MUSS im Response zu einem Aufruf der HTTP-POST-Operation
+auf den Endpunkt /$grant-eu-access-permission eine Ressource des Profils
+[GEM_ERP_PR_PAR_EU_Access_Authorization_Response] mit den Daten des gespeicherten
+Datensatz zur Zugriffsberechtigung übermitteln.[<=, eRp_FD, funkt. Eignung: Test
+Produkt/FA]
+7.1.10.4 Neues Kapitel 6.12.4 Zulässige europäische Länder
+Um zu bestimmen, welche europäischen Länder das die Anwendung
+ePrescription/eDispensation Szenario Land A unterstützen, lädt der E-Rezept-Fachdienst
+die Liste dieser Länder aus dem FHIR-VZD. Die Liste kann für 96h gecacht werden.
+Der Ablauf der Authentisierung und Suche ist in
+[gemSpec_VZD_FHIR_Directory#AF_10403 Fachdienst sucht Einträge im FHIR-Directory]
+beschrieben. Der Betreiber des E-Rezept-Fachdienst muss beim FHIR-VZD Anbieter für
+den Zugriff auf den FHIR-VZD nach [gemSpec_VZD_FHIR_Directory#Nutzer und
+Rollen] registrieren.
+A_27095 -E-Rezept-Fachdienst - Zugriffsberechtigung - Liste zulässiger Länder
+Der E-Rezept-Fachdienst MUSS die Liste aller zulässigen Länder aus dem
+Verzeichnisdienst ermitteln, indem an den Verzeichnisdienst folgende Abfrage gestellt
+wird:
+• Abfrage der Ressource "HealthcareService",
+• HealthcareServices, deren Speciality "57833-6" aus https://loinc.org enthalten,
+• HealthcareServices, deren Organisation aktiv sind,
+• HealthcareServices, deren Organisation den OrganizationProfessionOIDType
+"1.2.276.0.76.4.292" entspricht,
+• Einbeziehen der Organisation in das Rückgabeergebnis.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 49 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 50 ===
+Feature: EU Zugriff E-Rezept
+A_27096 -E-Rezept-Fachdienst - Zugriffsberechtigung - Caching Liste zulässiger
+Länder
+Der E-Rezept-Fachdienst DARF NICHT Informationen zur Liste zulässiger Länder
+verwenden, welche länger als 96h lokal durch den E-Rezept-Fachdienst gecacht wurden.
+[<=, eRp_FD, funkt. Eignung: Herstellererklärung]
+7.2 Anforderungen an das E-Rezept-FdV
+Die nachfolgenden Anforderungen werden in das Dokument [gemSpec_eRp_FdV]
+übernommen.
+Das E-Rezept-FdV der gematik wird die Anwendungsfälle umsetzen. Für die E-Rezept-FdV
+der Krankenkassen ist die Umsetzung optional.
+7.2.1.1 Änderungen in 5.2.1 Übersicht Anwendungsfälle
+Tabelle 10: TAB_FdVERP_003 – Übersicht Anwendungsfälle E-Rezept-FdV
+Anwendungsfall Workflow Umsetzung
+...
+Einwilligung verpflichtend, wenn einer der
+folgenden Funktionalitäten im
+Einwilligung erteilen E-Rezept-FdV umgesetzt wird:
+• Management von
+Einwilligungen einsehen Abrechnungsinformationen
+• Zugriffsberechtigung für
+Einwilligung widerrufen
+Einlösen im EU Ausland
+...
+Einlösen im optional
+EU-Ausland
+Zugriffsberechtigung für verpflichtend, wenn die
+Einlösen im EU-Ausland Zugriffsberechtigung für
+erteilen Einlösen im EU-Ausland
+umgesetzt wird
+Zugriffsberechtigung
+Einlösen im EU-Ausland
+anzeigen
+Zugriffsberechtigung
+Einlösen im EU-Ausland
+abrufen
+Zugriffsberechtigung
+Einlösen im EU-Ausland
+löschen
+input.docx Spezifikation Seite 50 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 51 ===
+Feature: EU Zugriff E-Rezept
+E-Rezept zum Einlösen im
+EU-Ausland markieren
+7.2.1.2 Änderungen in 5.2.3 Anwendungsfälle
+7.2.1.3 Neues Kapitel 5.2.3.x E-Rezept markieren
+Mit diesem Anwendungsfall kann der Versicherte E-Rezepte markieren, welche dann zum
+Einlösen im europäischen Ausland vorgesehen sind, d.h. dem LE-EU bei der Abfrage der
+einlösbaren E-Rezepte angezeigt werden.
+A_27488 -E-Rezept-FdV: E-Rezept zum Einlösen im EU-Ausland markieren
+Das E-Rezept-FdV KANN es dem Nutzer ermöglichen, die Markierung eines E-Rezeptes
+zum Einlösen im EU-Ausland zu verwalten.[<=, eRp_FdV, funkt. Eignung:
+Herstellererklärung]
+Wenn eine Apotheke im europäischen Ausland nach Übermittlung der
+Zugriffsberechtigung die durch den Versicherten zum Einlösen vorgesehenen E-Rezepte
+abruft und zum Einlösen vorsieht, können diese E-Rezepte nicht mehr in einer anderen
+Apotheke eingelöst werden. Daher muss vor dem Markieren der E-Rezepte verpflichtend
+ein Hinweis angezeigt werden, dass die Belieferungsmöglichkeit vor Einlösung mit dem
+jeweiligen Apotheker zu klären ist.
+A_27617 -E-Rezept-FdV: E-Rezept zum Einlösen im EU-Ausland markieren -
+Hinweis Belieferungsmöglichkeit
+Das E-Rezept-FdV MUSS im Anwendungsfall "E-Rezept markieren" dem Nutzer vor der
+Möglichkeit zum Markieren der E-Rezepte zum Einlösen im EU-Ausland einen Hinweis
+anzeigen, dass die Belieferungsmöglichkeit für die E-Rezepte mit der Apotheke vorab
+geklärt werden soll.[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27489 -E-Rezept-FdV: optional: E-Rezept markieren
+Das E-Rezept-FdV KANN den Anwendungsfall "E-Rezept markieren" umsetzen.[<=,
+eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27618 -E-Rezept-FdV: E-Rezept markieren - E-Rezepte auswählen
+Das E-Rezept-FdV MUSS im Anwendungsfall "E-Rezept markieren" dem Nutzer
+ermöglichen, ein oder mehrere E-Rezepte auszuwählen.[<=, eRp_FdV, funkt.
+Eignung: Herstellererklärung]
+A_27490 -E-Rezept-FdV: E-Rezept markieren
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den
+Anwendungsfall "E-Rezept durch den Versicherten markieren" gemäß
+TAB_FdVERP_xxx umsetzen.
+Tabelle 11: TAB_FdVERP_xxx – E-Rezept markieren
+Name E-Rezept markieren
+Auslöser • Aufruf des Anwendungsfalls in der Graphical User
+Interface (GUI)
+Akteur Versicherter
+Vorbedingung • Der Nutzer hat eine oder mehrere Markierungen aus- oder
+input.docx Spezifikation Seite 51 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 52 ===
+Feature: EU Zugriff E-Rezept
+abgewählt.
+• Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingun • Die Markierungen sind im E-Rezept-Fachdienst gespeichert.
+g
+Standardablauf 1. Task-ID bestimmen
+2. FHIR Ressource erstellen
+3. Daten im E-Rezept-Fachdienst speichern
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_27545 -E-Rezept-FdV: E-Rezept markieren - FHIR Ressource erstellen
+Das E-Rezept-FdV MUSS im Anwendungsfall "E-Rezept markieren" eineParameters
+Ressource des Profils [GEM ERPEU PR PAR PATCH Task Input]erstellen.[<=, eRp_FdV,
+funkt. Eignung: Test Produkt/FA]
+A_27491 -E-Rezept-FdV: E-Rezept markieren - Speicherrequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "E-Rezept markieren" zum Speichern
+der Information im E-Rezept-Fachdienst die HTTP-OperationPATCH /Task/<id> mit:
+• ACCESS_TOKEN im Authorization-Header,
+• Prescription-ID in URL <id>,
+• FHIR-Ressource im HTTP-Request-Body,
+ausführen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+7.2.1.4 Änderungen in Kapitel 5.2.3.19 Einwilligungen
+Die bestehenden Anwendungsfälle zur Verwaltung von Einwilligungen werden
+verallgemeinert.
+A_27105 -E-Rezept-FdV: Einwilligung zum Speichern von
+Abrechnungsinformation
+Das E-Rezept-FdV KANN es dem Nutzer, der sich als PKV-Versicherte identifiziert hat,
+ermöglichen, die "Einwilligung zum Speichern von Abrechnungsinformationen" zu
+verwalten.[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27106 -E-Rezept-FdV: Einwilligung zum Einlösen im EU-Ausland
+Das E-Rezept-FdV KANN es dem Nutzer ermöglichen, die "Einwilligung zum Einlösen im
+EU-Ausland" zu verwalten.[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+7.2.1.4.1 Änderung in 5.2.3.19.1 Einwilligung zum Speichern der
+Abrechnungsinformationen erteilen
+Das Kapitel wird in "Einwilligung erteilen" umbenannt.
+Mit diesem Anwendungsfall kann der Nutzer (Versicherter) eine Einwilligung erteilen und
+die Information auf dem E-Rezept-Fachdienst speichern.
+A_24565-01 -E-Rezept-FdV: optional: Einwilligung erteilen
+Das E-Rezept-FdV KANN den Anwendungsfall "Einwilligung erteilen" umsetzen.[<=,
+eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_22709-02 -E-Rezept-FdV: Einwilligung erteilen - Einwilligungstext
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung erteilen" den Text für die
+Einwilligung derart gestalten, dass dem Nutzer eine informierte Einwilligung möglich ist.
+input.docx Spezifikation Seite 52 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 53 ===
+Feature: EU Zugriff E-Rezept
+Insbesondere MÜSSEN enthalten sein: der Verwendungszweck, die konkreten
+Informationen über die Art der erhobenen Daten, die Speicherdauer, Hinweis auf
+Freiwilligkeit, auf Widerrufsrecht, Hinweis auf die Folgen bei Verweigerung oder Widerruf.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_22163-02 -E-Rezept-FdV: Einwilligung erteilen - Einwilligung eingeben
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung erteilen" es dem Nutzer
+ermöglichen, die Einwilligung einzugeben.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_22164-02 -E-Rezept-FdV: Einwilligung erteilen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Einwilligung durch Versicherten erteilen" gemäß TAB_FdVERP_020 umsetzen.
+Tabelle 12: TAB_FdVERP_020 – Einwilligung erteilen
+Name Einwilligung erteilen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+Vorbedingung • Der Nutzer hat eine Einwilligung für einen Einwilligungstypen in
+der GUI erteilt.
+• Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingung • Die Information zur Einwilligung ist im E-Rezept-Fachdienst
+gespeichert.
+Standardablauf 1. Consent Ressource erstellen
+2. Einwilligung speichern
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_22165-01 -E-Rezept-FdV: Einwilligung erteilen - Consent Ressource erstellen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung erteilen" eineConsent
+Ressource mit:
+• Versicherten-ID inConsent.patient.identifier,
+• Einwilligungstyp in Consent.category.coding.code,
+erstellen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+Der Einwilligungstyp ist gemäß einem der folgenden Codesysteme zu wählen:
+• [GEM_ERPCHRG_CS_ConsentType] oder
+• [GEM_ERPEU_CS_ConsentType].
+A_22166-01 -E-Rezept-FdV: Einwilligung erteilen - Speicherrequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung erteilen" zum Speichern der
+Information im E-Rezept-Fachdienst die HTTP-OperationPOST /Consent mit:
+• ACCESS_TOKEN im Authorization-Header,
+ausführen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+7.2.1.4.2 Änderung in 5.2.3.19.2 Einwilligungsinformation abrufen
+Mit diesem Anwendungsfall kann der Nutzer (Versicherter) die Information, welche
+Einwilligungen erteilt wurden, vom E-Rezept-Fachdienst abrufen.
+input.docx Spezifikation Seite 53 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 54 ===
+Feature: EU Zugriff E-Rezept
+A_24566-01 -E-Rezept-FdV: optional: Einwilligungsinformation abrufen
+Das E-Rezept-FdV KANN den Anwendungsfall "Einwilligungen durch Versicherten
+einsehen" umsetzen.[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_22167-02 -E-Rezept-FdV: Einwilligungsinformation abrufen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Einwilligungen durch Versicherten einsehen" gemäß TAB_FdVERP_021 umsetzen.
+Tabelle 13: TAB_FdVERP_021 – Einwilligungsinformation abrufen
+Name Einwilligungsinformation abrufen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+Vorbedingung • Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingun • Die Information zur Einwilligung liegt im FdV zur Anzeige vor.
+g
+Standardablauf 1. Einwilligung abfragen
+[<=, eRp_FdV, eRp_AdV, funkt. Eignung: Test Produkt/FA]
+A_22168-02 -E-Rezept-FdV: Einwilligungsinformation abrufen - Abfragerequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligungsinformation abrufen" zum
+Abrufen der Information vom E-Rezept-Fachdienst die HTTP-OperationGET /Consent mit:
+• ACCESS_TOKEN im Authorization-Header,
+ausführen.[<=, eRp_FdV, eRp_AdV, funkt. Eignung: Test Produkt/FA]
+Im Response können mehrere Consent Ressourcen enthalten sein. Der Einwilligungstyp
+des Consent ist in Consent.category.coding.code angegeben. Die Werte können sich auf
+folgende Codesysteme beziehen:
+[GEM_ERPCHRG_CS_ConsentType], [GEM_ERPEU_CS_ConsentType].
+7.2.1.4.3 Änderung in 5.2.3.19.3 Einwilligung zum Speichern der
+Abrechnungsinformationen widerrufen
+Das Kapitel wird in "Einwilligung widerrufen" umbenannt.
+Mit diesem Anwendungsfall kann der Nutzer (Versicherter) eine Einwilligung widerrufen
+und die Information zur Einwilligung vom E-Rezept-Fachdienst zu löschen.
+Mit dem Widerruf der "Einwilligung zum Speichern von Abrechnungsinformationen auf
+dem E-Rezept-Fachdienst" werden alle Abrechnungsinformationen des Versicherten
+gelöscht. Das Löschen erfolgt unwiederbringlich.
+Mit dem Widerruf der "Einwilligung zum Einlösen im EU-Ausland" wird eine
+gegebenenfalls erteilte Zugriffsberechtigung gelöscht.
+Mit dem Anwendungsfall "Einwilligungsinformation abfragen" können die bestehenden
+Einwilligungen bestimmt werden.
+A_24567-01 -E-Rezept-FdV: optional: Einwilligung widerrufen
+Das E-Rezept-FdV KANN den Anwendungsfall "Einwilligung widerrufen" umsetzen.[<=,
+eRp_FdV, funkt. Eignung: Herstellererklärung]
+input.docx Spezifikation Seite 54 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 55 ===
+Feature: EU Zugriff E-Rezept
+A_22169-02 -E-Rezept-FdV: Einwilligung widerrufen - Widerruf eingeben
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung widerrufen" es dem Nutzer
+ermöglichen, den Widerruf zu erfassen.[<=, eRp_FdV, eRp_AdV, funkt. Eignung:
+Herstellererklärung]
+A_22330-02 -E-Rezept-FdV: Einwilligung widerrufen - Bestätigung
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung widerrufen" vom Nutzer eine
+Bestätigung einholen, dass die Einwilligung widerrufen werden soll, somit ggf.
+korrespondierende Daten gelöscht werden und die Möglichkeit geben, das Widerrufen
+abzubrechen.[<=, eRp_FdV, eRp_AdV, funkt. Eignung: Test Produkt/FA]
+A_22170-02 -E-Rezept-FdV: Einwilligung widerrufen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Einwilligung durch Versicherten widerrufen" gemäß TAB_FdVERP_022 umsetzen.
+Tabelle 14: TAB_FdVERP_022 – Einwilligung widerrufen
+Name Einwilligung widerrufen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+Vorbedingung • Der Nutzer hat sich gegenüber der TI authentisiert.
+• Im FdV ist bekannt, welche Einwilligungen bestehen
+(Anwendungsfall "Einwilligungsinformation abfragen").
+• Der Nutzer hat den Widerruf einer Einwilligung in der GUI
+eingegeben.
+Nachbedingun • Die Information zur Einwilligung ist im E-Rezept-Fachdienst
+g gelöscht.
+• Bezüglich der Einwilligung relevante Daten sind im E-Rezept-
+Fachdienst gelöscht.
+Standardablauf 1. Einwilligung Abrechnungsinformation löschen
+[<=, eRp_FdV, eRp_AdV, funkt. Eignung: Test Produkt/FA]
+A_22171-01 -E-Rezept-FdV: Einwilligung widerrufen - Löschrequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "Einwilligung widerrufen" zum Löschen der
+Information im E-Rezept-Fachdienst die HTTP-OperationDELETE /Consent/?
+category=<Einwilligungstyp> mit
+• ACCESS_TOKEN im Authorization-Header
+• Einwilligungstyp in ?category
+ausführen.[<=, eRp_FdV, eRp_AdV, funkt. Eignung: Test Produkt/FA]
+Der Einwilligungstyp ist entsprechend dem
+Codesystem[GEM_ERPCHRG_CS_ConsentType], [GEM_ERPEU_CS_ConsentType]
+anzugeben.
+input.docx Spezifikation Seite 55 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 56 ===
+Feature: EU Zugriff E-Rezept
+7.2.1.5 Neues Kapitel 5.2.3.x Zugriffsberechtigung für Einlösen im
+europäischen Ausland
+7.2.1.5.1 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung erteilen
+Mit diesem Anwendungsfall kann der Nutzer (Versicherter) eine Zugriffsberechtigung für
+Leistungserbringer in einem europäischen Land erteilen und die Information auf dem E-
+Rezept-Fachdienst speichern.
+A_27107 -E-Rezept-FdV: optional: Zugriffsberechtigung erteilen
+Das E-Rezept-FdV KANN den Anwendungsfall "Zugriffsberechtigung erteilen" umsetzen.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27108 -E-Rezept-FdV: Anzeige der E-Rezepte für EU-Zugriff
+Das E-Rezept-FdV MUSS es dem Nutzer ermöglichen, sich die E-Rezepte anzeigen zu
+lassen, auf die die Berechtigung für EU-Zugriff wirkt.[<=, eRp_FdV, funkt. Eignung:
+Herstellererklärung]
+Um zu bestimmen, welche europäischen Länder die Anwendung
+ePrescription/eDispensation Szenario Land A unterstützen, lädt der E-Rezept-FdV die Liste
+dieser Länder aus dem FHIR-VZD. Die Liste kann für 96h gecacht werden.
+A_27109 -E-Rezept-FdV: Zugriffsberechtigung - Liste zulässiger Länder
+Das E-Rezept-FdV MUSS Anwendungsfall "Zugriffsberechtigung erteilen" die Liste aller
+zulässigen Länder aus dem Verzeichnisdienst ermitteln, indem an den Verzeichnisdienst
+folgende Abfrage gestellt wird:
+• Abfrage der Ressource "HealthcareService",
+• HealthcareServices, deren Speciality "57833-6" aus https://loinc.org enthalten,
+• HealthcareServices, deren Organisation aktiv sind,
+• HealthcareServices, deren Organisation den OrganizationProfessionOIDType
+"1.2.276.0.76.4.292" entspricht,
+• Einbeziehen der Organisation in das Rückgabeergebnis.
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_27110 -E-Rezept-FdV: Zugriffsberechtigung - Caching Liste zulässiger Länder
+Das E-Rezept-FdV DARF NICHT Informationen zur Liste zulässiger Länder verwenden,
+welche länger als 96h lokal durch das E-Rezept-FdV gecacht wurden.[<=, eRp_FdV, funkt.
+Eignung: Herstellererklärung]
+A_27111 -E-Rezept-FdV: Zugriffsberechtigung erteilen - Land auswählen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung erteilen" es dem
+Nutzer ermöglichen, ein Land aus der Liste der zulässigen Länder auszuwählen, für das
+der Nutzer die Zugriffsberechtigung erteilen möchte.[<=, eRp_FdV, funkt. Eignung:
+Herstellererklärung]
+A_27112 -E-Rezept-FdV: Zugriffsberechtigung erteilen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Zugriffsberechtigung erteilen" gemäß TAB_FdVERP_xxx umsetzen.
+Tabelle 15: TAB_FdVERP_xxx – Zugriffsberechtigung erteilen
+Name Zugriffsberechtigung erteilen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+input.docx Spezifikation Seite 56 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 57 ===
+Feature: EU Zugriff E-Rezept
+Vorbedingung • Der Nutzer hat ein Land ausgewählt, für das der Nutzer dei
+Zugriffsberechtigung erteilen möchte
+• Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingun • Die Information zur Zugriffsberechtigung liegt im FdV zur Anzeige
+g vor.
+Standardablauf 1. Zugriffscode erzeugen
+2. Zugriffsberechtigung am E-Rezept-Fachdienst speichern
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_27113 -E-Rezept-FdV: Zugriffsberechtigung erteilen - Zugriffscode erzeugen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung" einen eigens
+generierten Zugriffscode als Zufallswert erzeugen.[<=, eRp_FdV, Sich.techn. Eignung:
+Produktgutachten]
+Das Format für den Zugriffscode ist in [gemSpec_DM_eRp#A_27097-*] beschrieben.
+Für jede weitere Erteilung einer Zugriffsberechtigung für ePrescription/eDispensation
+Szenario Land A muss ein neuer Zugriffscode erzeugt werden.
+A_27114 -E-Rezept-FdV: Zugriffsberechtigung erteilen - Zugriffsberechtigung
+am E-Rezept-Fachdienst speichern
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung erteilen" zum
+Speichern der Information am E-Rezept-Fachdienst die HTTP-OperationPOST /$grant-eu-
+access-permission mit:
+• ACCESS_TOKEN im Authorization-Header,
+• Organization.extension:ncpehCountryEx.valueCodeableConcept.coding.code des vom
+Nutzer ausgewählten Landes in Parameters.parameter:countryCode,
+• erzeugter Zugriffscode in Parameters.parameter:accessCode,
+ausführen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+Im Response übermittelt der E-Rezept-Fachdienst in Parameters.parameter:validUntil die
+Gültigkeitsdauer der Zugriffsberechtigung.
+7.2.1.5.2 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung anzeigen
+Mit diesem Anwendungsfall kann ein Nutzer eine bestehende Zugriffsberechtigung im
+Display anzeigen, um die Information an einen Leistungserbringer zu übermitteln.
+Die Information kann nach dem Erteilen der Zugriffsberechtigung lokal gespeichert
+worden sein oder vom E-Rezept-Fachdienst ermittelt werden.
+A_27115 -E-Rezept-FdV: optional: Zugriffsberechtigung anzeigen
+Das E-Rezept-FdV KANN den Anwendungsfall "Zugriffsberechtigung anzeigen" umsetzen.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27116 -E-Rezept-FdV: Zugriffsberechtigung anzeigen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung anzeigen" folgende
+Informationen auf dem Display anzeigen:
+• Name des Landes,
+• Gültigkeitsende,
+input.docx Spezifikation Seite 57 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 58 ===
+Feature: EU Zugriff E-Rezept
+• Zugriffscode,
+• KVNR des Versicherten.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+Für die Anzeige der Gültigkeitsdauer ist die Zeitzone zu beachten, in der der Nutzer sich
+befindet.
+A_27483 -E-Rezept-FdV: Zugriffsberechtigung anzeigen - Unterscheidbarkeit
+der Zeichen bei Zugriffscode
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung anzeigen" bei der
+Anzeige des Zugriffscodes die Lesbarkeit der Zeichen des Zugriffscodes sicherstellen.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+Hinweis: Mit Lesbarkeit ist das Erkennen und Unterscheiden einzelner Buchstaben und
+Ziffern gemeint, d.h. die Unterscheidbarkeit von beispielsweise von 0 (Null) und O
+(Großbuchstabe O), sowie I (Großbuchstabe i) und l (Kleinbuchstabe L) und 1 (Ziffer Eins).
+A_27117 -E-Rezept-FdV: Zugriffsberechtigung anzeigen - Gültigkeit Restdauer
+hervorheben
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung anzeigen" die
+Gültigkeitsdauer der Zugriffsberechtigung auf dem Display hervorheben, wenn die
+Gültigkeitsdauer 10 Minuten unterschreitet.[<=, eRp_FdV, funkt. Eignung:
+Herstellererklärung]
+A_27118 -E-Rezept-FdV: Zugriffsberechtigung anzeigen - Gültigkeit Ablauf
+anzeigen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung anzeigen", wenn die
+Gültigkeit der Zugriffsberechtigung zeitlich abgelaufen ist, den Versicherten informieren.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+Hinweis: Es reicht aus, dass die Information über den Ablauf der Zugriffsberechtigung nur
+angezeigt wird, während der Nutzer auf dem Gerät aktiv ist.
+Der zeitliche Ablauf der Zugriffsberechtigung wird nicht durch den E-Rezept-Fachdienst
+signalisiert.
+7.2.1.5.3 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung abrufen
+Mit diesem Anwendungsfall kann eine am E-Rezept-Fachdienst registrierte
+Zugriffsberechtigung ermittelt werden.
+A_27119 -E-Rezept-FdV: optional: Zugriffsberechtigung abrufen
+Das E-Rezept-FdV KANN den Anwendungsfall "Zugriffsberechtigung abrufen" umsetzen.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27120 -E-Rezept-FdV: Zugriffsberechtigung abrufen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Zugriffsberechtigung abrufen" gemäß TAB_FdVERP_xxx umsetzen.
+Tabelle 16: TAB_FdVERP_xxx – Zugriffsberechtigung abrufen
+Name Zugriffsberechtigung abrufen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+input.docx Spezifikation Seite 58 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 59 ===
+Feature: EU Zugriff E-Rezept
+Vorbedingung • Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingun • Die Information zur Zugriffsberechtigung liegt im FdV zur Anzeige
+g vor.
+Standardablauf 1. Zugriffsberechtigung abfragen
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_27121 -E-Rezept-FdV: Zugriffsberechtigung abrufen - Abfragerequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung abrufen" zum Abrufen
+der Information vom E-Rezept-Fachdienst die HTTP-OperationGET /$read-eu-access-
+permission mit:
+• ACCESS_TOKEN im Authorization-Header,
+ausführen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+Im Response kann ein Zugriffsberechtigungsdatensatz
+[GEM_ERP_PR_PAR_EU_Access_Authorization_Response] enthalten sein.
+7.2.1.5.4 Neues Kapitel 5.2.3.x.y Zugriffsberechtigung löschen
+Mit diesem Anwendungsfall kann der Nutzer (Versicherter) eine zuvor erteilte
+Zugriffsberechtigung am E-Rezept-Fachdienst löschen.
+A_27122 -E-Rezept-FdV: optional: Zugriffsberechtigung löschen
+Das E-Rezept-FdV KANN den Anwendungsfall "Zugriffsberechtigung löschen" umsetzen.
+[<=, eRp_FdV, funkt. Eignung: Herstellererklärung]
+A_27123 -E-Rezept-FdV: Zugriffsberechtigung löschen - Löschwunsch eingeben
+Das E-Rezept-FdV MUSS es dem Nutzer im Anwendungsfall "Zugriffsberechtigung
+löschen" ermöglichen den Löschwunsch einzugeben.[<=, eRp_FdV, funkt. Eignung:
+Herstellererklärung]
+A_27124 -E-Rezept-FdV: Zugriffsberechtigung löschen
+Das E-Rezept-FdV MUSS, wenn es den Anwendungsfall umsetzt, den Anwendungsfall
+"Zugriffsberechtigung löschen" gemäß TAB_FdVERP_xxx umsetzen.
+Tabelle 17: TAB_FdVERP_xxx – Zugriffsberechtigung löschen
+Name Zugriffsberechtigung löschen
+Auslöser • Aufruf des Anwendungsfalls in der GUI
+Akteur Versicherter
+Vorbedingung • Der Nutzer hat sich gegenüber der TI authentisiert.
+Nachbedingun • Die Zugriffsberechtigung ist auf dem E-Rezept-Fachdienst gelöscht
+g
+Standardablauf 1. Löschrequest
+2. Zugriffsberechtigung lokal löschen
+[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 59 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 60 ===
+Feature: EU Zugriff E-Rezept
+A_27125 -E-Rezept-FdV: Zugriffsberechtigung löschen - Abfragerequest
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung löschen" zum Löschen
+der Information auf dem E-Rezept-Fachdienst die HTTP-OperationDELETE /$revoke-eu-
+access-permission mit:
+• ACCESS_TOKEN im Authorization-Header,
+ausführen.[<=, eRp_FdV, funkt. Eignung: Test Produkt/FA]
+A_27126 -E-Rezept-FdV: Zugriffsberechtigung löschen - lokale
+Zugriffsberechtigung löschen
+Das E-Rezept-FdV MUSS im Anwendungsfall "Zugriffsberechtigung löschen" die lokal
+gespeicherten Informationen zur Zugriffsberechtigung löschen.[<=, eRp_FdV, funkt.
+Eignung: Herstellererklärung]
+7.3 Daten- und Informationsmodell
+7.3.1 Anpassungen in de.gematik.erezept.workflow.r4
+Neue extensions in GEM_ERP_PR_Task:
+• Task.extension:eu-isRedeemableByProperties
+Gibt an, ob ein E-Rezept in der EU eingelöst werden kann. Dieses Flag wird vomE-
+Rezept-Fachdienst gesetzt und nach Geschäftslogik bestimmt.
+• Task.extension:eu-isRedeemableByPatientAuthorization
+Gibt an, ob der Versicherte ein E-Rezept in der EU einlösen möchte.
+7.3.2 Neues FHIR Package de.gematik.erezept-workflow-eu
+• [de.gematik.erezept.eu 1.0.0-rc1].
+7.3.2.1 Profile
+OperationDefinitions:
+• [eucloseoperation]
+• [get-prescription-eu]
+• [grant-eu-access-permission]
+• [read-eu-access-permission]
+• [revoke-eu-access-permission].
+Parameters Profile für die Operationen:
+• [gem_erpeu_pr_par_access_authorization_request]
+• [gem_erpeu_pr_par_access_authorization_response]
+• [gem_erpeu_pr_par_closeoperation_input]
+• [gem_erpeu_pr_par_get_prescription_input].
+Parameters Profile zur Nutzung mit PATCH Methode:
+• [gem_erpeu_pr_par_patch_task_input].
+input.docx Spezifikation Seite 60 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 61 ===
+Feature: EU Zugriff E-Rezept
+Profile:
+• [gem_erpeu_pr_access_code]
+• [gem_erpeu_pr_medicationdispense]
+• [gem_erpeu_pr_organization]
+• [gem_erpeu_pr_practitioner]
+• [gem_erpeu_pr_practitionerrole]
+• [gem_erpeu_pr_consent].
+7.3.2.2 Terminologien
+Code Systeme:
+• [gem-erpeu-cs-consenttype]
+beinhaltet für die Einwilligung zum Einlösen im EU-Ausland den Code:
+EUDISPCONS - Consent for redeeming e-prescriptions in EU countries
+• [gem-erpeu-cs-requesttype].
+ValueSets:
+• [gem-erpeu-vs-consenttype]
+• [gem-erpeu-vs-consent-policyrule]
+• [gem-erpeu-vs-requesttype]
+• [gem-erpeu-vs-practitionerrole]
+• [gem-erpeu-vs-healthcarefacilitytype].
+Die nachfolgenden Anforderungen werden in das Dokument [gemSpec_DM_eRp]
+übernommen.
+7.3.3 Änderung in Kapitel 2.1 FHIR-Ressourcen
+A_27189 -Version FHIR-Package de.gematik.erezept.eu
+Die Produkttypen der Anwendung E-Rezept und Clientsysteme des E-Rezept-Fachdienstes
+MÜSSEN das FHIR-Packagede.gematik.erezept.eu in der Version gemäß [FHIR Version]
+unterstützen.[<=, eRp_FdV, eRp_FD, NCPeH_FD, funkt. Eignung: Herstellererklärung]
+7.3.4 Neues Kapitel 2.x Zugriffsberechtigung für Einlösen im
+europäischen Ausland
+A_27097 -Format Zugriffscode
+Produkttypen der Anwendung E-Rezept MÜSSEN, wenn sie einen Zugriffscode für das
+Einlösen im europäischen Ausland verarbeiten, folgende Formatvorgaben für den
+Zugriffscode einhalten:
+• String mit Gesamtlänge von 6 Zeichen,
+• erlaubte Zeichen: a-z, A-Z, 0-9.
+[<=, eRp_FdV, eRp_FD, funkt. Eignung: Herstellererklärung]
+7.3.5 Änderung in Kapitel 2.5 Zugriffsprotokoll
+A_19296-04 -E-Rezept-Fachdienst - Inhalt Protokolleintrag
+input.docx Spezifikation Seite 61 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 62 ===
+Feature: EU Zugriff E-Rezept
+Der E-Rezept-Fachdienst MUSS einen Protokolleintrag mit den folgenden Werten befüllen:
+• AuditEvent.text: Generierung eines HTML-<div>-Elements mit lesbarer
+Beschreibung in einfacher Sprache,
+• AuditEvent.type: Fester Wertrest gemäß [CodeSystem: Audit Event ID],
+• AuditEvent.subtype: aus dem ValueSet [ValueSet http://hl7.org/fhir/ValueSet/audit-
+event-sub-type] gemäß [CodeSystem http://hl7.org/fhir/restful-interaction]:
+• create beim Hinzufügen/Speichern/Anlegen eines Datenobjekts mit
+Versichertenbezug (mit Ausnahme von AuditEvent- und Communication-
+Ressource),
+• read beim lesenden Zugriff auf ein Datenobjekt mit Versichertenbezug,
+• update, wenn das Datenobjekt mit Versichertenbezug geändert/aktualisiert wird,
+• delete, wenn das Datenobjekt mit Versichertenbezug manuell oder automatisch
+gelöscht wird,
+• AuditEvent.action: analog AuditEvent.subType (C, R, U, D) gemäß [ValueSet
+http://hl7.org/fhir/ValueSet/audit-event-action],
+• AuditEvent.recorded: aktuelle Systemzeit des E-Rezept-Fachdienstes,
+• AuditEvent.outcome: Ergebnis der aufgerufenen Operation gemäß [ValueSet
+http://hl7.org/fhir/ValueSet/audit-event-outcome] (0 = Erfolg, 4 = Fehler auf
+Clientseite, 8 = Serverfehler),
+• AuditEvent.agent.type: Fester Werthumanuser bzw. bei Übermittlung an ePA oder
+NCPeH-FDdataprocessor aus [CodeSystem: Security Role Type (Experimental)],
+• AuditEvent.agent.name:Lesbarer Name aus ID_TOKEN des Zugreifenden, der die zu
+protokollierende Aktion getriggert hat, z.B. "Praxis Dr. Müller, Bahnhofstr. 78" oder
+Versicherter z.B. "Max Mustermann" bzw. bei Übermittlung an ePA "E-Rezept-
+Fachdienst",
+• AuditEvent.agent.who: KVNR bzw. Telematik-ID des zugreifenden Nutzers aus
+ID_TOKEN, der diesen Protokolleintrag ausgelöst hat,
+• AuditEvent.agent.requestor: Fester Wertfalse, da keine Protokolleinträge von
+außen erzeugt werden,
+• AuditEvent.soure.site: Fester WertE-Rezept-Fachdienst,
+• AuditEvent.soure.observer: Device-Informationen des E-Rezept-Fachdienstes
+(status, serialnumber=gemäß Release),
+• AuditEvent.entity.what: Referenz auf das durch den Abruf betroffene Datenobjekt
+Task, ChargeItem, MedicationDispense, Consent oder Objekt der
+Zugriffsberechtigung,
+• AuditEvent.entity.name: Eintrag der KVNR des betroffenen Versicherten aus dem
+Identifier des protokollierten Datenobjekts (String),
+• AuditEvent.entity.description: Rezept-ID als Identifier, wird übernommen aus
+MedicationDispense, ChargeItem oder Task bzw. Consent.category.coding.code bei
+Anlegen oder Löschen eines Consent bzw. countryCode bei Anlegen oder Löschen
+einer Zugriffsberechtigung.
+[<=, eRp_FD, funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 62 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 63 ===
+Feature: EU Zugriff E-Rezept
+7.4 Anforderungen an den NCPeH-FD
+Folgende Anforderungen gelten für Clientsysteme des E-Rezept-Fachdienst und werden
+somit auch dem NCPeH-FD zugeordnet. Wenn Anforderungen zu diesem Zweck
+verallgemeinert werden, sind diese Verallgemeinerungen hier dargestellt.
+Die nachfolgenden Anforderungen werden in die jeweiligen Dokumente übernommen.
+7.4.1 Änderungen in gemILF_PS_eRp 5.1.1 Kommunikation zu den
+Diensten der TI
+A_19451-02 -CS: Lokalisierung E-Rezept-Fachdienst
+Das Clientsystem des E-Rezept-Fachdienstes MUSS für die Kommunikation mit dem E-
+Rezept-Fachdienst die Endpunkte der Schnittstellen gemäß [gemSpec_FD_eRP#5.1
+Servicelokalisierung] nutzen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt. Eignung:
+Test Produkt/FA]
+A_19744-01 -CS: Endpunkt Schnittstelle E-Rezept-Fachdienst
+Das Clientsystem des E-Rezept-Fachdienstes MUSS für die Kommunikation mit dem
+E-Rezept-Fachdienst die URL mit dem Port 443 bilden.[<=, PS_E-Rezept_abgebend,
+CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt. Eignung:
+Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_19234-01 -CS: Kommunikation über TLS-Verbindung
+Das Clientsystem des E-Rezept-Fachdienstes MUSS für die Anwendungsfälle der
+Anwendung E-Rezept mit den Diensten der TI ausschließlich über TLS
+kommunizieren.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung,
+Sich.techn. Eignung: Produktgutachten]
+A_19235-01 -CS: Unzulässige TLS-Verbindungen ablehnen
+Das Clientsystem des E-Rezept-Fachdienst MUSS sich bei jedem Verbindungsaufbau
+zum E-Rezept-Fachdienst oder IDP-Dienst anhand seines TLS-Zertifikats
+authentifizieren und MUSS die Verbindungen ablehnen, falls die Authentifizierung
+fehlschlägt.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung,
+Sich.techn. Eignung: Produktgutachten]
+A_20015-02 -CS: HTTP-Header user-agent
+Das Clientsystem des E-Rezept-Fachdienstes MUSS in alle HTTP-Requests an den E-
+Rezept-Fachdienst und IDP-Dienst im äußeren HTTP-Request den HTTP-Header user-
+agent gemäß [RFC7231] mit <Produktname>/<Produktversion>
+<Herstellername>/<client_id> mit
+• <Produktname> gemäß eigener Definition, Länge 1-20 Zeichen,
+Zeichenvorrat[0-9a-zA-Z\-\.]
+• <Produktversion> gemäß Produktidentifikation
+• <Herstellername> gemäß eigener Definition, Länge 1-20 Zeichen,
+Zeichenvorrat[0-9a-zA-Z\-\.]
+• <client_id> gemäß Registrierung bei der gematik
+des Clientsystems befüllen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt.
+Eignung: Test Produkt/FA]
+A_21568-02 -CS: HTTP-Header X-erp-user
+input.docx Spezifikation Seite 63 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 64 ===
+Feature: EU Zugriff E-Rezept
+Das Clientsystem des E-Rezept-Fachdienstes MUSS in alle Anfragen an den E-Rezept-
+Fachdienst im äußeren HTTP-Request den HTTP-Header "X-erp-user" mit dem Wert
+• "l" (kleines L) als PS eines Leistungserbringers
+• "k" als CS eines Kostenträgers
+• "v" als E-Rezept-FdV
+• oder "n" als NCPeH-FD
+einfügen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, eRp_FdV, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt. Eignung:
+Test Produkt/FA]
+A_21568-02 ersetzt zusätzlich "A_21567 - E-Rezept-FdV: HTTP-Header X-erp-user".
+A_21567 wird storniert.
+A_21569-01 -CS: HTTP-Header X-erp-resource
+Das Clientsystem des E-Rezept-Fachdienstes MUSS in alle Anfragen an den E-
+Rezept-Fachdienst im äußeren HTTP-Request den HTTP-Header "X-erp-resource" mit
+dem Wert gemäß der angefragten Ressource im FHIR-Request einfügen.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+Die Tabelle TAB_ILFERP_014 wird um folgende Einträge erweitert:
+Tabelle 18: TAB_ILFERP_014 - HTTP-Header "X-erp-resource"
+Operation X-erp-resource
+POST /Task/<id>/$eu-close Task
+POST /$get-eu-prescriptions Prescription
+GET /$read-eu-access-permission access-permission
+POST /$grant-eu-access-permission access-permission
+DELETE /$revoke-eu-access-permission access-permission
+7.4.2 Änderungen in gemILF_PS_eRp 5.1.2 Verschlüsselte
+Kommunikation zur VAU des E-Rezept-Fachdienstes
+A_19741-01 -CS: Umsetzung sicherer Kanal zur VAU des E-Rezept-Fachdienstes
+Das Clientsystem des E-Rezept-Fachdienstes MUSS für alle Anfragen an den E-Rezept-
+Fachdienst für
+• die Abfrage descapability statement
+• den Zugriff auf Task, Communication, Consent, Prescription oder access-
+permission Ressourcen
+das Kommunikationsprotokoll zwischen E-Rezept-VAU und E-Rezept-Clients in der Rolle E-
+Rezept-Client nutzen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt. Eignung:
+Test Produkt/FA]
+input.docx Spezifikation Seite 64 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 65 ===
+Feature: EU Zugriff E-Rezept
+7.4.3 Änderungen in gemILF_PS_eRp 5.1.3 Zertifikatsprüfung
+A_20769-01 -CS: verpflichtende Zertifikatsprüfung
+Das Clientsystem des E-Rezept-Fachdienst MUSS alle Zertifikate, die es aktiv verwendet
+(bspw. TLS-Verbindungsaufbau), auf Integrität und Authentizität prüfen. Falls die Prüfung
+kein positives Ergebnis ("gültig") liefert, so MUSS es die von dem Zertifikat und den darin
+enthaltenen Attributen (bspw. öffentliche Schlüssel) abhängenden Arbeitsabläufe
+ablehnen.
+Das Clientsystem des E-Rezept-Fachdienst MUSS alle öffentlichen Schlüssel, die es
+verwenden will, auf eine positiv verlaufene Zertifikatsprüfung zurückführen können.[<=,
+PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Konformitätsbestätigung, Sich.techn. Eignung: Produktgutachten]
+7.4.3.1 Änderungen in gemILF_PS_eRp 5.1.3.2 Zertifikatsprüfung von
+Internet-Zertifikaten
+A_20091-01 -CS: Prüfung der Zertifikate für TLS-Verbindung zu E-Rezept-
+Fachdienst und IDP-Dienst
+Das Clientsystem des E-Rezept-Fachdienst MUSS für die Prüfung eines Zertifikats für den
+TLS-Verbindungsaufbau zum E-Rezept-Fachdienst und IDP das Zertifikat auf ein CA-
+Zertifikat einer CA, die die "CA/Browser Forum Baseline Requirements for the Issuance
+and Management of Publicly-Trusted Certificates" [Baseline Requirements for TLS Server
+Certificates] erfüllt, kryptographisch (Signaturprüfung) zurückführen können. Ansonsten
+MUSS es das Zertifikat als "ungültig" bewerten.
+Das Clientsystem des E-Rezept-Fachdienst MUSS die zeitliche Gültigkeit des Zertifikats
+prüfen. Falls diese Prüfung negativ ausfällt, muss es das Zertifikat als "ungültig"
+bewerten.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend,
+NCPeH_FD, funkt. Eignung: Herstellererklärung, Sich.techn. Eignung: Produktgutachten]
+7.4.3.2 Änderungen in gemILF_PS_eRp 5.1.4.1 Übergreifende
+Festlegungen zur Nutzung des IDP-Dienstes
+A_20654-01 -CS: Registrierung des Clientsystems des E-Rezept-Fachdienstes
+Der Hersteller des Clientsystem des E-Rezept-Fachdienstes MUSS sich über einen
+organisatorischen Prozess beim Anbieter des IDP-Dienstes für die Dienste, für welche
+Token abgerufen werden sollen, registrieren. Der IDP-Dienst vergibt dabei eine
+"client_id". Diese "client_id" MUSS vom Clientsystem bei Nutzung des IDP-Dienstes
+übertragen werden.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, Anb_NCPeH_FD, funkt. Eignung: Herstellererklärung, organ./betriebl.
+Eignung: Anbietererklärung]
+A_20655-01 -CS: Regelmäßiges Einlesen des Discovery Document
+Das Clientsystem MUSS das Discovery Document (DD) [RFC8414] regelmäßig alle
+24 Stunden einlesen und auswerten, und danach die darin aufgeführten URI zu den
+benötigten öffentlichen Schlüsseln (PUKs) und Diensten verwenden.
+Der Downloadpunkt wird als Teil der organisatorischen Registrierung des
+Clientsystems beim IDP-Dienst übergeben.
+Das Clientsystem MUSS den Downloadpunkt des Discovery Document als
+konfigurierbaren Parameter speichern.[<=, CS_ePA_KTR, PS_E-Rezept_abgebend,
+CS_E-Rezept_KTR, PS_ePA_Apotheke, CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle,
+PS_E-Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung,
+funkt. Eignung: Test Produkt/FA]
+A_20656-02 -CS: Prüfung der Signatur des Discovery Document
+Das Clientsystem MUSS die JWS (JSON Web Signature) [RFC7515#section-3]
+Signatur des Discovery Document auf mathematische Korrektheit sowie auf
+Gültigkeit des ausstellenden Zertifikates innerhalb der TI prüfen.
+input.docx Spezifikation Seite 65 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 66 ===
+Feature: EU Zugriff E-Rezept
+Das Clientsystem MUSS, wenn es den Konnektor oder den Basis-Consumer nutzt,
+die Gültigkeit des Zertifikates mit der Operation "VerifyCertificate" prüfen.
+[<=, CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_ePA_Apotheke,
+CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+Für die Prüfung des ausstellenden Zertifikats mittels Konnektor siehe
+[gemSpec_Kon#4.1.9.5.3] bzw. [gemILF_PS#4.4.4.3].
+Für die Prüfung des ausstellenden Zertifikats mittels Basis-Consumer siehe
+[gemSpec_Basis_KTR_Consumer#A_17429].
+A_20657-01 -CS: Prüfung Typ und Rolle des Signaturzertifikats des
+Discovery Document
+Das Clientsystem MUSS die Signatur des Discovery Document auf ein zeitlich
+gültiges C.FD.SIG-Zertifikat mit der Rollen-OID "oid_idpd" zurückführen können.[<=,
+CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_ePA_Apotheke,
+CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_20658-01 -CS: Sicheres Löschen der Token
+Das Clientsystem MUSS, wenn es kontrolliert beendet wird, vorhandene ACCESS_TOKEN,
+ID_TOKEN und AUTHORIZATION_CODE-Objekte sicher löschen.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Herstellererklärung]
+A_21337-01 -CS: Löschung von TOKEN bei zeitlichem Ablauf
+Das Clientsystem MUSS vorhandene ACCESS_TOKEN, ID_TOKEN und
+AUTHORIZATION_CODE-Objekte nach Ablauf ihrer Gültigkeit sicher löschen.[<=,
+PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Herstellererklärung, Sich.techn. Eignung: Produktgutachten]
+A_21338-01 -CS: Sichere Speicherung der Token
+Das Clientsystem MUSS empfangene ACCESS_TOKEN, ID_TOKEN und
+AUTHORIZATION_CODE-Objekte gegen unberechtigten Zugriff schützen.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Herstellererklärung, Sich.techn. Eignung: Produktgutachten]
+7.4.3.3 Änderungen in gemILF_PS_eRp 5.1.4.2 Abruf von Token beim
+IDP-Dienst
+A_20659-01 -CS: Erzeugen des CODE_VERIFIER
+Das Clientsystem MUSS zur Laufzeit einen CODE_VERIFIER (Zufallswert) gemäß
+[RFC7636#section-4.1] bilden. Der CODE_VERIFIER MUSS eine Länge von mindestens 43
+und maximal 128 Zeichen enthalten. Dabei sind die folgenden Zeichen zulässig: [A-Z] /
+[a-z] / [0-9] / "-" / "." / "_" / "~".[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, Sich.techn.
+Eignung: Produktgutachten]
+A_20660-01 -Erzeugen des Hash-Werts des CODE_VERIFIER
+Das Clientsystem MUSS über den CODE_VERIFIER einen SHA256-HASH-Wert, die
+sogenannte CODE_CHALLENGE, gemäß [RFC7636#section-4.2] bilden.
+code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Konformitätsbestätigung, Sich.techn. Eignung: Produktgutachten]
+A_20661-01 -CS: Anfrage des AUTHORIZATION_CODE für ein
+ACCESS_TOKEN
+Das Clientsystem MUSS den Antrag zum AUTHORIZATION_CODE für ein
+ACCESS_TOKEN beim Authorization-Endpunkt (URI_AUTH) in Form eines HTTP/1.1
+input.docx Spezifikation Seite 66 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 67 ===
+Feature: EU Zugriff E-Rezept
+GET Request stellen und dabei die folgenden Attribute anführen:
+• "response_type"
+• "scope"
+• "client_id"
+• "redirect_uri"
+• "code_challenge" (Hashwert des "code_verifier") [RFC7636#section-4.2]
+• "code_challenge_method" HASH-Algorithmus (S256) [RFC7636#section-4.3][<=,
+PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_20662-01 -CS: Annahme des "user_consent" und des CHALLENGE_TOKEN
+Das Clientsystem MUSS den "user_consent" und den CHALLENGE_TOKEN vom
+Authorization-Endpunkt des IDP-Dienstes annehmen. Der Authorization-Endpunkt
+liefert diese als Antwort auf den Authorization-Request des Clientsystems.[<=,
+CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_ePA_Apotheke,
+CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Herstellererklärung, funkt. Eignung: Konformitätsbestätigung, funkt.
+Eignung: Test Produkt/FA]
+A_20663-02 -CS: Prüfung der Signatur des CHALLENGE_TOKEN
+Das Clientsystem MUSS die Signatur des CHALLENGE_TOKEN gegen den aktuellen
+öffentlichen Schlüssel des Authorization-Endpunktes PUK_IDP_SIG prüfen. Liegt dem
+Clientsystem der öffentliche Schlüssel des Authorization-Endpunktes noch nicht vor,
+MUSS es diesen gemäß dem "kid"-Parameter "puk_idp_sig" aus dem Discovery
+Document abrufen.[<=, CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR,
+PS_ePA_Apotheke, CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt.
+Eignung: Test Produkt/FA]
+A_20665-02 -CS: Signatur der Challenge des IdP-Dienstes
+Das Clientsystem MUSS, wenn es sich mit seiner SM-B authentisiert, den
+CHALLENGE_TOKEN des IdP-Dienstes mit der Identität ID.HCI.AUT der SM-B
+signieren.
+Das Clientsystem MUSS, wenn es den Konnektor oder den Basis-Consumer nutzt, für
+das Signieren die Operation ExternalAuthenticate verwenden und als zu signierende
+Daten BinaryString den SHA-256-Hashwert des CHALLENGE_TOKEN in Base64-
+Codierung übergeben.[<=, CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR,
+PS_ePA_Apotheke, CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-
+Rezept_verordnend, NCPeH_FD, funkt. Eignung: Konformitätsbestätigung,
+Sich.techn. Eignung: Produktgutachten]
+Für das Signieren mittels Konnektor siehe [gemSpec_Kon#4.1.13.4] bzw.
+[gemILF_PS#4.4.6.1].
+Die referenzierte Anforderung A_20266-02 wird aus [gemILF_PS_eRp] entfernt und durch
+die folgende Hinweise ersetzt:
+Das Auslesen des Zertifikat C.HCI.AUT der SM-B mittels Konnektor erfolgt über über die
+Operation ReadCardCertificate. Siehe [gemILF_PS_ePA#A_20266-* Auslesen des
+Authentisierungszertifikates].
+Das Auslesen des Zertifikat C.HCI.AUT der SM-B mittels Basis-Consumer erfolgt über über
+die Operation ReadCertificate. Siehe [gemILF_PS_ePA#A_25720-* Auslesen des
+Authentisierungszertifikates aus einem HSM].
+A_20667-03 -CS: Response auf die Challenge des Authorization-Endpunktes
+Das Clientsystem MUSS das eingereichte CHALLENGE_TOKEN zusammen mit der von der
+Smartcard signierten Challenge-Signatur "signed_challenge" und dem
+Authentifizierungszertifikat der Smartcard, mit dem öffentlichen Schlüssel des
+input.docx Spezifikation Seite 67 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 68 ===
+Feature: EU Zugriff E-Rezept
+Authorization-Endpunktes PUK_IDP_ENC verschlüsselt, in Form eines HTTP-POST-Requests
+senden.[<=, CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_ePA_Apotheke,
+CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_20668-01 -CS: Annahme des AUTHORIZATION_CODE
+Das Clientsystem MUSS den vom Authorization-Endpunkt als Antwort auf die
+signierte Challenge gesendeten AUTHORIZATION_CODE verarbeiten. Das
+Clientsystem MUSS das AUTHORIZATION_CODE ablehnen, wenn dieser außerhalb
+der mit dem Authorization-Endpunkt etablierten TLS-Verbindung übertragen wird.
+[<=, CS_ePA_KTR, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_ePA_Apotheke,
+CS_ePA_DiGA, PS_ePA, CS_ePA_Ombudsstelle, PS_E-Rezept_verordnend, NCPeH_FD,
+funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_21333-01 -CS: Erzeugung des "Token-Key"
+Das Clientsystem MUSS vor dem Abrufen von ID_Token und ACCESS_Token einen
+zufälligen 256bit-AES-Schlüssel ("Token Key") erzeugen.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Konformitätsbestätigung, Sich.techn. Eignung: Produktgutachten]
+A_21334-01 -CS: Erzeugung des KEY_VERIFIER
+Das Clientsystem MUSS den KEY_VERIFIER bilden, indem "Token Key" und
+CODE_VERIFIER in einem JSON-Objekt kodiert werden.[<=, PS_E-Rezept_abgebend,
+CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt. Eignung:
+Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+A_20671-02 -CS: Einreichen des AUTHORIZATION_CODE beim Token-
+Endpunkt
+Das Clientsystem MUSS den "Key_Verifier" mittels JWE und PUK_IDP_ENC
+verschlüsseln und zusammen mit dem AUTHORIZATION_CODE TLS-gesichert und als
+HTTP/1.1 POST Request an den Token-Endpunkt senden.
+[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend,
+NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test
+Produkt/FA]
+A_20672-02 -CS: Annahme des ID_TOKEN
+Das Clientsystem MUSS das vom Token-Endpunkt ausgegebene ID_TOKEN als
+HTTP/1.1 Statusmeldung 200 verarbeiten und mittels "Token Key" entschlüsseln.
+Das Clientsystem MUSS das ID_TOKEN ablehnen, wenn dieses außerhalb der mit
+dem Token-Endpunkt etablierten TLS-Verbindung übertragen wird oder nicht mit
+dem vorher übermittelten "Token Key" verschlüsselt war.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt.
+Eignung: Konformitätsbestätigung, Sich.techn. Eignung: Produktgutachten]
+A_20673-02 -CS: Annahme des ACCESS_TOKEN
+Das Clientsystem MUSS das vom Token-Endpunkt ausgegebene ACCESS_TOKEN in
+der HTTP/1.1 Statusmeldung 200 verarbeiten und mittels "Token Key"
+entschlüsseln. Das Clientsystem MUSS das ACCESS_TOKEN ablehnen, wenn dieses
+außerhalb der mit dem Token-Endpunkt etablierten TLS-Verbindung übertragen
+wird oder nicht mit dem vorher übermittelten "Token Key" verschlüsselt war.
+[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend,
+NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, Sich.techn. Eignung:
+Produktgutachten]
+A_20674-01 -CS: Formale Prüfung der Signatur des ID_TOKEN und des
+ACCESS_TOKEN
+Das Clientsystem MUSS die Signatur des ACCESS_TOKEN und ID_TOKEN mathematisch
+prüfen und auf ein gültiges C.FD.SIG-Zertifikat mit der Rollen-OID "oid_idpd"
+zurückführen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, PS_E-Rezept_verordnend,
+NCPeH_FD, funkt. Eignung: Konformitätsbestätigung, funkt. Eignung: Test Produkt/FA]
+input.docx Spezifikation Seite 68 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 69 ===
+Feature: EU Zugriff E-Rezept
+A_20675-01 -CS: Gültigkeitsprüfung des Signaturzertifikats des
+ACCESS_TOKEN innerhalb der TI
+Das Clientsystem MUSS das zur Signatur des ACCESS_TOKEN verwendete Zertifikat
+auf Gültigkeit innerhalb der TI prüfen.
+Das Clientsystem MUSS, wenn es den Konnektor oder den Basis-Consumer nutzt,
+mit der Operation "VerifyCertificate" prüfen.[<=, PS_E-Rezept_abgebend, CS_E-
+Rezept_KTR, PS_E-Rezept_verordnend, NCPeH_FD, funkt. Eignung:
+Konformitätsbestätigung, Sich.techn. Eignung: Produktgutachten]
+Für die Prüfung mittels Konnektor siehe [gemSpec_Kon#4.1.9.5.3] bzw.
+[gemILF_PS#4.4.4.3].
+Für die Prüfung mittels Basis-Consumer siehe [gemSpec_Basis_KTR_Consumer#A_17429].
+7.4.4 Zuweisungen von Anforderungen aus gemSpec_Krypt
+Die folgenden Anforderungen aus gemSpec_Krypt werden dem Produkttypen NCPeH-FD
+zugewiesen:
+• A_20161-01 - E-Rezept-Client, Request-Erstellung, Prüfverfahren: Produktgutachten,
+• A_20174 - E-Rezept-Client, Response-Auswertung, Prüfverfahren: Produktgutachten,
+• A_20175 - E-Rezept-Client, Speicherung Nutzerpseudonym, Prüfverfahren:
+Produktgutachten,
+• A_21216 - E-Rezept-Client, Zertifikatsprüfung auf TSL-Basis, Prüfverfahren:
+Produktgutachten,
+• A_21222 - E-Rezept-Client, allgemein Zertifikatsprüfung, Prüfverfahren:
+Produktgutachten,
+• A_21275-01 - TLS-Verbindungen, zulässige Hashfunktionen bei Signaturen im TLS-
+Handshake, Prüfverfahren: Produktgutachten (bereits zugeordnet),
+• A_21332-02 - E-Rezept: TLS-Vorgaben, Prüfverfahren: Produktgutachten.
+7.4.5 Änderung in gemSpec_DM_eRp 2.1 FHIR-Ressourcen
+A_22483-01 -Version FHIR-Package de.gematik.erezept-workflow
+Die Produkttypen der Anwendung E-Rezept und Clientsystem des E-Rezept-Fachdienstes
+MÜSSEN das FHIR-Packagede.gematik.erezept-workflow in der Version gemäß [FHIR
+Version] unterstützen.[<=, PS_E-Rezept_abgebend, CS_E-Rezept_KTR, eRp_FdV, eRp_FD,
+PS_E-Rezept_verordnend, NCPeH_FD, eRp_AdV, funkt. Eignung: Herstellererklärung]
+A_22216-01 -FHIR-Ressourcen Versionsangabe
+Die Produkttypen der Anwendung E-Rezept und Clientsystem des E-Rezept-
+Fachdienstes MÜSSEN alle generierten FHIR-Ressourcen mit der Versionsnummer
+gemäß [datatypes.html#canonical] im Feld Ressource.meta.profile kennzeichnen,
+zu dessen aktuell gültiger Profilversion sie mutmaßlich validieren.[<=, PS_E-
+Rezept_abgebend, CS_E-Rezept_KTR, eRp_FdV, eRp_FD, PS_E-Rezept_verordnend,
+NCPeH_FD, eRp_AdV, funkt. Eignung: Herstellererklärung, funkt. Eignung: Test
+Produkt/FA]
+Die folgenden Anforderungen aus gemSpec_DM_eRp werden dem Produkttypen NCPeH-
+FD zugewiesen:
+• A_26237 - FHIR-Ressourcen - Ressource-ID in fullUrl, Prüfverfahren: funktionaler Test,
+• A_26238 - FHIR-Ressourcen - Format fullUrl, Prüfverfahren: funktionaler Test.
+input.docx Spezifikation Seite 69 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 70 ===
+Feature: EU Zugriff E-Rezept
+7.4.6 Änderungen in der gemKPT_Betr
+7.4.6.1 Änderung in 5.3.2.9 Anwendung E-Rezept (PDT50, PDT59)
+Hinzufügen des neuen UseCases zur Tabelle Tab_gemKPT_Betr_eRP_S::O/A
+Produkttyp / S/ Schnittstellen::Oper Beschreibung Berichtsformat-Alias
+Anwendungs A- ation / (sofern von
+typ ID Anwendungsfall Schnittstellen::Oper
+ation bzw.
+Anwendungsfall
+abweichend)
+E-Rezept-Fachdienst - PDT50
+...
+PDT50 A59 ERP.UC_3_16 Zugriffsberechtig
+ung durch
+Versicherten
+erstellen
+PDT50 A60 ERP.UC_3_17 Zugriffsberechtig
+ung durch
+Versicherten
+löschen
+PDT50 A61 ERP.UC_3_18 Zugriffsberechtig
+ung durch
+Versicherten
+einsehen
+PDT50 A62 ERP.UC_4_19 Demographische
+Daten eines
+Versicherten
+abrufen
+PDT50 A63 ERP.UC_4_20 Liste der
+einlösbaren E-
+Rezepte eines
+Versicherten
+abrufen
+PDT50 A64 ERP.UC_4_21 Liste
+ausgewählter E-
+Rezepte eines
+Versicherten
+abrufen
+PDT50 A65 ERP.UC_4_22 Abgabe eines E-
+Rezeptes im
+europäischen
+Ausland
+input.docx Spezifikation Seite 70 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 71 ===
+Feature: EU Zugriff E-Rezept
+7.4.7 Änderungen in der gemSpec_Perf
+7.4.7.1 Änderung in 3.2.2.2 Format
+Erweiterung der Tabelle 16: Tab_gemSpec_Perf_Berichtsformat_E-Rezept-Fachdienst um
+den neuen UseCase
+$FD-operation Operation Schnittstelle zu
+...
+ERP.UC_3_16 POST /$grant-eu-access-permission FdV
+ERP.UC_3_17 DELETE /$revoke-eu-access-permission FdV
+ERP.UC_3_18 GET /$read-eu-access-permission FdV
+ERP.UC_4_19 POST /$get-eu-prescriptions mit NCPeH-FD
+Requesttype demographics
+ERP.UC_4_20 POST /$get-eu-prescriptions mit NCPeH-FD
+Requesttype e-prescriptions-list
+ERP.UC_4_21 POST /$get-eu-prescriptions mit NCPeH-FD
+Requesttype e-prescriptions-retrieval
+ERP.UC_4_22 POST /Task/<id>/$eu-close NCPeH-FD
+7.5 Test
+7.5.1 Testunterstützung für den PET
+Das [eHDSI Test Framework] definiert eine Durchführung von Tests in der
+Produktivumgebung nach Erteilung der Betriebserlaubnis (Product Environment Test -
+PET). Diese Tests MÜSSEN im Rahmen der Inbetriebnahme bzw. des Upgrades auf eine
+neue eHDSI Release Version (Wave) erfolgen. Dementsprechend muss
+produktübergreifend eine Möglichkeit geschaffen werden, diese Tests mit der
+Produktivumgebung der TI durchzuführen.
+In Vorbereitung des PET MUSS sich die DVKA eine oder mehrere Versichertenidentitäten
+zu Prüfzwecken beschaffen. Dazu können eGK Prüfkarten für die Rolle und Identität eines
+Prüfversicherten über den gematik WEB-Shop [gemWebShop] bestellt werden.
+Die DVKA MUSS sich um LE-DE (Ärzte oder Zahnärzte) kümmern, um für den PET
+realitätsnahe E-Rezepte in den E-Rezept-Fachdienst einstellen zu können. Das Einstellen
+der E-Rezepte erfolgt dabei in der Umgebung des jeweiligen LE-DE.
+Die Erteilung der Zugriffsberechtigung für die Prüfidentität kann mittels gematik E-
+Rezept-App erfolgen.
+Die Testdurchführung ist mit dem Betrieb der gematik abzustimmen. Insbesondere die
+Sicherstellung der Verfügbarkeit der TI Produkte und passenden Produktversionen ist hier
+relevant.
+input.docx Spezifikation Seite 71 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 72 ===
+Feature: EU Zugriff E-Rezept
+8 Anhang A – Verzeichnisse
+8.1 Abkürzungen
+Kürzel Erläuterung
+API Application Programming Interface
+CS Clientsystem
+DVKA Deutsche Verbindungsstelle Krankenversicherung – Ausland
+eHDSI eHealth Digital Service Infrastructure
+FD Fachdienst
+FdV Frontend des Versicherten
+GUI Graphical User Interface (Bedienoberfläche)
+ID Identifikation(nummer)
+KBV Kassenärztliche Bundesvereinigung
+KVNR Krankenversichertennummer
+LE-EU Leistungserbringer im europäischen Ausland
+LEI-EU Leistungserbringerinstitution im europäischen Ausland
+NCPeH National Contact Point eHealth
+NCPeH-FD National Contact Point eHealth in Deutschland, NCPeH-Fachdienst
+(Deutschland)
+PKV Private Krankenversicherung
+PS Primärsystem
+PZN Pharmazentralnummer
+TI Telematikinfrastruktur
+UC Use Case, Anwendungsfall
+input.docx Spezifikation Seite 72 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 73 ===
+Feature: EU Zugriff E-Rezept
+8.2 Abbildungsverzeichnis
+Abbildung 1: Übersicht Architektur.....................................................................................9
+Abbildung 2: ABB_SYSLERP_001 Übersicht der Fachanwendung E-Rezept.......................12
+Abbildung 3: SD-Einwilligung durch Versicherten erteilen................................................14
+Abbildung 4: SD-Einwilligung durch Versicherten widerrufen...........................................15
+Abbildung 5: SD-Einwilligungen durch Versicherten einsehen..........................................16
+Abbildung 6:SD-Zugriffsberechtigung durch Versicherten erstellen.................................17
+Abbildung 7: SD-Zugriffsberechtigung durch Versicherten löschen..................................18
+Abbildung 8: SD-Zugriffsberechtigung durch Versicherten einsehen................................19
+Abbildung 9: SD E-Rezept durch den Versicherten markieren..........................................20
+Abbildung 10: SD Demographische Daten eines Versicherten abrufen.............................22
+Abbildung 11: SD Liste der einlösbaren E-Rezepte eines Versicherten abrufen................24
+Abbildung 12: SD-Liste ausgewählter E-Rezepte eines Versicherten abrufen...................26
+Abbildung 13: SD Abgabe von E-Rezepten im europäischen Ausland...............................28
+8.3 Tabellenverzeichnis
+Tabelle 1: Statusübergänge..............................................................................................12
+Tabelle 2: Einwilligung durch Versicherten erteilen..........................................................13
+Tabelle 3: Einwilligung durch Versicherten widerrufen.....................................................14
+Tabelle 4: Einwilligungen durch Versicherten einsehen....................................................15
+Tabelle 5: Zugriffsberechtigung durch Versicherten erstellen..........................................16
+Tabelle 6: Zugriffsberechtigung durch Versicherten löschen............................................18
+Tabelle 7: Zugriffsberechtigung durch Versicherten einsehen..........................................19
+Tabelle 8: E-Rezept durch den Versicherten markieren....................................................20
+Tabelle 9: TAB_eRPFD_004 Versichertenprotokoll.............................................................36
+Tabelle 10: TAB_FdVERP_003 – Übersicht Anwendungsfälle E-Rezept-FdV.......................51
+Tabelle 11: TAB_FdVERP_xxx – E-Rezept markieren.........................................................52
+Tabelle 12: TAB_FdVERP_020 – Einwilligung erteilen........................................................54
+Tabelle 13: TAB_FdVERP_021 – Einwilligungsinformation abrufen....................................55
+Tabelle 14: TAB_FdVERP_022 – Einwilligung widerrufen...................................................56
+Tabelle 15: TAB_FdVERP_xxx – Zugriffsberechtigung erteilen..........................................58
+Tabelle 16: TAB_FdVERP_xxx – Zugriffsberechtigung abrufen..........................................60
+Tabelle 17: TAB_FdVERP_xxx – Zugriffsberechtigung löschen..........................................60
+input.docx Spezifikation Seite 73 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 74 ===
+Feature: EU Zugriff E-Rezept
+Tabelle 18: TAB_ILFERP_014 - HTTP-Header "X-erp-resource"..........................................66
+8.4 Referenzierte Dokumente
+8.4.1 Dokumente der gematik
+Die nachfolgende Tabelle enthält die Bezeichnung der in dem vorliegenden Dokument
+referenzierten Dokumente der gematik zur Telematikinfrastruktur.
+[Quelle] Herausgeber: Titel
+[gemGlossar] gematik: Glossar der Telematikinfrastruktur
+[gemILF_PS] gematik: Implementierungsleitfaden Primärsysteme –
+Telematikinfrastruktur (TI)
+[gemILF_PS_ePA] gematik: Implementierungsleitfaden Primärsysteme ePA
+für alle
+[gemILF_PS_eRp] gematik: Spezifikation Implementierungsleitfaden
+Primärsysteme – E-Rezept
+[gemSpec_Basis_KTR_Consu gematik: Spezifikation Basis- und KTR-Consumer
+mer]
+[gemSpec_DM_eRp] gematik: Spezifikation Datenmodell E-Rezept
+[gemSpec_FD_eRp] gematik: Spezifikation E-Rezept-Fachdienst
+[gemSpec_eRp_FdV] gematik: Spezifikation E-Rezept-Frontend des
+Versicherten
+[gemSpec_Kon] gematik: Spezifikation Konnektor
+[gemSpec_Krypt] gematik: Übergreifende Spezifikation Verwendung
+kryptographischer Algorithmen in der
+Telematikinfrastruktur
+[gemSpec_VZD_FHIR_Director gematik: Spezifikation Verzeichnisdienst FHIR-Directory
+y]
+[gemF_ePres-eDisp] gematik: Feature Prescription/eDispensation Land A
+[FHIR Version] https://github.com/gematik/api-erp/blob/master/docs/
+erp_fhirversion.adoc#e-rezept-fhir-package-
+versionsmanagement
+input.docx Spezifikation Seite 74 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 75 ===
+Feature: EU Zugriff E-Rezept
+[GEM_ERP_PR_PAR_EU_GET_P https://gematik.de/fhir/erp/StructureDefinition/
+rescription_EU_Input] GEM_ERP_PR_PAR_EU_GET_Prescription_EU_Input
+[Identifier Profile for Secret https://simplifier.net/packages/de.gematik.erezept-
+(GEM_ERP_PR_Secret)] workflow.r4/1.5.0-rc1/files/2692880
+[GEM_ERP_PR_PAR_EU_Close https://simplifier.net/resolve?
+Operation_Input] scope=package:de.gematik.erezept-workflow.r4@1.5.0-
+rc1&canonical=https://gematik.de/fhir/erp/
+StructureDefinition/
+GEM_ERP_PR_PAR_EU_CloseOperation_Input
+[GEM_ERP_PR_PAR_EU_Acces https://gematik.de/fhir/erp/StructureDefinition/
+s_Authorization_Response] GEM_ERP_PR_PAR_EU_Access_Authorization_Response
+[GEM_ERPCHRG_CS_ConsentT https://simplifier.net/packages/de.gematik.erezept-
+ype] patientenrechnung.r4/1.1.0-rc2/files/2738373
+[GEM_ERPEU_CS_ConsentTyp https://simplifier.net/packages/de.gematik.erezept.eu/
+e] 1.0.0-rc2/files/2738263
+ReleaseCandidate https://simplifier.net/packages/de.gematik.erezept.eu/
+1.0.0-rc1
+[eucloseoperation] https://simplifier.net/erezept-workflow-eu/
+eucloseoperation
+[get-prescription-eu] https://simplifier.net/erezept-workflow-eu/get-
+prescription-eu
+[grant-eu-access-permission] https://simplifier.net/erezept-workflow-eu/grant-eu-
+access-permission
+[read-eu-access-permission] https://simplifier.net/erezept-workflow-eu/read-eu-
+access-permission
+[revoke-eu-access- https://simplifier.net/erezept-workflow-eu/revoke-eu-
+permission] access-permission
+[gem_erpeu_pr_par_access_a https://simplifier.net/erezept-workflow-eu/
+uthorization_request] gem_erpeu_pr_par_access_authorization_request
+[gem_erpeu_pr_par_access_a https://simplifier.net/erezept-workflow-eu/
+uthorization_response] gem_erpeu_pr_par_access_authorization_response
+[gem_erpeu_pr_par_closeoper https://simplifier.net/erezept-workflow-eu/
+ation_input] gem_erpeu_pr_par_closeoperation_input
+[gem_erpeu_pr_par_get_presc https://simplifier.net/erezept-workflow-eu/
+ription_input] gem_erpeu_pr_par_get_prescription_input
+input.docx Spezifikation Seite 75 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 76 ===
+Feature: EU Zugriff E-Rezept
+[gem_erpeu_pr_par_patch_tas https://simplifier.net/erezept-workflow-eu/
+k_input] gem_erpeu_pr_par_patch_task_input
+[gem_erpeu_pr_access_code] https://simplifier.net/erezept-workflow-eu/
+gem_erpeu_pr_access_code
+[gem_erpeu_pr_medicationdis https://simplifier.net/erezept-workflow-eu/
+pense] gem_erpeu_pr_medicationdispense
+[gem_erpeu_pr_organization] https://simplifier.net/erezept-workflow-eu/
+gem_erpeu_pr_organization
+[gem_erpeu_pr_practitioner] https://simplifier.net/erezept-workflow-eu/
+gem_erpeu_pr_practitioner
+[gem_erpeu_pr_practitionerro https://simplifier.net/erezept-workflow-eu/
+le] gem_erpeu_pr_practitionerrole
+[gem_erpeu_pr_consent] https://simplifier.net/erezept-workflow-eu/
+gem_erpeu_pr_consent
+[gem-erpeu-cs-requesttype] https://simplifier.net/erezept-workflow-eu/gem-erpeu-cs-
+consenttype
+[gem-erpeu-vs-consenttype] https://simplifier.net/erezept-workflow-eu/gem-erpeu-vs-
+consenttype
+[gem-erpeu-vs-consent- https://simplifier.net/erezept-workflow-eu/gem-erpeu-vs-
+policyrule] consent-policyrule
+[gem-erpeu-vs-requesttype] https://simplifier.net/erezept-workflow-eu/gem-erpeu-vs-
+requesttype
+[gem-erpeu-vs- https://simplifier.net/erezept-workflow-eu/gem-erpeu-vs-
+practitionerrole] practitionerrole
+[gem-erpeu-vs- https://simplifier.net/erezept-workflow-eu/gem-erpeu-vs-
+healthcarefacilitytype] healthcarefacilitytype
+[gematik-workflow-projekt] https://simplifier.net/erezept-workflow
+8.4.2 Weitere Dokumente
+[Quelle] Herausgeber (Erscheinungsdatum): Titel
+[Wikipedia: User Story] https://de.wikipedia.org/wiki/User_Story
+input.docx Spezifikation Seite 76 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025
+
+
+=== Page 77 ===
+Feature: EU Zugriff E-Rezept
+[gemWebShop] https://fachportal.gematik.de/toolkit/pruefkarte-egk-
+fuer-dvo
+[RFC2119] Key words for use in RFCs to Indicate Requirement
+Levels
+https://www.rfc-editor.org/rfc/rfc2119
+[CodeSystem: Audit Event ID] http://terminology.hl7.org/CodeSystem/audit-event-
+type
+[ValueSet https://www.hl7.org/fhir/valueset-audit-event-sub-
+http://hl7.org/fhir/ValueSet/audit- type.html
+event-sub-type]
+[CodeSystem http://hl7.org/fhir/restful-interaction
+http://hl7.org/fhir/restful-
+interaction]
+[ValueSet https://www.hl7.org/fhir/valueset-audit-event-
+http://hl7.org/fhir/ValueSet/audit- action.html
+event-action]
+[ValueSet https://www.hl7.org/fhir/valueset-audit-event-
+http://hl7.org/fhir/ValueSet/audit- outcome.html
+event-outcome]
+[CodeSystem: Security Role Type http://terminology.hl7.org/CodeSystem/extra-
+(Experimental)] security-role-type
+[datatypes.html#canonical] https://www.hl7.org/fhir/datatypes.html#canonical
+[RFC7231] Hypertext Transfer Protocol (HTTP/1.1): Semantics
+and Content
+https://www.rfc-editor.org/rfc/rfc7231
+[RFC8414] OAuth 2.0 Authorization Server Metadata
+https://www.rfc-editor.org/rfc/rfc8414
+[RFC7515] JSON Web Signature (JWS) Overview
+https://www.rfc-editor.org/rfc/rfc7515
+[RFC7636] Proof Key for Code Exchange by OAuth Public Clients
+https://www.rfc-editor.org/rfc/rfc7636
+[Baseline Requirements for TLS https://cabforum.org/working-groups/server/
+Server Certificates] baseline-requirements/documents/
+input.docx Spezifikation Seite 77 von 77
+Version: 1.0.0 © gematik – öffentlich Stand: 12.03.2025

@@ -1,39 +1,40 @@
-# E-Rezept-Workflow-EU FHIR-Profiles
+# E-Rezept-Workflow-EU Implementation Guide
 
-## Table of Contents
+## About
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
+Dieses Repository enthält die Implementierungsleitfäden und Inhalte für das Feature
+"EU Zugriff E-Rezept" sowie die notwendigen Build-Skripte.
 
-## About <a name = "about"></a>
+## Build
 
-This Repo contains the fsh files to the published E-Rezept Worklow EU files on <https://simplifier.net/erezept-workflow-eu> and a script to validate them.
+1. Repository klonen.
+2. SUSHI installieren.
+3. IG bauen.
 
-## Getting Started <a name = "getting_started"></a>
+### SUSHI installieren
 
-1. Clone this project to your local machine.
-2. Install Sushi.
-3. Run the sushi command to build the resource.
-
-### Installing
-
-To install Sushi:
-
-```bash
+```
 npm i -g fsh-sushi
 ```
 
-This will install:
+### SUSHI ausführen
 
-- Sushi from <https://github.com/FHIR/sushi>
+```
+sushi .
+```
 
-### Building the resources
+### IG Publisher ausführen
 
-After successfull installation run to build the resources:
+Verwenden Sie eines der folgenden Skripte:
 
-```bash
-sushi ./Resources
+```
+./_build.sh
+```
+
+oder
+
+```
+./_genonce.sh
 ```
 
 ## License
