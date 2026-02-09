@@ -5,7 +5,7 @@
   "version": "1.1.2",
   "name": "GEM_ERPEU_PR_Organization",
   "title": "Organization Information Received from the EU",
-  "status": "active",
+  "status": "draft",
   "date": "2026-02-09",
   "description": "This Organization Profile is sent by the NCPeH when redeeming a Prescription in the EU",
   "fhirVersion": "4.0.1",

@@ -5,7 +5,7 @@
   "version": "1.1.2",
   "name": "ERezeptWorkflowEU",
   "title": "E-Rezept Workflow EU",
-  "status": "active",
+  "status": "draft",
   "publisher": "gematik GmbH",
   "contact": [
     {
@@ -426,11 +426,11 @@
     "parameter": [
       {
         "code": "copyrightyear",
-        "value": "2025+"
+        "value": "2026+"
       },
       {
         "code": "releaselabel",
-        "value": "release"
+        "value": "ci-build"
       },
       {
         "code": "path-pages",

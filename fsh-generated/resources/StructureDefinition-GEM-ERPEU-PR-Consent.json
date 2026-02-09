@@ -5,7 +5,7 @@
   "version": "1.1.2",
   "name": "GEM_ERPEU_PR_Consent",
   "title": "Consent for ePrescriptions",
-  "status": "active",
+  "status": "draft",
   "date": "2026-02-09",
   "description": "Records the consent of the patient for an operation in the context of ePrescription.",
   "fhirVersion": "4.0.1",

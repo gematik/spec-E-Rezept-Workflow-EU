@@ -1,6 +1,6 @@
 {
   "resourceType": "CodeSystem",
-  "status": "active",
+  "status": "draft",
   "content": "complete",
   "name": "GEM_ERPEU_CS_RequestType",
   "id": "GEM-ERPEU-CS-RequestType",

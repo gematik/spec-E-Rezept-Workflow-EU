@@ -5,7 +5,7 @@
   "version": "1.1.2",
   "name": "GEM_ERPEU_PR_PAR_GET_Prescription_Output",
   "title": "GEM ERPEU PR PAR GET Prescription Output",
-  "status": "active",
+  "status": "draft",
   "date": "2026-02-09",
   "description": "This profile defines the output parameters for the Get Prescription Operation",
   "fhirVersion": "4.0.1",
