@@ -4,7 +4,7 @@
   "url": "https://gematik.de/fhir/erp-eu/OperationDefinition/EUCloseOperationDefinition",
   "status": "active",
   "version": "1.1.2",
-  "date": "2026-01-09",
+  "date": "2026-02-09",
   "name": "EUClose",
   "kind": "operation",
   "description": "The operation $close finishes the e-prescription workflow and creates a receipt. The Output of this operation is a signed Bundle, to be used for further financial processing. The status of the Task then changes into #completed",
