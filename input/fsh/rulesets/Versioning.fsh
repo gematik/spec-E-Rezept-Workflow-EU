@@ -1,13 +1,13 @@
 // General rule for to handle versions for all structure definitions
 RuleSet: Versioning
 * ^status = #active
-* ^version = "1.1.1"
-* ^date = "2026-01-08"
+* ^version = "1.1.2"
+* ^date = "2026-02-09"
 
 RuleSet: OperationVersioning
 * status = #active
-* version = "1.1.1"
-* date = "2026-01-08"
+* version = "1.1.2"
+* date = "2026-01-09"
 
 // Dates for Examples (Date of actual release)
 RuleSet: Date(field)
